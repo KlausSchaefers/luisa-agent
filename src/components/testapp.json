@@ -1,0 +1,322 @@
+{
+  "_id" : "68443d319491e13d3f6a5bdd",
+  "version" : 4,
+  "name" : "Luisa-Agent-Test",
+  "description" : "",
+  "screenSize" : {
+    "w" : 375,
+    "h" : 812
+  },
+  "type" : "smartphone",
+  "screens" : {
+    "s10000_68844" : {
+      "x" : 1522,
+      "y" : 1051,
+      "h" : 812,
+      "w" : 375,
+      "name" : "Screen",
+      "type" : "Screen",
+      "style" : {
+        "background" : "#e0e5ff"
+      },
+      "min" : {
+        "w" : 375,
+        "h" : 812
+      },
+      "has" : {
+        "image" : true
+      },
+      "props" : {
+        "start" : true
+      },
+      "children" : [ "w10001_23340", "w10002_1349", "w10003_43242", "w10004_99585" ],
+      "id" : "s10000_68844",
+      "modified" : 1749302591867
+    }
+  },
+  "widgets" : {
+    "w10001_23340" : {
+      "id" : "w10001_23340",
+      "type" : "Button",
+      "name" : "Primary Button",
+      "x" : 1568,
+      "y" : 1073,
+      "w" : 96,
+      "h" : 32,
+      "z" : 1,
+      "props" : {
+        "label" : "Click Me"
+      },
+      "has" : {
+        "backgroundColor" : true,
+        "border" : true,
+        "onclick" : true,
+        "label" : true,
+        "padding" : true
+      },
+      "style" : {
+        "fontSize" : 14,
+        "fontFamily" : "Helvetica Neue,Helvetica,Arial,sans-serif",
+        "textAlign" : "center",
+        "letterSpacing" : 0,
+        "lineHeight" : 1.5,
+        "verticalAlign" : "middle",
+        "background" : "#000000",
+        "color" : "#FFFFFF",
+        "borderTopWidth" : 1,
+        "borderBottomWidth" : 1,
+        "borderRightWidth" : 1,
+        "borderLeftWidth" : 1,
+        "borderTopRightRadius" : 4,
+        "borderTopLeftRadius" : 4,
+        "borderBottomRightRadius" : 4,
+        "borderBottomLeftRadius" : 4,
+        "paddingTop" : 0,
+        "paddingBottom" : 0,
+        "paddingLeft" : 0,
+        "paddingRight" : 0,
+        "borderTopColor" : "#000000",
+        "borderBottomColor" : "#000000",
+        "borderRightColor" : "#000000",
+        "borderLeftColor" : "#000000",
+        "borderTopStyle" : "solid",
+        "borderBottomStyle" : "solid",
+        "borderRightStyle" : "solid",
+        "borderLeftStyle" : "solid"
+      },
+      "hover" : {
+        "background" : "#000000",
+        "color" : "#FFFFFF",
+        "borderTopColor" : "#000000",
+        "borderBottomColor" : "#000000",
+        "borderRightColor" : "#000000",
+        "borderLeftColor" : "#000000"
+      },
+      "created" : 1749302594363
+    },
+    "w10002_1349" : {
+      "id" : "w10002_1349",
+      "type" : "Button",
+      "name" : "Danger Button",
+      "x" : 1568,
+      "y" : 1137,
+      "w" : 96,
+      "h" : 32,
+      "z" : 2,
+      "props" : {
+        "label" : "Click Me"
+      },
+      "has" : {
+        "backgroundColor" : true,
+        "border" : true,
+        "onclick" : true,
+        "label" : true,
+        "padding" : true
+      },
+      "style" : {
+        "fontSize" : 14,
+        "fontFamily" : "Helvetica Neue,Helvetica,Arial,sans-serif",
+        "textAlign" : "center",
+        "letterSpacing" : 0,
+        "lineHeight" : 1.5,
+        "verticalAlign" : "middle",
+        "background" : "#f43535",
+        "color" : "#FFFFFF",
+        "borderTopWidth" : 1,
+        "borderBottomWidth" : 1,
+        "borderRightWidth" : 1,
+        "borderLeftWidth" : 1,
+        "borderTopRightRadius" : 4,
+        "borderTopLeftRadius" : 4,
+        "borderBottomRightRadius" : 4,
+        "borderBottomLeftRadius" : 4,
+        "paddingTop" : 0,
+        "paddingBottom" : 0,
+        "paddingLeft" : 0,
+        "paddingRight" : 0,
+        "borderTopColor" : "#f43535",
+        "borderBottomColor" : "#f43535",
+        "borderRightColor" : "#f43535",
+        "borderLeftColor" : "#f43535",
+        "borderTopStyle" : "solid",
+        "borderBottomStyle" : "solid",
+        "borderRightStyle" : "solid",
+        "borderLeftStyle" : "solid"
+      },
+      "hover" : {
+        "background" : "#f60404",
+        "color" : "#FFFFFF",
+        "borderTopColor" : "#f60404",
+        "borderBottomColor" : "#f60404",
+        "borderRightColor" : "#f60404",
+        "borderLeftColor" : "#f60404"
+      },
+      "created" : 1749302597173
+    },
+    "w10003_43242" : {
+      "id" : "w10003_43242",
+      "type" : "Button",
+      "name" : "Passive Button",
+      "x" : 1568,
+      "y" : 1223,
+      "w" : 96,
+      "h" : 32,
+      "z" : 3,
+      "props" : {
+        "label" : "Click Me"
+      },
+      "has" : {
+        "backgroundColor" : true,
+        "border" : true,
+        "onclick" : true,
+        "label" : true,
+        "padding" : true
+      },
+      "style" : {
+        "fontSize" : 14,
+        "fontFamily" : "Helvetica Neue,Helvetica,Arial,sans-serif",
+        "textAlign" : "center",
+        "letterSpacing" : 0,
+        "lineHeight" : 1.5,
+        "verticalAlign" : "middle",
+        "background" : "#CCCCCC",
+        "color" : "#000000",
+        "borderTopWidth" : 1,
+        "borderBottomWidth" : 1,
+        "borderRightWidth" : 1,
+        "borderLeftWidth" : 1,
+        "borderTopRightRadius" : 4,
+        "borderTopLeftRadius" : 4,
+        "borderBottomRightRadius" : 4,
+        "borderBottomLeftRadius" : 4,
+        "paddingTop" : 0,
+        "paddingBottom" : 0,
+        "paddingLeft" : 0,
+        "paddingRight" : 0,
+        "borderTopColor" : "#CCCCCC",
+        "borderBottomColor" : "#CCCCCC",
+        "borderRightColor" : "#CCCCCC",
+        "borderLeftColor" : "#CCCCCC",
+        "borderTopStyle" : "solid",
+        "borderBottomStyle" : "solid",
+        "borderRightStyle" : "solid",
+        "borderLeftStyle" : "solid"
+      },
+      "hover" : {
+        "background" : "#CCCCCC",
+        "color" : "#FFFFFF",
+        "borderTopColor" : "#CCCCCC",
+        "borderBottomColor" : "#CCCCCC",
+        "borderRightColor" : "#CCCCCC",
+        "borderLeftColor" : "#CCCCCC"
+      },
+      "created" : 1749302599433
+    },
+    "w10004_99585" : {
+      "id" : "w10004_99585",
+      "type" : "Password",
+      "name" : "Password  (Hide & Show)",
+      "x" : 1568,
+      "y" : 1296,
+      "w" : 283,
+      "h" : 32,
+      "z" : 4,
+      "props" : {
+        "label" : "",
+        "placeholder" : true,
+        "cleartext" : true,
+        "cleartextHideLabel" : "Hide",
+        "cleartextShowLabel" : "Show"
+      },
+      "has" : {
+        "label" : true,
+        "backgroundColor" : true,
+        "border" : true,
+        "editable" : true,
+        "onclick" : true,
+        "padding" : true
+      },
+      "style" : {
+        "fontSize" : 14,
+        "fontFamily" : "Helvetica Neue,Helvetica,Arial,sans-serif",
+        "textAlign" : "left",
+        "letterSpacing" : 0,
+        "lineHeight" : 1.5,
+        "background" : "#FFFFFF",
+        "color" : "#000000",
+        "paddingBottom" : 2,
+        "paddingTop" : 2,
+        "paddingLeft" : 8,
+        "paddingRight" : 8,
+        "borderTopWidth" : 1,
+        "borderBottomWidth" : 1,
+        "borderRightWidth" : 1,
+        "borderLeftWidth" : 1,
+        "borderTopRightRadius" : 4,
+        "borderTopLeftRadius" : 4,
+        "borderBottomRightRadius" : 4,
+        "borderBottomLeftRadius" : 4,
+        "borderTopColor" : "#000000",
+        "borderBottomColor" : "#000000",
+        "borderRightColor" : "#000000",
+        "borderLeftColor" : "#000000",
+        "borderTopStyle" : "solid",
+        "borderBottomStyle" : "solid",
+        "borderRightStyle" : "solid",
+        "borderLeftStyle" : "solid"
+      },
+      "focus" : {
+        "background" : "#FEFEFE",
+        "color" : "#000000",
+        "borderTopWidth" : 1,
+        "borderBottomWidth" : 1,
+        "borderRightWidth" : 1,
+        "borderLeftWidth" : 1,
+        "borderTopColor" : "#000000",
+        "borderBottomColor" : "#000000",
+        "borderRightColor" : "#000000",
+        "borderLeftColor" : "#000000"
+      },
+      "hover" : {
+        "background" : "#CCCCCC",
+        "color" : "#000000",
+        "borderTopColor" : "#000000",
+        "borderBottomColor" : "#000000",
+        "borderRightColor" : "#000000",
+        "borderLeftColor" : "#000000"
+      },
+      "error" : {
+        "background" : "#efc5c5",
+        "color" : "#f43535",
+        "borderTopColor" : "#f43535",
+        "borderBottomColor" : "#f43535",
+        "borderRightColor" : "#f43535",
+        "borderLeftColor" : "#f43535"
+      },
+      "created" : 1749302602349,
+      "modified" : 1749302604827
+    }
+  },
+  "lines" : { },
+  "groups" : { },
+  "templates" : { },
+  "designtokens" : { },
+  "lastUUID" : 10005,
+  "lastUpdate" : 1749302604833,
+  "created" : 1749302577224,
+  "startScreen" : "",
+  "grid" : {
+    "w" : 8,
+    "h" : 8,
+    "style" : "line",
+    "color" : "#cecece",
+    "visible" : false,
+    "enabled" : false
+  },
+  "domain" : "Quant-UX.com",
+  "screenCount" : 1,
+  "widgetCount" : 4,
+  "isDirty" : true,
+  "lastCategory" : "WireFrame",
+  "id" : "68443d319491e13d3f6a5bdd"
+}

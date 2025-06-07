@@ -1,0 +1,102 @@
+.luisa-hint-box{
+    background: #eef2ff;
+    border:1px solid #bccaf7;
+    padding: var(--space-m);
+    border-radius: var(--raduis-m);
+}
+
+.luisa-input {
+    background: var(--form-background);
+    color:var(--form-color);
+    border:var(--form-border);
+    padding: var(--form-padding);
+    border-radius: var(--raduis-m);  
+    outline: none;
+
+}
+textarea.luisa-input {
+    height: 96px;
+    resize: none;
+}
+.luisa-input:hover,
+.luisa-input:focus{
+    background: var(--form-focus-background);
+    color:var(--form-focus-color);
+    border:var(--form-focus-border);
+    outline: none;
+}
+
+.luisa-input-fw{
+    width: 100%;
+}
+
+
+textarea.luisa-input:disabled {
+   opacity: 0.2;
+   border-style: dashed;
+}
+
+.luisa-icon-input{
+    position: relative;
+    .luisa-input {
+        padding-right: 48px;
+    }
+    .luisa-icon {
+        position: absolute;
+        top:8px;
+        right: 8px;
+    }
+}
+
+.luisa-icon {
+    stroke: var(--icon-color);
+    cursor: pointer;
+}
+
+.luisa-icon:hover {
+    stroke: var(--icon-hover-color);
+}
+
+.luisa-icon-active {
+    stroke: var(--icon-active-color);
+}
+
+.luisa-flex-col{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+}
+
+.luisa-flex-row{
+    display: flex;
+    flex-direction: row;
+    gap:16px;
+}
+
+.luisa-zoom-textarea{
+    height: 96px;
+    .luisa-zoom-textarea-backdrop {
+      transition: all, 0.2s;
+    }
+
+}
+
+.luisa-zoom-textarea-max .luisa-zoom-textarea-backdrop{
+    position: fixed;
+    top:0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background: #33333374;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .luisa-icon-input {
+        width: 50%;
+        box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
+    }
+    textarea {
+        height: 256px;
+        border: 0px;
+    }
+}

@@ -1,0 +1,59 @@
+.luisa-chat {
+  width: 256px;
+  background-color: var(--chat-background);
+  border-right: 1px solid var(--color-border);
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-end;
+}
+
+.luisa-chat-message {
+  background: var(--chat-message-background);
+  border: var(--chat-message-border);
+  color: var(--chat-message-color);
+  padding: var(--space-m);
+  border-radius: var(--raduis-m);
+
+}
+
+.luisa-chat-message-settings {
+  background: #ffa3d3;
+  border: 1px solid #eb258b;
+  color: #eb258b;
+}
+
+.luisa-chat-message-user {
+  background: #eee;
+  border: 1px solid #d1d1d1;
+  color: #5b5b5b;
+}
+
+.luisa-chat-header {
+  border-bottom: 1px solid var(--color-border);
+
+  padding: var(--space-m);
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  align-items: center;
+
+  div{
+    text-align: center;
+    flex-grow: 1;
+    padding-left: 24px;
+  }
+}
+.luisa-chat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-end;
+  flex-grow: 1;
+  padding: var(--space-m);
+}
+
+.luisa-preview {
+  flex-grow: 1;
+}
