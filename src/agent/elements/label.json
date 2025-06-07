@@ -1,0 +1,30 @@
+{
+  "id": "Label",
+  "type": "Label",
+  "_type": "Widget",
+  "category": "WireFrame",
+  "subcategory": "AForm",
+  "name": "Primary Text",
+  "x": 0,
+  "y": 0,
+  "w": "@box-width-xl",
+  "h": "@box-height-xs",
+  "z": 0,
+  "props": {
+    "label": "Lore Ipsum"
+  },
+  "has": {
+    "label": true,
+    "padding": true,
+    "advancedText": true
+  },
+  "style": {
+    "fontSize": "@font-size-m",
+    "fontFamily": "@font-family",
+    "textAlign": "left",
+    "letterSpacing": "@letterSpacin",
+    "lineHeight": "@lineHeight",
+    "color": "@label-color",
+    "textShadow": null
+  }
+}

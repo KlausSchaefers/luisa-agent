@@ -23,7 +23,6 @@ export default {
   computed: {
     value () {
       const html = marked(this.message.content)
-      console.debug(html)
       return html
     }
   },

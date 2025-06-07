@@ -1,0 +1,28 @@
+{
+  "id": "Box",
+  "type": "Container",
+  "name": "Rectangle (R)",
+  "x": 0,
+  "y": 0,
+  "w": "@box-width-l",
+  "h": "@box-height-s",
+  "z": 0,
+  "props": {},
+  "has": {
+    "backgroundColor": true,
+    "border": true
+  },
+  "actions": {},
+  "style": {
+    "fontSize": "@font-size-m",
+    "textAlign": "left",
+    "letterSpacing": "@letterSpacing",
+    "lineHeight": "@lineHeight",
+
+    "fontFamily": "@font-family",
+    "borderRadius": "@border-radius",
+    "borderWidth": "@border-width",
+    "borderColor": "@container-background",
+    "background": "@container-background"
+  }
+}

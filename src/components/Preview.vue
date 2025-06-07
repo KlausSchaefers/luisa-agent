@@ -1,19 +1,21 @@
 <template>
     <div class="luisa-preview">
-      <Luisa :design="app"/>
+      {{app}}
+      <Luisa :design="app" v-if="app"/>
+      <div v-else>
+        No preview
+      </div>
     </div>
 </template>
 
 
 <script>
-import app from './testapp.json'
+
 export default {
   emits: ['update:modelValue', 'click', 'change'],
-  props: {
-  },
+  props: ['app'],
   data() {
     return {
-        app:app
     }
   },
   computed: {

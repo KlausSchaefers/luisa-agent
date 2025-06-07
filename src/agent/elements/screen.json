@@ -1,0 +1,18 @@
+{
+  "id": "Screen",
+  "type": "Screen",
+  "name": "Rectangle (R)",
+  "x": 0,
+  "y": 0,
+  "w": "@box-width-l",
+  "h": "@box-height-s",
+  "z": 0,
+  "props": {
+    "start": false
+  },
+  "actions": {},
+  "style": {
+    "fontSize": "@font-size-m",
+    "background": "@screen-background"
+  }
+}

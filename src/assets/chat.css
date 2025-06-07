@@ -19,9 +19,9 @@
 }
 
 .luisa-chat-message-settings {
-  background: #ffa3d3;
-  border: 1px solid #eb258b;
-  color: #eb258b;
+  background: #fda29c;
+  border: 1px solid #f91909;
+  color: #f91909;
 }
 
 .luisa-chat-message-user {
@@ -49,9 +49,10 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  justify-content: flex-end;
   flex-grow: 1;
+  flex-basis:0;
   padding: var(--space-m);
+  overflow: auto;
 }
 
 .luisa-preview {
