@@ -24,7 +24,7 @@ test('Test Pipeline >  ', async () => {
     const pipeline = new Pipeline([design,props, qux])
     const result =  pipeline.convert(app)
     
-    console.log(JSON.stringify(result, null, 2))
+   // console.log(JSON.stringify(result, null, 2))
 
     expect(result).toBeDefined()
 })

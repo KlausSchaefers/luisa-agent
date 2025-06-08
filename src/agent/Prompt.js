@@ -13,13 +13,60 @@ export default class Prompts {
         `
     }
 
-    system (){
+
+    systemStructure () {
+        return `
+            You are UX GPT. You are very good and specifieng the user requirements for an app, and break ity down into the
+            main screens that the app should have. 
+        `
+    }
+
+    messageScreen(context, description) {
+        return  context + "\n\n" + description
+    }
+    
+    systemScreen (){
         return `You are design GPT. You are really good at designing websites, app and all other kind of user interfaces. You are very create 
             and create beautiful designs. 
         `;
     }
 
-    jsonFormat() {
+
+    jsonFormatStructure () {
+        return `
+            Please return the result as JSON in the defined language:
+
+            The app will have several screens. Return for each screen a description. the description should contain
+            what the screen is about, and which information the user should see, and which information the user should
+            enter.
+
+            Please think also about a good name for the app. Also, if the users asks for a single screen or page, 
+            don't create more than one screen.
+
+            An example for an app is:
+            \`\`\`json
+            {
+                "type": "App",
+                "description": "This app will allow users to create an account"
+                "screens": [
+                    {
+                       "name": "Login Screen",
+                       "description": "the user can enter his name and password. She will also so the name of the app. There is also a button to submit"
+                    },
+                    {
+                        "name": "Welcome Screen",
+                       "description": "After the login, the user is welcomes with a friendly message to the app"
+                    }
+                ]
+            }     
+
+             \`\`\`
+
+
+        `
+    }
+
+    jsonFormatScreen() {
         return `
             Please return the result as JSON in the defined language:
         

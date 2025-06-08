@@ -1,0 +1,9 @@
+{
+    "name": "Test App",
+    "screens": [
+        {
+            "name": "Test Screen 1",
+            "description": "Lore ipsum"
+        }
+    ]
+}

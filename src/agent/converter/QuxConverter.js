@@ -22,6 +22,7 @@ export default class QuxConverter extends Converter {
 
   convert(app) {
     const result = {
+      name: app.name,
       screenSize: this.screenSize,
       screens: {},
       widgets: {},
@@ -31,7 +32,9 @@ export default class QuxConverter extends Converter {
 
     if (app.screens) {
       app.screens.forEach(s => {
+  
         const scrn = this.convertTree(s)
+     
         Object.values(scrn.screens).forEach(s => {
           result.screens[s.id] = s
         })
@@ -184,7 +187,7 @@ export default class QuxConverter extends Converter {
     };
 
     const scrn = {
-      name: "Screen",
+      name: tree.name,
       id: "s" + this.getUUID(),
       min: {
         w: width,

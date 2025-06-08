@@ -8,6 +8,13 @@
               Luisa - Agent
             </div>
             <div>
+               <select v-model="selectedScreen" class="luisa-select">            
+                <option :value="name" v-for="name in screenNames">{{name}}</option>
+                
+              </select>
+      
+            </div>
+            <div>
               <select v-model="size" class="luisa-select">            
                 <option value="m">Mobile</option>
                 <option value="d">Desktop</option>
@@ -20,7 +27,7 @@
                 {{progressMessage}}
             </div>
             <div  v-else :class="'luisa-preview-size-' + this.size" :style="'width:' + getScreenSize().w + 'px;  min-height:' + getScreenSize().h + 'px'">
-              <Preview :app="app"></Preview>
+              <Preview :app="app" :screen="selectedScreen"></Preview>
             </div>
         </div>
      
@@ -50,6 +57,7 @@ export default {
       size: 'm',
       app: null,
       messages: [],
+      selectedScreen: '',
       progressMessage: 'Thinking...',
       status: {
         busy:false,
@@ -68,7 +76,12 @@ export default {
     'IconTrash': IconTrash
   },
   computed: {
-  
+    screenNames () {
+      if (this.app) {
+        return Object.values(this.app.screens).map(s => s.name)
+      }
+      return []
+    }
   },
   methods: {
 
@@ -97,6 +110,9 @@ export default {
       this.status.busy = true
       this.status.messages = []
       this.app = null
+      this.selectedScreen = ''
+      const chat = this.$refs.chat
+   
 
       const token = localStorage.getItem('luisaOpenAIKey')
       if (!token) {
@@ -104,23 +120,24 @@ export default {
         return
       }
       
-      //chat.onAgentMessage("Working!\n\n")
+      chat.onAgentMessage("Great. I will start building the design!\n\n")
 
       const filteredMessages = this.messages.filter(m => m.role ==='user' || m.role === 'system')
-      const chat = this.$refs.chat
-   
+      
       const llm = new OpenAI(token)
       const agent = new LuisaAgent(llm, this.getConfig())
-      
-      const result = await agent.run(filteredMessages, this.raw, (m) => {
+      agent.setProgressCallback((m) => {
         chat.onChangeLastAgentMessage(m + '\n\n')
       })
+      
+      const result = await agent.run(filteredMessages, this.raw)
 
       if (result.error) {
         chat.onAgentMessage("Something went wrong: \n\n" + result.error)
         this.finish()
         return
       }
+
      
       this.saveModel(result.raw)
 
@@ -141,9 +158,14 @@ export default {
       //this.$refs.chat.onChangeLastAgentMessage("Done!")
     },
     printRaw(node, result = [], indent='') {
-        result.push(`${indent} ${node.type} `)
+        result.push(`${indent} ${node.type} [${node.name}] `)
         if (node.children) {
           node.children.forEach(c => {
+            this.printRaw(c, result, indent+'   ')
+          })
+        }
+        if (node.screens) {
+          node.screens.forEach(c => {
             this.printRaw(c, result, indent+'   ')
           })
         }
@@ -158,13 +180,13 @@ export default {
     if (s) {
       const raw = JSON.parse(s)
 
-      const model = Pipeline.defaultPipeline().convert(raw)
+      const model = Pipeline.defaultPipeline().convert(structuredClone(raw))
       const qux = new QuxConverter()
       this.app = qux.convert(model)
       this.raw = raw
-      console.debug(this.printRaw(raw))
+      console.debug(this.printRaw(model))
 
-      //console.debug(JSON.stringify(raw, null, 2))
+      console.debug(JSON.stringify(model, null, 2))
     }
   }
 }

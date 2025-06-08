@@ -1,7 +1,7 @@
 <template>
     <div class="luisa-preview">
    
-      <Luisa :design="app" v-if="app"/>
+      <Luisa :design="app" v-if="app" :screen="screen" :config="config"/>
       <div v-else>
         No preview
       </div>
@@ -13,9 +13,16 @@
 
 export default {
   emits: ['update:modelValue', 'click', 'change'],
-  props: ['app'],
+  props: ['app', 'screen'],
   data() {
     return {
+      config: {
+        router: {
+          disabled: true,
+          key: 'screenName',
+          prefix: 'embedded'
+        }
+      }
     }
   },
   computed: {
