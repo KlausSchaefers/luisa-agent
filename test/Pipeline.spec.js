@@ -12,12 +12,17 @@ test('Test Pipeline >  ', async () => {
 
     const dls = new DLS()
     const elements = new Elements()
+
+
+    const app = {
+        screens:[app1]
+    }
    
     const qux = new QuxConverter()
     const design = new DesignConverter(elements, dls)
     const props = new PropsConverter(elements)
     const pipeline = new Pipeline([design,props, qux])
-    const result =  pipeline.convert(app1)
+    const result =  pipeline.convert(app)
     
     console.log(JSON.stringify(result, null, 2))
 

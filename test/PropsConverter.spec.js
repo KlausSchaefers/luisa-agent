@@ -12,29 +12,14 @@ test('Test PropsConverter >  ', async () => {
     const dls = new DLS()
     const elements = new Elements()
     const props = new PropsConverter(elements, dls)
-    const result = props.convert(app1)
+    const app = {
+        screens:[app1]
+    }
+    const result = props.convert(app)
 
-    console.log(JSON.stringify(result, null, 2))
-    expect(result).toBeDefined()
-    expect(result.props.start).toBe(false)
-
-
-
-    // let res = cmds.pruneStacks(structuredClone(stacks))
-    // expect(res['e']).toBeDefined()
-    // expect(res['d']).toBeDefined()
-    
-    // expect(res['a']).toBeUndefined()
-    // expect(res['b']).toBeUndefined()
-    // expect(res['c']).toBeUndefined()
-
-
-    // res = cmds.pruneStacks(structuredClone(stacks), 4)
-    // expect(res['e']).toBeDefined()
-    // expect(res['d']).toBeDefined()
-    // expect(res['b']).toBeDefined()
-    // expect(res['c']).toBeDefined()
-
-    // expect(res['a']).toBeUndefined()
+    //console.log(JSON.stringify(result, null, 2))
+    let scrn = result.screens[0]
+    expect(scrn).toBeDefined()
+    expect(scrn.props.start).toBe(false)
 
 })

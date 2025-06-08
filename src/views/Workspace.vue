@@ -121,12 +121,11 @@ export default {
         this.finish()
         return
       }
-
      
       this.saveModel(result.raw)
 
       const qux = new QuxConverter()
-      this.app = qux.convert(result.model)
+      this.app = qux.convert(result)
       this.raw = result.raw
       this.finish()
     },

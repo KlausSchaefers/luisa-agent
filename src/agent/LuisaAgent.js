@@ -12,10 +12,20 @@ export default class LuisaAgent {
     this.elements = elements
   }
 
-
   async run(messages, currentModel, progressCallback) {
+    const app = {
+      screens:[],
+      raw: {
+        screens:[]
+      }
+    }
     let scrn = await this.createScreen(messages, progressCallback)
-    return scrn
+    app.screens.push(structuredClone(scrn.raw))
+    app.raw.screens.push(scrn.raw)
+
+    this.pipeline.convert(app)
+
+    return app
   }
   
   async createScreen(messages, currentModel, progressCallback) {
@@ -54,10 +64,9 @@ export default class LuisaAgent {
     try {
       const content = res.content;
       const raw = this.parseJSON(content)
-      const model = this.pipeline.convert(raw)
+     
       return {
           raw: raw,
-          model: model,
           prompt: prompt,
           usage: res.usage,
       }

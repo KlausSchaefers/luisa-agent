@@ -1,10 +1,22 @@
 export class Converter {
-  convert(tree) {
+
+  convert(app) {
+    if (app.screens) {
+      app.screens.forEach(s => {
+        //console.debug('convert() > ', s.name)
+        this.convertTree(s)
+      })
+    }
+    return app
+  }
+
+
+  convertTree(tree) {
     this.convertElement(tree);
     if (tree.children) {
-      //console.debug('convert() > ', tree.type, tree.children.length)
+      //console.debug('  convertTree() > ', tree.type, tree.children.length)
       for (let i = 0; i < tree.children.length; i++) {
-        this.convert(tree.children[i]);
+        this.convertTree(tree.children[i]);
       }
     }
     return tree;

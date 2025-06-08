@@ -12,13 +12,19 @@ test('Test DesignConverter >  ', async () => {
     const dls = new DLS()
     const elements = new Elements()
     const design = new DesignConverter(elements, dls)
-    const result = design.convert(app1)
+
+    const app = {
+        screens:[app1]
+    }
+    const result = design.convert(app)
 
     expect(result).toBeDefined()
-    expect(result.type).toBe('Screen')
-    expect(result.style.background).toBe('#FFFFFF')
 
-    console.log(JSON.stringify(result, null, 2))
+    let scrn = result.screens[0]
+    expect(scrn.type).toBe('Screen')
+    expect(scrn.style.background).toBe('#FFFFFF')
+
+    //console.log(JSON.stringify(scrn, null, 2))
 
 
 })

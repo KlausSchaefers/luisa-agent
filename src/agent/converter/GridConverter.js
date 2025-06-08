@@ -7,7 +7,7 @@ export default class GridConverter extends Converter {
     this.height = h;
   }
 
-  convert(app) {
+  convertTree(app) {
     Object.values(app.screens).forEach((scrn) => {
       gridifyScreen(app, scrn, this.width, this.height);
     });

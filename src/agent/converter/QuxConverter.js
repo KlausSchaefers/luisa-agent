@@ -20,14 +20,33 @@ export default class QuxConverter extends Converter {
     }
   }
 
-  convert(tree) { 
-    if (tree.screens) {
-      return this.convertScreen(tree.screens[0])
+  convert(app) {
+    const result = {
+      screenSize: this.screenSize,
+      screens: {},
+      widgets: {},
+      lines: {},
+      groups: {},
+    };
+
+    if (app.screens) {
+      app.screens.forEach(s => {
+        const scrn = this.convertTree(s)
+        Object.values(scrn.screens).forEach(s => {
+          result.screens[s.id] = s
+        })
+        Object.values(scrn.widgets).forEach(w => {
+          if (result.widgets[w.id]) {
+            console.warn("convert() > Duplicate ID", w.id)
+          }
+          result.widgets[w.id] = w
+        })
+      })
     }
-    return this.convertScreen(tree)
+    return result
   }
 
-  convertScreen(tree) {
+  convertTree(tree) {
     tree = structuredClone(tree)
     this.layoutTree(tree, this.screenSize.w - this.containerPadding * 2, this.containerPadding, this.containerPadding);
     const app = this.flattenTree(tree, this.screenSize.w, this.screenSize.h);

@@ -14,11 +14,17 @@ test('Test ComplexConverter >  ', async () => {
     const elements = new Elements()
     const complex = new ComplexConverter(elements)
     const design = new DesignConverter(elements, dls)
-    const expanded = complex.convert(app_complex)
+
+    const app = {
+        screens:[app_complex]
+    }
+    const expanded = complex.convert(app)
     const result = design.convert(expanded)
+
+    const scrn = result.screens[0]
     
     //console.log(JSON.stringify(result, null, 2))
-    expect(result.children[0].type).toBe("Container")
+    expect(scrn.children[0].type).toBe("Container")
 
 
 

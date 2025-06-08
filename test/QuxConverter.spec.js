@@ -10,6 +10,10 @@ import PropsConverter from '@/agent/converter/PropsConverter'
 
 test('Test QuxConverter >  ', async () => {
 
+    const app = {
+        screens:[app1]
+    }
+    
     const dls = new DLS()
     const elements = new Elements()
    
@@ -17,10 +21,13 @@ test('Test QuxConverter >  ', async () => {
     const design = new DesignConverter(elements, dls)
     const props = new PropsConverter(elements)
     const pipeline = new Pipeline([design,props, qux])
-    const result =  pipeline.convert(app1)
+    const result =  pipeline.convert(app)
     
-    console.log(JSON.stringify(result, null, 2))
+    //console.log(JSON.stringify(result, null, 2))
 
     expect(result).toBeDefined()
+    expect(result.widgets).toBeDefined()
+    expect(Object.values(result.screens).length).toBe(1)
+    expect(Object.values(result.widgets).length).toBe(9)
 })
 
