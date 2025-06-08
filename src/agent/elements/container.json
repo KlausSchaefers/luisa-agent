@@ -2,6 +2,7 @@
   "id": "Box",
   "type": "Container",
   "name": "Container",
+  "description": "An element that can have child elements. I container has an list of 'children' elements. A container has an variable 'direction' in the 'props' object. It can have the values 'row' and 'column'. row means that the elements are aligned horizontal from left to right, column means the elements are aligned vertical from top to down.", 
   "x": 0,
   "y": 0,
   "w": "@box-width-l",
@@ -24,7 +25,7 @@
     "fontFamily": "@font-family",
     "borderRadius": "@border-radius",
     "borderWidth": "@border-width",
-    "borderColor": "@container-background",
+    "borderColor": "@container-border",
     "background": "@container-background"
   }
 }

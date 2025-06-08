@@ -19,6 +19,10 @@ export default class Elements {
         this.register(login)
     }
 
+    getAll() {
+        return Object.values(this.elements)
+    }
+
     get(e) {
         return this.elements[e.type]
     }

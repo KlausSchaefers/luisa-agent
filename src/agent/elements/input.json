@@ -2,6 +2,7 @@
   "id": "TextBox",
   "type": "Input",
   "name": "Text Box",
+  "description": "The input elements renders as a text box, and allows users to enter text. The input field has a 'placeholder' property in the 'props' object, which gives the user a hint. An input field should have in most cases a label before. ",
   "x": 0,
   "y": 0,
   "w": "@form-width",

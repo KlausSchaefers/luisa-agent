@@ -1,7 +1,8 @@
 {
   "id": "Label",
   "type": "Label",
-  "name": "Primary Text",
+  "name": "Text",
+  "description": "An Element that can show text. It has a 'label' value in the 'props' object. It should be used for labels as the default element for text.",
   "x": 0,
   "y": 0,
   "w": "@box-width-xl",

@@ -1,9 +1,7 @@
 {
   "id": "Image",
   "type": "Image",
-  "category": "WireFrame",
-  "subcategory": "FormImage",
-  "_type": "Widget",
+  "description": "The image element shows images in a page.",
   "name": "Image",
   "x": 0,
   "y": 0,

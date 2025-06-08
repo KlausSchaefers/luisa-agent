@@ -1,27 +1,27 @@
 import Prompts from "./Prompt";
 import Pipeline from "./Pipeline";
+import Elements from "./Elements";
 
 export default class LuisaAgent {
 
-  constructor(llm, screenSize = {w: 400, h:800}, pipeline = Pipeline.defaultPipeline(), prompts = new Prompts()) {
+  constructor(llm, config = {screenSize: {w: 400, h:800}}, pipeline = Pipeline.defaultPipeline(), prompts = new Prompts(), elements = new Elements() ) {
     this.llm = llm;
     this.prompts = prompts;
     this.pipeline = pipeline
-    this.screenSize = screenSize
+    this.config = config
+    this.elements = elements
   }
 
-  setScreenSize(w, h) {
-    this.screenSize = {
-      w:w, h: h
-    }
-  }
 
   async run(messages, progressCallback) {
     const message = messages[messages.length - 1].content;
     const prompt = `
-            ${this.prompts.dls()}
 
-            ${this.prompts.elements()}
+            ${this.prompts.jsonFormat()}
+
+            ${this.prompts.elements(this.elements)}
+
+            ${this.prompts.screenSize(this.config)}
 
             Please generate :
 
@@ -53,6 +53,7 @@ export default class LuisaAgent {
       return {
           raw: raw,
           model: model,
+          prompt: prompt,
           usage: res.usage,
       }
     } catch (err) {

@@ -11,7 +11,7 @@
     },
     {
       "type": "Button",
-      "properties": {
+      "props": {
         "label": "Let Go!"
       },
       "style": {

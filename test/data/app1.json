@@ -7,7 +7,7 @@
   "children": [
     {
       "type": "Container",
-      "properties": {
+      "props": {
         "flex-direction": "column"
       },
       "style": {
@@ -23,7 +23,7 @@
       "children": [
         {
           "type": "Label",
-          "properties": {
+          "props": {
             "label": "Welcome Back!",
             "size": "Headline"
           },
@@ -35,7 +35,7 @@
         },
         {
           "type": "Label",
-          "properties": {
+          "props": {
             "label": "Don’t worry, we won’t steal your password (much)! 😜",
             "size": "Paragraph"
           },
@@ -47,7 +47,7 @@
         },
         {
           "type": "Input",
-          "properties": {
+          "props": {
             "type": "Text",
             "placeholder": "Enter your email"
           },
@@ -61,7 +61,7 @@
         },
         {
           "type": "Input",
-          "properties": {
+          "props": {
             "type": "Password",
             "placeholder": "Super secret password"
           },
@@ -75,7 +75,7 @@
         },
         {
           "type": "Container",
-          "properties": {
+          "props": {
             "flex-direction": "row"
           },
           "style": {
@@ -87,7 +87,7 @@
           "children": [
             {
               "type": "Input",
-              "properties": {
+              "props": {
                 "type": "Checkbox",
                 "label": "Remember me (forever!)"
               },
@@ -99,7 +99,7 @@
         },
         {
           "type": "Button",
-          "properties": {
+          "props": {
             "label": "Let’s Go! 🚀"
           },
           "style": {
@@ -115,7 +115,7 @@
         },
         {
           "type": "Label",
-          "properties": {
+          "props": {
             "label": "Forgot password? Oops! 🤭",
             "size": "Label"
           },

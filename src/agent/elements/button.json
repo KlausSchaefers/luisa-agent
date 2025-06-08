@@ -1,9 +1,7 @@
 {
-  "id": "PrimaryButton",
+  "id": "Button",
   "type": "Button",
-  "_type": "Widget",
-  "category": "WireFrame",
-  "subcategory": "AButtons",
+  "description": "The button element should be used for buttons where the user can click. A button has a label value in the 'props' object. ",
   "name": "Primary Button",
   "x": 0,
   "y": 0,

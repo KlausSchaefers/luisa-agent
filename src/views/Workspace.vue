@@ -67,6 +67,14 @@ export default {
       }
       return {w: 1200, h: 720}
     },
+
+    getConfig() {
+      return {
+        removeContainers: false,
+        screenSize: this.getScreenSize()
+      }
+    },
+
     async onNewMessage (messages) {
       this.messages = messages
       this.status.busy = true
@@ -85,7 +93,7 @@ export default {
       const chat = this.$refs.chat
    
       const llm = new OpenAI(token)
-      const agent = new LuisaAgent(llm, this.getScreenSize())
+      const agent = new LuisaAgent(llm, this.getConfig())
       
       const result = await agent.run(filteredMessages, (m) => {
         chat.onChangeLastAgentMessage(m + '\n\n')
@@ -97,22 +105,15 @@ export default {
         return
       }
 
+      this.saveModel(result.model)
 
       const qux = new QuxConverter()
-      const app = qux.convert(result.model)
-
-      this.app = app
-      this.saveApp(app)
-
-
-
+      this.app = qux.convert(result.model)
 
       this.finish()
-
-
     },
 
-    saveApp(app) {
+    saveModel(app) {
         const s = JSON.stringify(app)
         localStorage.setItem('luisaApp', s)
     },
@@ -129,9 +130,9 @@ export default {
   mounted() {
     const s = localStorage.getItem('luisaApp')
     if (s) {
-      this.app = JSON.parse(s)
-
-      console.debug(JSON.stringify(this.app, null, 2))
+      const model = JSON.parse(s)
+      const qux = new QuxConverter()
+      this.app = qux.convert(model)
     }
   }
 }

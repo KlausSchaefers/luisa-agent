@@ -2,6 +2,7 @@
   "id": "Screen",
   "type": "Screen",
   "name": "Screen",
+  "description": "The root element of your design. It can have many children.",
   "x": 0,
   "y": 0,
   "w": "@box-width-l",

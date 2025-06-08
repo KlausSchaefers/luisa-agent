@@ -2,6 +2,7 @@
   "id": "Login",
   "type": "Login",
   "name": "Login",
+  "description": "The login element allows users to enter their email and password in text fields. The element can not have any children",
   "x": 0,
   "y": 0,
   "w": "@box-width-l",
