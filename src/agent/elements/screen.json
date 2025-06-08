@@ -1,7 +1,7 @@
 {
   "id": "Screen",
   "type": "Screen",
-  "name": "Rectangle (R)",
+  "name": "Screen",
   "x": 0,
   "y": 0,
   "w": "@box-width-l",

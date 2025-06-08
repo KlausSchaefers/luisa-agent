@@ -9,12 +9,14 @@ export default class PropsConverter extends Converter {
   }
 
   convertElement (element) {
-    if (this.elements.elements[element.type]) {
-      const data = this.elements.elements[element.type];
+    const data = this.elements.get(element)
+    if (data) {
         element.name = data.name
-
         if (!element.props) {
             element.props = {};
+        }
+        if (element.properties) {
+          element.props = element.properties
         }
         if (data.props) {
             for (const prop in data.props) {

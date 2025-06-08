@@ -1,7 +1,24 @@
 <template>
     <div class="luisa-main">
       <Chat @change="onNewMessage" ref="chat"></Chat>
-      <Preview :app="app"></Preview>
+     
+      <div class="luisa-main-content">
+        <div class="luisa-main-content-header">
+           <select v-model="size" class="luisa-select">            
+            <option value="m">Mobile</option>
+            <option value="d">Desktop</option>
+          </select>
+
+          {{size}}
+        </div>
+        <div :class="'luisa-main-content-body'  ">
+          <div :class="'luisa-preview-size-' + this.size" :style="'width:' + getScreenSize().w + 'px;  min-height:' + getScreenSize().h + 'px'">
+          <Preview :app="app"></Preview>
+          </div>
+        </div>
+     
+      </div>
+
     </div>
 </template>
 
@@ -12,6 +29,8 @@ import Preview from '../components/Preview.vue'
 import LuisaAgent from '../agent/LuisaAgent'
 import OpenAI from '../agent/OpenAI'
 
+import QuxConverter from '../agent/converter/QuxConverter'
+
 export default {
   emits: ['update:modelValue', 'click', 'change'],
   props: {
@@ -19,6 +38,7 @@ export default {
   data() {
     return {
       isWorking: false,
+      size: 'm',
       app: null,
       messages: [],
       status: {
@@ -40,10 +60,18 @@ export default {
   
   },
   methods: {
+
+    getScreenSize () {
+      if (this.size === 'm') {
+        return {w: 414, h: 896}
+      }
+      return {w: 1200, h: 720}
+    },
     async onNewMessage (messages) {
       this.messages = messages
       this.status.busy = true
       this.status.messages = []
+      this.app = null
 
       const token = localStorage.getItem('luisaOpenAIKey')
       if (!token) {
@@ -57,7 +85,7 @@ export default {
       const chat = this.$refs.chat
    
       const llm = new OpenAI(token)
-      const agent = new LuisaAgent(llm)
+      const agent = new LuisaAgent(llm, this.getScreenSize())
       
       const result = await agent.run(filteredMessages, (m) => {
         chat.onChangeLastAgentMessage(m + '\n\n')
@@ -69,14 +97,24 @@ export default {
         return
       }
 
-      console.debug(JSON.stringify(result.app, null, 2))
+
+      const qux = new QuxConverter()
+      const app = qux.convert(result.model)
+
+      this.app = app
+      this.saveApp(app)
 
 
-      console.debug(result)
+
 
       this.finish()
 
 
+    },
+
+    saveApp(app) {
+        const s = JSON.stringify(app)
+        localStorage.setItem('luisaApp', s)
     },
     finish() {
       this.isWorking = false
@@ -89,7 +127,12 @@ export default {
     
   },
   mounted() {
+    const s = localStorage.getItem('luisaApp')
+    if (s) {
+      this.app = JSON.parse(s)
 
+      console.debug(JSON.stringify(this.app, null, 2))
+    }
   }
 }
 </script>

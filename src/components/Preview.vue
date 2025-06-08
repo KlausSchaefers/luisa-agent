@@ -1,6 +1,6 @@
 <template>
     <div class="luisa-preview">
-      {{app}}
+   
       <Luisa :design="app" v-if="app"/>
       <div v-else>
         No preview

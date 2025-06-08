@@ -1,12 +1,13 @@
 .luisa-chat {
-  width: 256px;
-  background-color: var(--chat-background);
+  width: 320px;
+  background-color: var(--card-background);
   border-right: 1px solid var(--color-border);
-
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
   justify-content: flex-end;
+  height: 100%;
 }
 
 .luisa-chat-message {
@@ -15,7 +16,7 @@
   color: var(--chat-message-color);
   padding: var(--space-m);
   border-radius: var(--raduis-m);
-
+  padding-bottom: 16px;
 }
 
 .luisa-chat-message-settings {
@@ -29,6 +30,20 @@
   border: 1px solid #d1d1d1;
   color: #5b5b5b;
 }
+
+.luisa-chat-message-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.luisa-chat-message-header svg{
+  opacity: 0;
+}
+
+.luisa-chat-message:hover .luisa-chat-message-header svg{
+  opacity: 1;
+}
+
 
 .luisa-chat-header {
   border-bottom: 1px solid var(--color-border);

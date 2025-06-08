@@ -7,6 +7,8 @@
   --main-background: #efefef;
   
   --space-m:8px;
+  --space-l:16px;
+
   --raduis-m: 8px;
 
   --icon-color: #999;
@@ -22,7 +24,7 @@
   --form-focus-color: #333;
   --form-focus-border: 1px solid #333;
 
-  --chat-background: #fff;
+  --card-background: #fff;
 
   --chat-message-background:#123ef019;
   --chat-message-color: #123ef0;

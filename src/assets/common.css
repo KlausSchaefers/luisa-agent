@@ -35,6 +35,9 @@ textarea.luisa-input:disabled {
    opacity: 0.2;
    border-style: dashed;
 }
+.luisa-padding {
+    padding: var(--space-m);
+}
 
 .luisa-icon-input{
     position: relative;
@@ -71,6 +74,15 @@ textarea.luisa-input:disabled {
     display: flex;
     flex-direction: row;
     gap:16px;
+}
+
+.luisa-select {
+    background: var(--form-background);
+    color:var(--form-color);
+    border:var(--form-border);
+    padding: 0px var(--form-padding);
+    border-radius: var(--raduis-m);  
+    outline: none;
 }
 
 .luisa-zoom-textarea{

@@ -1,9 +1,6 @@
 {
   "id": "TextBox",
-  "type": "TextBox",
-  "_type": "Widget",
-  "category": "WireFrame",
-  "subcategory": "AFormInput",
+  "type": "Input",
   "name": "Text Box",
   "x": 0,
   "y": 0,

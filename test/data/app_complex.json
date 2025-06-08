@@ -1,0 +1,21 @@
+{
+  "type": "Screen",
+  "style": {
+    "background": "#F0F4FF",
+    "color": "#262D3D"
+  },
+
+  "children": [
+    {
+      "type": "Login"
+    },
+    {
+      "type": "Button",
+      "properties": {
+        "label": "Let Go!"
+      },
+      "style": {
+      }
+    }
+  ]
+}

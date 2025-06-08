@@ -27,6 +27,7 @@ export default class DLS {
         if (widget.checked) {
             this.replaceSingleStyle(theme, widget.checked)
         }
+        this.replaceBorderVariables(widget)
         this.replaceSize(theme, widget)
         return widget
     }
@@ -123,40 +124,6 @@ export default class DLS {
             const value = style[key]
             if (t[value]) {
                 style[key] = t[value].value
-            }
-        }
-    }
-
-    resetVariables (theme, widget) {
-        if (widget.style) {
-            this.resetSingleVariables(theme, widget.style, widget.qss)
-        }
-        if (widget.hover) {
-            this.resetSingleVariables(theme, widget.hover, widget.qss)
-        }
-        if (widget.error) {
-            this.resetSingleVariables(theme, widget.error, widget.qss)
-        }
-        if (widget.focus) {
-            this.resetSingleVariables(theme, widget.focus, widget.qss)
-        }
-        if (widget.active) {
-            this.resetSingleVariables(theme, widget.active, widget.qss)
-        }
-        if (widget.checked) {
-            this.resetSingleVariables(theme, widget.checked, widget.qss)
-        }
-        return widget
-    }
-
-    resetSingleVariables (theme, style, qss) {
-        for (let qssKey in qss) {
-            const qssValue = qss[qssKey]            
-            if (theme[qssValue]) {
-                let themeValue = theme[qssValue].value
-                if (style[qssKey] === themeValue) {
-                    style[qssKey] = qssValue
-                }
             }
         }
     }

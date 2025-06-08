@@ -11,10 +11,12 @@ export default class DesignConverter extends Converter {
   }
 
   convertElement (element) {
-    if (this.elements.elements[element.type]) {
-      const data = this.elements.elements[element.type];
+    const data = this.elements.get(element)
+    if (data) {
+
       if (data.style) {
         element.style = data.style;
+
       }
       if (data.hover) {
         element.hover = data.hover;

@@ -18,13 +18,15 @@
             <template v-else>
                 
                 <template v-for="(m,i) in messages" :key="i">
-                    <ChatMessage :message="m"></ChatMessage>
+                    <ChatMessage :message="m" @delete="deleteMessage(i)"></ChatMessage>
                 </template>
                 <div ref="bodyEnd"></div>        
             </template>
 
         </div>
-        <ZoomableTextArea v-if="!showSettings" @change="onMesssage" :disabled="status.busy" />
+        <div class="luisa-padding">
+            <ZoomableTextArea v-if="!showSettings" @change="addMessage" :disabled="status.busy" />
+        </div>
     </div>
 
 </template>
@@ -68,7 +70,11 @@ export default {
         this.messages = []
         this.onChange()
     },
-    onMesssage (txt) {
+    deleteMessage (i) {
+        this.messages.splice(i, 1)
+        this.onChange()
+    },
+    addMessage (txt) {
         if (txt.trim()) {
             this.messages.push({
                 "role": "user",

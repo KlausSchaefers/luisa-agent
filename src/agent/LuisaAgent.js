@@ -1,8 +1,19 @@
 import Prompts from "./Prompt";
+import Pipeline from "./Pipeline";
+
 export default class LuisaAgent {
-  constructor(llm, prompts = new Prompts()) {
+
+  constructor(llm, screenSize = {w: 400, h:800}, pipeline = Pipeline.defaultPipeline(), prompts = new Prompts()) {
     this.llm = llm;
     this.prompts = prompts;
+    this.pipeline = pipeline
+    this.screenSize = screenSize
+  }
+
+  setScreenSize(w, h) {
+    this.screenSize = {
+      w:w, h: h
+    }
   }
 
   async run(messages, progressCallback) {
@@ -34,11 +45,23 @@ export default class LuisaAgent {
             error: res.error,
         }
     }
-    const content = res.content;
-    return {
-        app: this.parseJSON(content),
-        usage: res.usage,
+
+    try {
+      const content = res.content;
+      const raw = this.parseJSON(content)
+      const model = this.pipeline.convert(raw)
+      return {
+          raw: raw,
+          model: model,
+          usage: res.usage,
+      }
+    } catch (err) {
+       return {
+        "error": "Something went wrong when parsing"
+      }
     }
+
+   
   }
 
   parseJSON(content) {

@@ -30,8 +30,8 @@ export default {
    "@spacing-m": {"value": 16, "type": "spacing"},
    "@spacing-l": {"value": 32, "type": "spacing"},
 
-   "container-background": {"value": "#FFFFFF", "type": "color"},    
-   "container-border": {"value": "#000000", "type": "color"},
+   "@container-background": {"value": "#FFFFFF", "type": "color"},    
+   "@container-border": {"value": "#000000", "type": "color"},
 
    // screens
    "@screen-background": {"value": "#FFFFFF", "type": "color"},

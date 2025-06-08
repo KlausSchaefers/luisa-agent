@@ -20,21 +20,5 @@ test('Test DesignConverter >  ', async () => {
 
     console.log(JSON.stringify(result, null, 2))
 
-    // let res = cmds.pruneStacks(structuredClone(stacks))
-    // expect(res['e']).toBeDefined()
-    // expect(res['d']).toBeDefined()
-    
-    // expect(res['a']).toBeUndefined()
-    // expect(res['b']).toBeUndefined()
-    // expect(res['c']).toBeUndefined()
-
-
-    // res = cmds.pruneStacks(structuredClone(stacks), 4)
-    // expect(res['e']).toBeDefined()
-    // expect(res['d']).toBeDefined()
-    // expect(res['b']).toBeDefined()
-    // expect(res['c']).toBeDefined()
-
-    // expect(res['a']).toBeUndefined()
 
 })

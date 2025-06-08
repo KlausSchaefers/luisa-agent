@@ -12,21 +12,34 @@ export default class QuxConverter extends Converter {
     this.paddingX = 16;
     this.paddingY = 16;
     this.isRemoveContainers = false; 
-    this.name = 'QuxConverter' // if true, remove containers and just return the content
+    this.name = 'QuxConverter'
+
+    this.typeMapping = {
+      'Container': 'Box',
+      'Input': 'TextBox'
+    }
   }
 
   convert(tree) { 
     this.layoutTree(tree, this.screenSize.w - this.containerPadding * 2, this.containerPadding, this.containerPadding);
     const app = this.flattenTree(tree, this.screenSize.w, this.screenSize.h);
-    this.patchTypes(app);
+    this.convertTypes(app);
+    this.removeChildren(app)
     return app;
   }
 
-  patchTypes(app) {
+  removeChildren(app) {
     Object.values(app.widgets).forEach(w => {
-      if (w.type == 'Container') {
-        w.type = 'Box';
-      }
+        delete w.children
+        delete w.properties
+    });
+  }
+
+  convertTypes(app) {
+    Object.values(app.widgets).forEach(w => {
+        if (this.typeMapping[w.type]) {
+          w.type = this.typeMapping[w.type]
+        }
     });
   }
 
@@ -99,16 +112,16 @@ export default class QuxConverter extends Converter {
   computeContentHeight(node, width) {
     let result = node.h;
     if (node.type === "Label" && node?.props?.label) {
-      let div = document.createElement("div");
-      div.innerText = node.props.label;
-      div.style.width = width + "px";
-      div.style.fontFamily = node.style.fontFamily;
-      div.style.lineHeight = node.style.lineHeight;
+      // let div = document.createElement("div");
+      // div.innerText = node.props.label;
+      // div.style.width = width + "px";
+      // div.style.fontFamily = node.style.fontFamily;
+      // div.style.lineHeight = node.style.lineHeight;
 
-      div.style.fontSize = node.style.fontSize + "px";
-      this.domNode.appendChild(div);
-      result = div.offsetHeight;
-      this.domNode.innerText = "";
+      // div.style.fontSize = node.style.fontSize + "px";
+      // this.domNode.appendChild(div);
+      // result = div.offsetHeight;
+      // this.domNode.innerText = "";
     }
     return result;
   }

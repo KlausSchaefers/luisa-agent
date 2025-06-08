@@ -8,6 +8,7 @@
 .luisa-sidebar {
     background-color: var(--sidebar-background);
     width: 256px;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     padding: var(--space-m);
@@ -17,10 +18,35 @@
 
 .luisa-main {
     background-color: var(--main-background);
-    padding: var(--space-m);
+    padding: var(--space-l);
     flex-grow: 1;
     display: flex;
     flex-direction: row;
     gap: 16px;
 }
 
+
+.luisa-main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: auto;
+    gap: 16px;
+}
+
+.luisa-main-content-header {
+    background-color: var(--card-background); 
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-m);
+}
+
+.luisa-main-content-body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.luisa-preview-size-m {
+
+}

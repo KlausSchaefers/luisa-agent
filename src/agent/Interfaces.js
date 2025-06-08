@@ -1,11 +1,11 @@
 export class Converter {
 
   convert(tree) {
-
     this.convertElement(tree);
     if (tree.children) {
+      //console.debug('convert() > ', tree.type, tree.children.length)
       for (let i = 0; i < tree.children.length; i++) {
-        this.convertElement(tree.children[i]);
+        this.convert(tree.children[i]);
       }
     }
     return tree;

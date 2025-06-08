@@ -1,9 +1,6 @@
 {
   "id": "Label",
   "type": "Label",
-  "_type": "Widget",
-  "category": "WireFrame",
-  "subcategory": "AForm",
   "name": "Primary Text",
   "x": 0,
   "y": 0,
@@ -22,7 +19,7 @@
     "fontSize": "@font-size-m",
     "fontFamily": "@font-family",
     "textAlign": "left",
-    "letterSpacing": "@letterSpacin",
+    "letterSpacing": "@letterSpacing",
     "lineHeight": "@lineHeight",
     "color": "@label-color",
     "textShadow": null
