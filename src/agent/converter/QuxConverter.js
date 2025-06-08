@@ -21,6 +21,14 @@ export default class QuxConverter extends Converter {
   }
 
   convert(tree) { 
+    if (tree.screens) {
+      return this.convertScreen(tree.screens[0])
+    }
+    return this.convertScreen(tree)
+  }
+
+  convertScreen(tree) {
+    tree = structuredClone(tree)
     this.layoutTree(tree, this.screenSize.w - this.containerPadding * 2, this.containerPadding, this.containerPadding);
     const app = this.flattenTree(tree, this.screenSize.w, this.screenSize.h);
     this.convertTypes(app);
@@ -44,7 +52,7 @@ export default class QuxConverter extends Converter {
   }
 
   layoutTree(node, width, offsetX = 0, offsetY = 0, gapX = 16, gapY = 16, indent = "") {
-
+    const groups = {}
     node.id = 'w' + this.getUUID();
 
     //console.debug(indent, node.type, node.name, node.id);
@@ -75,19 +83,37 @@ export default class QuxConverter extends Converter {
       });
     } else {
       if (node.children) {
-        node.children.forEach((child) => {
-          child.x = tempOffsetX;
-          child.w = width;
-          child.y = tempOffsetY;
+        const children = node.children
+        for (let i=0; i < children.length; i++) {
+            const child = children[i]
+            const nextChild = children[i +1]
+            child.x = tempOffsetX;
+            child.w = width;
+            child.y = tempOffsetY;
 
-          if (this.isContainer(child)) {
-            tempOffsetY += paddingY;
-          } else {
-            child.h = this.computeContentHeight(child, width);
-          }
-          this.layoutTree(child, width, tempOffsetX + paddingX, tempOffsetY, gapX, gapY, indent + "   ");
-          tempOffsetY += child.h + gapY;
-        });
+            if (this.isContainer(child)) {
+              tempOffsetY += paddingY;
+            } else {
+              child.h = this.computeContentHeight(child, width);
+            }
+            this.layoutTree(child, width, tempOffsetX + paddingX, tempOffsetY, gapX, gapY, indent + "   ");
+            if (child.type === 'Label' && nextChild && this.isInput(nextChild)) {
+         
+                tempOffsetY += child.h
+                const groupID = 'g' + this.getUUID()
+                    groups[groupID] = {
+                    "children" : [
+                        child.id,
+                        nextChild.id
+                    ],
+                    "groups" : [ ],
+                    "name" : child.props.label + "_Group"
+                }
+
+            } else {
+                tempOffsetY += child.h + gapY   
+            }
+        }
       }
     }
 

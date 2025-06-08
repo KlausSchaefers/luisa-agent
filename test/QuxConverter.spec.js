@@ -8,7 +8,7 @@ import DLS  from '../src/agent/DLS'
 import app1 from './data/app1.json'
 import PropsConverter from '@/agent/converter/PropsConverter'
 
-test('Test Pipeline >  ', async () => {
+test('Test QuxConverter >  ', async () => {
 
     const dls = new DLS()
     const elements = new Elements()

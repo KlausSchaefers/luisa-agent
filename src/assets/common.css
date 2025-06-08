@@ -83,6 +83,13 @@ textarea.luisa-input:disabled {
     padding: 0px var(--form-padding);
     border-radius: var(--raduis-m);  
     outline: none;
+    cursor: pointer;
+}
+
+.luisa-select:hover {
+    background: var(--form-focus-background);
+    color:var(--form-focus-color);
+    border:var(--form-focus-border);
 }
 
 .luisa-zoom-textarea{

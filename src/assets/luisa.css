@@ -39,12 +39,34 @@
     background-color: var(--card-background); 
     border-bottom: 1px solid var(--color-border);
     padding: var(--space-m);
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+
+    > div {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
 
 .luisa-main-content-body{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    flex-grow:1;
+    overflow: auto;
+}
+
+.luisa-main-content-loading {
+    color: #999;
+    font-size: 24px;
+    font-weight: 700;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .luisa-preview-size-m {

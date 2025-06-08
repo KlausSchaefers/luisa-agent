@@ -13,7 +13,12 @@ export default class LuisaAgent {
   }
 
 
-  async run(messages, progressCallback) {
+  async run(messages, currentModel, progressCallback) {
+    let scrn = await this.createScreen(messages, progressCallback)
+    return scrn
+  }
+  
+  async createScreen(messages, currentModel, progressCallback) {
     const message = messages[messages.length - 1].content;
     const prompt = `
 

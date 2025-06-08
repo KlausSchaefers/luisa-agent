@@ -2,10 +2,10 @@
     <div class="luisa-chat">
         <div class="luisa-chat-header">
             <div>
-                Luisa - Agent
+               Chat
             </div>
-            <IconTrash :size="16" stroke="1" @click="clear" class="luisa-icon"></IconTrash>
-            <IconAdjustmentsAlt :size="16" stroke="1" :class="['luisa-icon', {'luisa-icon-active': showSettings}]" @click="showSettings = !showSettings"/>
+            <IconTrash :size="16" stroke="2" @click="clear" class="luisa-icon"></IconTrash>
+            <IconAdjustmentsAlt :size="16" stroke="2" :class="['luisa-icon', {'luisa-icon-active': showSettings}]" @click="showSettings = !showSettings"/>
         </div>
         <div class="luisa-chat-body">
             <template v-if="showSettings">

@@ -4,17 +4,24 @@
      
       <div class="luisa-main-content">
         <div class="luisa-main-content-header">
-           <select v-model="size" class="luisa-select">            
-            <option value="m">Mobile</option>
-            <option value="d">Desktop</option>
-          </select>
-
-          {{size}}
+            <div>
+              Luisa - Agent
+            </div>
+            <div>
+              <select v-model="size" class="luisa-select">            
+                <option value="m">Mobile</option>
+                <option value="d">Desktop</option>
+              </select>
+              <IconTrash :size="16" stroke="2" @click="clear" class="luisa-icon"></IconTrash>
+            </div>
         </div>
         <div :class="'luisa-main-content-body'  ">
-          <div :class="'luisa-preview-size-' + this.size" :style="'width:' + getScreenSize().w + 'px;  min-height:' + getScreenSize().h + 'px'">
-          <Preview :app="app"></Preview>
-          </div>
+            <div  v-if="status.busy" class="luisa-main-content-loading">
+                {{progressMessage}}
+            </div>
+            <div  v-else :class="'luisa-preview-size-' + this.size" :style="'width:' + getScreenSize().w + 'px;  min-height:' + getScreenSize().h + 'px'">
+              <Preview :app="app"></Preview>
+            </div>
         </div>
      
       </div>
@@ -27,9 +34,11 @@
 import Chat from '../components/Chat.vue'
 import Preview from '../components/Preview.vue'
 import LuisaAgent from '../agent/LuisaAgent'
+import Pipeline from '../agent/Pipeline'
 import OpenAI from '../agent/OpenAI'
 
 import QuxConverter from '../agent/converter/QuxConverter'
+import { IconTrash } from '@tabler/icons-vue';
 
 export default {
   emits: ['update:modelValue', 'click', 'change'],
@@ -41,6 +50,7 @@ export default {
       size: 'm',
       app: null,
       messages: [],
+      progressMessage: 'Thinking...',
       status: {
         busy:false,
         messages: []
@@ -54,12 +64,19 @@ export default {
   },
   components: {
     'Chat': Chat,
-    'Preview': Preview
+    'Preview': Preview,
+    'IconTrash': IconTrash
   },
   computed: {
   
   },
   methods: {
+
+    clear () {
+      this.app = null
+      this.raw = null
+      localStorage.removeItem('luisaApp')
+    },
 
     getScreenSize () {
       if (this.size === 'm') {
@@ -95,7 +112,7 @@ export default {
       const llm = new OpenAI(token)
       const agent = new LuisaAgent(llm, this.getConfig())
       
-      const result = await agent.run(filteredMessages, (m) => {
+      const result = await agent.run(filteredMessages, this.raw, (m) => {
         chat.onChangeLastAgentMessage(m + '\n\n')
       })
 
@@ -105,11 +122,12 @@ export default {
         return
       }
 
-      this.saveModel(result.model)
+     
+      this.saveModel(result.raw)
 
       const qux = new QuxConverter()
       this.app = qux.convert(result.model)
-
+      this.raw = result.raw
       this.finish()
     },
 
@@ -122,6 +140,15 @@ export default {
       this.status.busy = false
       this.status.messages = []
       //this.$refs.chat.onChangeLastAgentMessage("Done!")
+    },
+    printRaw(node, result = [], indent='') {
+        result.push(`${indent} ${node.type} `)
+        if (node.children) {
+          node.children.forEach(c => {
+            this.printRaw(c, result, indent+'   ')
+          })
+        }
+        return result.join('\n')
     }
   },
   watch: {
@@ -130,9 +157,15 @@ export default {
   mounted() {
     const s = localStorage.getItem('luisaApp')
     if (s) {
-      const model = JSON.parse(s)
+      const raw = JSON.parse(s)
+
+      const model = Pipeline.defaultPipeline().convert(raw)
       const qux = new QuxConverter()
       this.app = qux.convert(model)
+      this.raw = raw
+      console.debug(this.printRaw(raw))
+
+      //console.debug(JSON.stringify(raw, null, 2))
     }
   }
 }

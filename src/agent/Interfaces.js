@@ -1,5 +1,4 @@
 export class Converter {
-
   convert(tree) {
     this.convertElement(tree);
     if (tree.children) {
@@ -11,23 +10,39 @@ export class Converter {
     return tree;
   }
 
-  convertElement (/* element */) {
+  convertElement(/* element */) {
     console.warn("Method 'convertElement' must be implemented.");
   }
 
-
-  isRowContainer (element) {
+  isRowContainer(element) {
     return element && element?.props?.direction === "row";
   }
 
-  isContainer (element) {
+  isContainer(element) {
     return element && element?.type === "Container";
   }
 
+  isInput(node) {
+    if (node) {
+      const type = node.type;
+      return (
+        type === "Input" ||
+        type === "TextArea" ||
+        type === "TextBox" ||
+        type === "RadioBox" ||
+        type === "Password" ||
+        type === "Checkbox" ||
+        type === "DateDropDown" ||
+        type === "DropDown" ||
+        type === "RadioGroup" ||
+        type === "CheckBoxGroup"
+      );
+    }
+    return false;
+  }
 }
 
 export class LLM {
-
   runPrompt(/*messages, progressCallback*/) {
     throw new Error("Method 'convert' must be implemented.");
   }
