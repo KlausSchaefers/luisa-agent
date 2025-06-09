@@ -1,14 +1,17 @@
 import Prompts from "./Prompt";
 import Pipeline from "./Pipeline";
+import DLS from "./DLS";
 import Elements from "./Elements";
 
 export default class LuisaAgent {
-  constructor(llm, config = { screenSize: { w: 400, h: 800 } }, pipeline = Pipeline.defaultPipeline(), prompts = new Prompts(), elements = new Elements()) {
+  constructor(llm, config = {}) {
     this.llm = llm;
-    this.prompts = prompts;
-    this.pipeline = pipeline;
     this.config = config;
-    this.elements = elements;
+    this.screenSize = config.screenSize ? config.screenSize : { w: 400, h: 800 }
+    this.dsl = config.dls ? config.dls : new DLS()
+    this.prompts = config.prompts ? config.prompts :  new Prompts();
+    this.pipeline = config.pipeline ? config.pipeline : Pipeline.defaultPipeline(this.dsl);
+    this.elements = config.elements ? config.elements : new Elements()
   }
 
   setProgressCallback (c) {
@@ -116,7 +119,7 @@ export default class LuisaAgent {
 
             ${this.prompts.elements(this.elements)}
 
-            ${this.prompts.screenSize(this.config)}
+            ${this.prompts.screenSize(this.screenSize)}
 
             Please generate a screen:
 

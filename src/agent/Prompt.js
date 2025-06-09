@@ -1,7 +1,7 @@
 export default class Prompts {
 
-    screenSize(config) {
-        if (config.screenSize.w < 500) {
+    screenSize(screenSize) {
+        if (screenSize.w < 500) {
             return `Please design for a mobile app. The maximum screen size is 500px. 
             This means most of the content should be stacked below each other. You can 
             still use horizontal alignment, but don't put more then 3 elements in one row.`

@@ -43,6 +43,7 @@ import Preview from '../components/Preview.vue'
 import LuisaAgent from '../agent/LuisaAgent'
 import Pipeline from '../agent/Pipeline'
 import OpenAI from '../agent/OpenAI'
+import DLS from '../agent/DLS'
 
 import QuxConverter from '../agent/converter/QuxConverter'
 import { IconTrash } from '@tabler/icons-vue';
@@ -50,13 +51,11 @@ import { IconTrash } from '@tabler/icons-vue';
 import fitness from '../examples/fitness'
 import card from '../examples/card'
 import grid from '../examples/grid'
-import dsl from '../examples/dsl'
 
 const examples = {
   'fitness': fitness,
   'card': card,
-  'grid': grid,
-  'dsl': dsl
+  'grid': grid
 }
 
 export default {
@@ -184,7 +183,8 @@ export default {
         return result.join('\n')
     },
     buildRaw(raw) {
-      const model = Pipeline.defaultPipeline().convert(structuredClone(raw))
+      const dsl = new DLS()
+      const model = Pipeline.defaultPipeline(dsl).convert(structuredClone(raw))
       const s = this.getScreenSize()
       const qux = new QuxConverter(s.w, s.h)
       this.app = qux.convert(model)
