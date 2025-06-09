@@ -31,7 +31,7 @@ export class Converter {
   }
 
   isContainer(element) {
-    return element && element?.type === "Container";
+    return element && element?.type === "Container" || element?.type === "Box" || element?.type === "Screen";
   }
 
   isInput(node) {

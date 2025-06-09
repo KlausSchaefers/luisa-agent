@@ -28,6 +28,7 @@ export default class LuisaAgent {
     const message = this.getUserMessages(messages);
 
     // 1) think about a good structure
+    this.onProgress(" - Plan main structure...")
     const structure = await this.createAppStructure(message, currentModel);
     if (structure.error) {
       return structure
@@ -39,26 +40,26 @@ export default class LuisaAgent {
 
     // 2) create the screens
     for (let s of app.screens) {
-      this.onProgress("- Create screen **" + s.name + "**")
+      this.onProgress("- Create screen __" + s.name + "__")
       const screenMessage = this.prompts.messageScreen(message, s.description)
+      console.debug(screenMessage)
       let scrn = await this.createScreen(screenMessage);
       scrn.raw.name = s.name
 
       result.screens.push(structuredClone(scrn.raw));
       result.raw.screens.push(scrn.raw);
     }
+
+    //3) plan design system
     
  
-    // 3) Set basic props and design system
+    // 4) Set basic props and design system
     this.pipeline.convert(result);
 
     return result;
   }
 
   async createAppStructure(message, currentModel) {
-
-    this.onProgress(" -Plan main structure...")
-  
 
     const prompt = `
 

@@ -8,6 +8,10 @@ test('Test GridBug >  ', async () => {
    
     const qux = new QuxConverter()
     const result = qux.convert(grid_bug)
+
+    // for (let w of Object.values(result.widgets)) {
+    //     console.debug(w.name, w.y, w.y + w.h)
+    // }
     
     //console.log(JSON.stringify(result, null, 2))
 

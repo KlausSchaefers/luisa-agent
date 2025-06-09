@@ -2,168 +2,44 @@
   "screens": [
     {
       "type": "Screen",
+      "name": "Login Screen",
       "children": [
         {
           "type": "Container",
           "props": {
             "direction": "column"
-          },
-          "style": {
-            "fontSize": 14,
-            "textAlign": "left",
-            "letterSpacing": 0,
-            "lineHeight": 1.5,
-            "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-            "background": "#FFFFFF",
-            "borderTopWidth": 1,
-            "borderBottomWidth": 1,
-            "borderRightWidth": 1,
-            "borderLeftWidth": 1,
-            "borderTopRightRadius": 4,
-            "borderTopLeftRadius": 4,
-            "borderBottomRightRadius": 4,
-            "borderBottomLeftRadius": 4,
-            "borderTopColor": "#000000",
-            "borderBottomColor": "#000000",
-            "borderRightColor": "#000000",
-            "borderLeftColor": "#000000"
-          },
+          },         
           "children": [
             {
               "type": "Label",
               "props": {
                 "label": "FitTrack"
-              },
-              "style": {
-                "fontSize": 14,
-                "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-                "textAlign": "left",
-                "letterSpacing": 0,
-                "lineHeight": 1.5,
-                "color": "#000000",
-                "textShadow": null
-              },
-              "name": "Text",
-              "has": {
-                "label": true,
-                "padding": true,
-                "advancedText": true
-              },
+              },             
+              "name": "Label - FitTRack",            
               "w": 128,
               "h": 32
             },
             {
               "type": "Container",
-              "style": {
-                "fontSize": 14,
-                "textAlign": "left",
-                "letterSpacing": 0,
-                "lineHeight": 1.5,
-                "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-                "background": "#FFFFFF",
-                "borderTopWidth": 1,
-                "borderBottomWidth": 1,
-                "borderRightWidth": 1,
-                "borderLeftWidth": 1,
-                "borderTopRightRadius": 4,
-                "borderTopLeftRadius": 4,
-                "borderBottomRightRadius": 4,
-                "borderBottomLeftRadius": 4,
-                "borderTopColor": "#000000",
-                "borderBottomColor": "#000000",
-                "borderRightColor": "#000000",
-                "borderLeftColor": "#000000"
-              },
               "children": [
                 {
                   "type": "Label",
                   "props": {
                     "label": "Lore Ipsum"
                   },
-                  "name": "Text",
-                  "has": {
-                    "label": true,
-                    "padding": true,
-                    "advancedText": true
-                  },
-                  "style": {
-                    "fontSize": 14,
-                    "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-                    "textAlign": "left",
-                    "letterSpacing": 0,
-                    "lineHeight": 1.5,
-                    "color": "#000000",
-                    "textShadow": null
-                  },
+                  "name": "Label - Lore",                                 
                   "w": 128,
                   "h": 32
                 },
                 {
                   "type": "Input",
-                  "name": "Text Box",
-                  "props": {},
-                  "has": {
-                    "label": true,
-                    "backgroundColor": true,
-                    "border": true,
-                    "editable": true,
-                    "onclick": true,
-                    "padding": true
-                  },
-                  "style": {
-                    "fontSize": 14,
-                    "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-                    "textAlign": "left",
-                    "letterSpacing": 0,
-                    "lineHeight": 1.5,
-                    "background": "#FFFFFF",
-                    "color": "#000000",
-                    "paddingBottom": 2,
-                    "paddingTop": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "borderTopWidth": 1,
-                    "borderBottomWidth": 1,
-                    "borderRightWidth": 1,
-                    "borderLeftWidth": 1,
-                    "borderTopRightRadius": 4,
-                    "borderTopLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderBottomLeftRadius": 4,
-                    "borderTopColor": "#000000",
-                    "borderBottomColor": "#000000",
-                    "borderRightColor": "#000000",
-                    "borderLeftColor": "#000000",
-                    "borderTopStyle": "solid",
-                    "borderBottomStyle": "solid",
-                    "borderRightStyle": "solid",
-                    "borderLeftStyle": "solid"
-                  },
-                  "hover": {
-                    "background": "#e2e2e2",
-                    "color": "#000000",
-                    "borderTopColor": "#000000",
-                    "borderBottomColor": "#000000",
-                    "borderRightColor": "#000000",
-                    "borderLeftColor": "#000000"
-                  },
-                  "focus": {
-                    "background": "#FEFEFE",
-                    "color": "#000000",
-                    "borderTopWidth": 1,
-                    "borderBottomWidth": 1,
-                    "borderRightWidth": 1,
-                    "borderLeftWidth": 1,
-                    "borderTopColor": "#000000",
-                    "borderBottomColor": "#000000",
-                    "borderRightColor": "#000000",
-                    "borderLeftColor": "#000000"
-                  },
+                  "name": "Input 1",
+                  "props": {},                 
                   "w": 196,
                   "h": 32
                 }
               ],
-              "name": "Container",
+              "name": "ContainerRoot",
               "props": {},
               "has": {
                 "backgroundColor": true,
@@ -176,53 +52,8 @@
               "type": "Button",
               "props": {
                 "label": "Continue"
-              },
-              "style": {
-                "fontSize": 14,
-                "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-                "textAlign": "center",
-                "letterSpacing": 0,
-                "lineHeight": 1.5,
-                "verticalAlign": "middle",
-                "background": "#000000",
-                "color": "#FFFFFF",
-                "borderTopWidth": 1,
-                "borderBottomWidth": 1,
-                "borderRightWidth": 1,
-                "borderLeftWidth": 1,
-                "borderTopRightRadius": 4,
-                "borderTopLeftRadius": 4,
-                "borderBottomRightRadius": 4,
-                "borderBottomLeftRadius": 4,
-                "paddingTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "borderTopColor": "#000000",
-                "borderBottomColor": "#000000",
-                "borderRightColor": "#000000",
-                "borderLeftColor": "#000000",
-                "borderTopStyle": "solid",
-                "borderBottomStyle": "solid",
-                "borderRightStyle": "solid",
-                "borderLeftStyle": "solid"
-              },
-              "name": "Primary Button",
-              "has": {
-                "backgroundColor": true,
-                "border": true,
-                "onclick": true,
-                "label": true,
-                "padding": true
-              },
-              "hover": {
-                "background": "#000000",
-                "color": "#FFFFFF",
-                "borderTopColor": "#000000",
-                "borderBottomColor": "#000000",
-                "borderRightColor": "#000000",
-                "borderLeftColor": "#000000"
-              },
+              },              
+              "name": "Button - Continue",             
               "w": 96,
               "h": 32
             },
@@ -230,22 +61,8 @@
               "type": "Label",
               "props": {
                 "label": "Forgot password?"
-              },
-              "style": {
-                "fontSize": 14,
-                "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-                "textAlign": "left",
-                "letterSpacing": 0,
-                "lineHeight": 1.5,
-                "color": "#000000",
-                "textShadow": null
-              },
-              "name": "Text",
-              "has": {
-                "label": true,
-                "padding": true,
-                "advancedText": true
-              },
+              },             
+              "name": "Label - Forgot",              
               "w": 128,
               "h": 32
             }
@@ -262,48 +79,14 @@
           "type": "Container",
           "props": {
             "direction": "column"
-          },
-          "style": {
-            "fontSize": 14,
-            "textAlign": "left",
-            "letterSpacing": 0,
-            "lineHeight": 1.5,
-            "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-            "background": "#FFFFFF",
-            "borderTopWidth": 1,
-            "borderBottomWidth": 1,
-            "borderRightWidth": 1,
-            "borderLeftWidth": 1,
-            "borderTopRightRadius": 4,
-            "borderTopLeftRadius": 4,
-            "borderBottomRightRadius": 4,
-            "borderBottomLeftRadius": 4,
-            "borderTopColor": "#000000",
-            "borderBottomColor": "#000000",
-            "borderRightColor": "#000000",
-            "borderLeftColor": "#000000"
-          },
+          },        
           "children": [
             {
               "type": "Label",
               "props": {
                 "label": "Log your Activity"
               },
-              "style": {
-                "fontSize": 14,
-                "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-                "textAlign": "left",
-                "letterSpacing": 0,
-                "lineHeight": 1.5,
-                "color": "#000000",
-                "textShadow": null
-              },
-              "name": "Text",
-              "has": {
-                "label": true,
-                "padding": true,
-                "advancedText": true
-              },
+              "name": "Text",            
               "w": 128,
               "h": 32
             },
@@ -311,48 +94,14 @@
               "type": "Container",
               "props": {
                 "direction": "column"
-              },
-              "style": {
-                "fontSize": 14,
-                "textAlign": "left",
-                "letterSpacing": 0,
-                "lineHeight": 1.5,
-                "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-                "background": "#FFFFFF",
-                "borderTopWidth": 1,
-                "borderBottomWidth": 1,
-                "borderRightWidth": 1,
-                "borderLeftWidth": 1,
-                "borderTopRightRadius": 4,
-                "borderTopLeftRadius": 4,
-                "borderBottomRightRadius": 4,
-                "borderBottomLeftRadius": 4,
-                "borderTopColor": "#000000",
-                "borderBottomColor": "#000000",
-                "borderRightColor": "#000000",
-                "borderLeftColor": "#000000"
-              },
+              },          
               "children": [
                 {
                   "type": "Label",
                   "props": {
                     "label": "Select Sport"
-                  },
-                  "style": {
-                    "fontSize": 14,
-                    "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-                    "textAlign": "left",
-                    "letterSpacing": 0,
-                    "lineHeight": 1.5,
-                    "color": "#000000",
-                    "textShadow": null
-                  },
-                  "name": "Text",
-                  "has": {
-                    "label": true,
-                    "padding": true,
-                    "advancedText": true
-                  },
+                  },                 
+                  "name": "Text",                
                   "w": 128,
                   "h": 32
                 },
@@ -360,74 +109,13 @@
                   "type": "Input",
                   "props": {
                     "placeholder": "E.g. Running, Yoga, Cycling"
-                  },
-                  "style": {
-                    "fontSize": 14,
-                    "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-                    "textAlign": "left",
-                    "letterSpacing": 0,
-                    "lineHeight": 1.5,
-                    "background": "#FFFFFF",
-                    "color": "#000000",
-                    "paddingBottom": 2,
-                    "paddingTop": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "borderTopWidth": 1,
-                    "borderBottomWidth": 1,
-                    "borderRightWidth": 1,
-                    "borderLeftWidth": 1,
-                    "borderTopRightRadius": 4,
-                    "borderTopLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderBottomLeftRadius": 4,
-                    "borderTopColor": "#000000",
-                    "borderBottomColor": "#000000",
-                    "borderRightColor": "#000000",
-                    "borderLeftColor": "#000000",
-                    "borderTopStyle": "solid",
-                    "borderBottomStyle": "solid",
-                    "borderRightStyle": "solid",
-                    "borderLeftStyle": "solid"
-                  },
+                  },                  
                   "name": "Text Box",
-                  "has": {
-                    "label": true,
-                    "backgroundColor": true,
-                    "border": true,
-                    "editable": true,
-                    "onclick": true,
-                    "padding": true
-                  },
-                  "hover": {
-                    "background": "#e2e2e2",
-                    "color": "#000000",
-                    "borderTopColor": "#000000",
-                    "borderBottomColor": "#000000",
-                    "borderRightColor": "#000000",
-                    "borderLeftColor": "#000000"
-                  },
-                  "focus": {
-                    "background": "#FEFEFE",
-                    "color": "#000000",
-                    "borderTopWidth": 1,
-                    "borderBottomWidth": 1,
-                    "borderRightWidth": 1,
-                    "borderLeftWidth": 1,
-                    "borderTopColor": "#000000",
-                    "borderBottomColor": "#000000",
-                    "borderRightColor": "#000000",
-                    "borderLeftColor": "#000000"
-                  },
                   "w": 196,
                   "h": 32
                 }
               ],
-              "name": "Container",
-              "has": {
-                "backgroundColor": true,
-                "border": true
-              },
+              "name": "Container",             
               "w": 96,
               "h": 40
             },
@@ -436,41 +124,12 @@
               "props": {
                 "direction": "column"
               },
-              "style": {
-                "fontSize": 14,
-                "textAlign": "left",
-                "letterSpacing": 0,
-                "lineHeight": 1.5,
-                "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-                "background": "#FFFFFF",
-                "borderTopWidth": 1,
-                "borderBottomWidth": 1,
-                "borderRightWidth": 1,
-                "borderLeftWidth": 1,
-                "borderTopRightRadius": 4,
-                "borderTopLeftRadius": 4,
-                "borderBottomRightRadius": 4,
-                "borderBottomLeftRadius": 4,
-                "borderTopColor": "#000000",
-                "borderBottomColor": "#000000",
-                "borderRightColor": "#000000",
-                "borderLeftColor": "#000000"
-              },
               "children": [
                 {
                   "type": "Label",
                   "props": {
                     "label": "Time Spent (minutes)"
-                  },
-                  "style": {
-                    "fontSize": 14,
-                    "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-                    "textAlign": "left",
-                    "letterSpacing": 0,
-                    "lineHeight": 1.5,
-                    "color": "#000000",
-                    "textShadow": null
-                  },
+                  },                
                   "name": "Text",
                   "has": {
                     "label": true,
@@ -485,64 +144,7 @@
                   "props": {
                     "placeholder": "Enter minutes"
                   },
-                  "style": {
-                    "fontSize": 14,
-                    "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-                    "textAlign": "left",
-                    "letterSpacing": 0,
-                    "lineHeight": 1.5,
-                    "background": "#FFFFFF",
-                    "color": "#000000",
-                    "paddingBottom": 2,
-                    "paddingTop": 2,
-                    "paddingLeft": 8,
-                    "paddingRight": 8,
-                    "borderTopWidth": 1,
-                    "borderBottomWidth": 1,
-                    "borderRightWidth": 1,
-                    "borderLeftWidth": 1,
-                    "borderTopRightRadius": 4,
-                    "borderTopLeftRadius": 4,
-                    "borderBottomRightRadius": 4,
-                    "borderBottomLeftRadius": 4,
-                    "borderTopColor": "#000000",
-                    "borderBottomColor": "#000000",
-                    "borderRightColor": "#000000",
-                    "borderLeftColor": "#000000",
-                    "borderTopStyle": "solid",
-                    "borderBottomStyle": "solid",
-                    "borderRightStyle": "solid",
-                    "borderLeftStyle": "solid"
-                  },
-                  "name": "Text Box",
-                  "has": {
-                    "label": true,
-                    "backgroundColor": true,
-                    "border": true,
-                    "editable": true,
-                    "onclick": true,
-                    "padding": true
-                  },
-                  "hover": {
-                    "background": "#e2e2e2",
-                    "color": "#000000",
-                    "borderTopColor": "#000000",
-                    "borderBottomColor": "#000000",
-                    "borderRightColor": "#000000",
-                    "borderLeftColor": "#000000"
-                  },
-                  "focus": {
-                    "background": "#FEFEFE",
-                    "color": "#000000",
-                    "borderTopWidth": 1,
-                    "borderBottomWidth": 1,
-                    "borderRightWidth": 1,
-                    "borderLeftWidth": 1,
-                    "borderTopColor": "#000000",
-                    "borderBottomColor": "#000000",
-                    "borderRightColor": "#000000",
-                    "borderLeftColor": "#000000"
-                  },
+                  "name": "Text Box",                  
                   "w": 196,
                   "h": 32
                 }
@@ -560,52 +162,7 @@
               "props": {
                 "label": "Save Activity"
               },
-              "style": {
-                "fontSize": 14,
-                "fontFamily": "Helvetica Neue,Helvetica,Arial,sans-serif",
-                "textAlign": "center",
-                "letterSpacing": 0,
-                "lineHeight": 1.5,
-                "verticalAlign": "middle",
-                "background": "#000000",
-                "color": "#FFFFFF",
-                "borderTopWidth": 1,
-                "borderBottomWidth": 1,
-                "borderRightWidth": 1,
-                "borderLeftWidth": 1,
-                "borderTopRightRadius": 4,
-                "borderTopLeftRadius": 4,
-                "borderBottomRightRadius": 4,
-                "borderBottomLeftRadius": 4,
-                "paddingTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "borderTopColor": "#000000",
-                "borderBottomColor": "#000000",
-                "borderRightColor": "#000000",
-                "borderLeftColor": "#000000",
-                "borderTopStyle": "solid",
-                "borderBottomStyle": "solid",
-                "borderRightStyle": "solid",
-                "borderLeftStyle": "solid"
-              },
               "name": "Primary Button",
-              "has": {
-                "backgroundColor": true,
-                "border": true,
-                "onclick": true,
-                "label": true,
-                "padding": true
-              },
-              "hover": {
-                "background": "#000000",
-                "color": "#FFFFFF",
-                "borderTopColor": "#000000",
-                "borderBottomColor": "#000000",
-                "borderRightColor": "#000000",
-                "borderLeftColor": "#000000"
-              },
               "w": 96,
               "h": 32
             }
@@ -619,7 +176,6 @@
           "h": 40
         }
       ],
-      "name": "Login Screen",
       "props": {
         "start": false
       },

@@ -184,9 +184,9 @@ export default {
       const qux = new QuxConverter()
       this.app = qux.convert(model)
       this.raw = raw
-      console.debug(this.printRaw(model))
+      //console.debug(this.printRaw(model))
 
-      console.debug(JSON.stringify(model, null, 2))
+     // console.debug(JSON.stringify(this.app, null , 2))
     }
   }
 }
