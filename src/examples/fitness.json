@@ -1,0 +1,423 @@
+{
+  "prompt": "create a for an fitness app, that allows users to select a sport and en the the time they have spend. It should have a login screen and a page where the users can enter their activity.",
+  "screens": [
+    {
+      "type": "Screen",
+      "children": [
+        {
+          "type": "Container",
+          "props": {
+            "direction": "column"
+          },
+          "style": {
+            "background": "#F5F8FF",
+            "minHeight": "100vh",
+            "padding": "32px 16px"
+          },
+          "children": [
+            {
+              "type": "Label",
+              "props": {
+                "label": "FitTrack"
+              },
+              "style": {
+                "fontSize": "36px",
+                "fontWeight": "bold",
+                "color": "#2D354A",
+                "textAlign": "center",
+                "marginBottom": "32px"
+              }
+            },
+            {
+              "type": "Login",
+              "style": {
+                "marginBottom": "16px"
+              }
+            },
+            {
+              "type": "Button",
+              "props": {
+                "label": "Continue"
+              },
+              "style": {
+                "background": "#319795",
+                "color": "#FFFFFF",
+                "fontWeight": "bold",
+                "padding": "12px",
+                "borderRadius": "8px",
+                "marginBottom": "12px",
+                "fontSize": "18px"
+              }
+            },
+            {
+              "type": "Label",
+              "props": {
+                "label": "Forgot password?"
+              },
+              "style": {
+                "color": "#319795",
+                "fontSize": "15px",
+                "textAlign": "center",
+                "textDecoration": "underline",
+                "marginBottom": "0px"
+              }
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "props": {
+            "direction": "column"
+          },
+          "style": {
+            "background": "#F9FBFD",
+            "minHeight": "100vh",
+            "padding": "32px 16px"
+          },
+          "children": [
+            {
+              "type": "Label",
+              "props": {
+                "label": "Log your Activity"
+              },
+              "style": {
+                "fontSize": "28px",
+                "fontWeight": "bold",
+                "color": "#2D354A",
+                "textAlign": "center",
+                "marginBottom": "18px"
+              }
+            },
+            {
+              "type": "Container",
+              "props": {
+                "direction": "column"
+              },
+              "style": {
+                "gap": "12px",
+                "marginBottom": "20px"
+              },
+              "children": [
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Select Sport"
+                  },
+                  "style": {
+                    "color": "#2D354A",
+                    "fontWeight": "500",
+                    "fontSize": "18px",
+                    "marginBottom": "4px"
+                  }
+                },
+                {
+                  "type": "Input",
+                  "props": {
+                    "placeholder": "E.g. Running, Yoga, Cycling"
+                  },
+                  "style": {
+                    "padding": "11px",
+                    "borderRadius": "8px",
+                    "borderColor": "#C3D0F7",
+                    "fontSize": "16px"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Container",
+              "props": {
+                "direction": "column"
+              },
+              "style": {
+                "gap": "12px",
+                "marginBottom": "24px"
+              },
+              "children": [
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Time Spent (minutes)"
+                  },
+                  "style": {
+                    "color": "#2D354A",
+                    "fontWeight": "500",
+                    "fontSize": "18px",
+                    "marginBottom": "4px"
+                  }
+                },
+                {
+                  "type": "Input",
+                  "props": {
+                    "placeholder": "Enter minutes"
+                  },
+                  "style": {
+                    "padding": "11px",
+                    "borderRadius": "8px",
+                    "borderColor": "#C3D0F7",
+                    "fontSize": "16px"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Button",
+              "props": {
+                "label": "Save Activity"
+              },
+              "style": {
+                "background": "#319795",
+                "color": "#FFFFFF",
+                "fontWeight": "bold",
+                "padding": "14px",
+                "fontSize": "18px",
+                "borderRadius": "8px"
+              }
+            }
+          ]
+        }
+      ],
+      "name": "Login Screen"
+    },
+    {
+      "type": "Screen",
+      "children": [
+        {
+          "type": "Login",
+          "style": {
+            "background": "#f7f7fa"
+          }
+        },
+        {
+          "type": "Container",
+          "props": {
+            "direction": "column"
+          },
+          "style": {
+            "background": "#ffffff",
+            "padding": "24px",
+            "minWidth": "100vw",
+            "maxWidth": "500px",
+            "minHeight": "100vh"
+          },
+          "children": [
+            {
+              "type": "Label",
+              "props": {
+                "label": "Welcome, Alex!"
+              },
+              "style": {
+                "color": "#262a3b",
+                "fontWeight": "bold",
+                "fontSize": "22px",
+                "marginBottom": "18px"
+              }
+            },
+            {
+              "type": "Label",
+              "props": {
+                "label": "Enter New Activity"
+              },
+              "style": {
+                "color": "#2776fa",
+                "fontWeight": "bold",
+                "fontSize": "18px",
+                "marginBottom": "13px"
+              }
+            },
+            {
+              "type": "Container",
+              "props": {
+                "direction": "column"
+              },
+              "style": {
+                "background": "#f2f7fd",
+                "borderRadius": "14px",
+                "padding": "20px",
+                "marginBottom": "16px"
+              },
+              "children": [
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Select Sport"
+                  },
+                  "style": {
+                    "color": "#4450b1",
+                    "marginBottom": "6px",
+                    "fontSize": "15px"
+                  }
+                },
+                {
+                  "type": "Input",
+                  "props": {
+                    "type": "select",
+                    "placeholder": "Choose an activity",
+                    "options": [
+                      "Running",
+                      "Cycling",
+                      "Swimming",
+                      "Yoga",
+                      "Walking",
+                      "Gym",
+                      "Other"
+                    ]
+                  },
+                  "style": {
+                    "marginBottom": "10px",
+                    "borderColor": "#cdd5ed",
+                    "borderRadius": "6px"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Time Spent (minutes)"
+                  },
+                  "style": {
+                    "color": "#4450b1",
+                    "marginBottom": "6px",
+                    "fontSize": "15px"
+                  }
+                },
+                {
+                  "type": "Input",
+                  "props": {
+                    "type": "number",
+                    "placeholder": "e.g. 45"
+                  },
+                  "style": {
+                    "marginBottom": "16px",
+                    "borderColor": "#cdd5ed",
+                    "borderRadius": "6px"
+                  }
+                },
+                {
+                  "type": "Button",
+                  "props": {
+                    "label": "Save Activity"
+                  },
+                  "style": {
+                    "background": "#2776fa",
+                    "color": "#fff",
+                    "fontWeight": "bold",
+                    "borderRadius": "7px",
+                    "padding": "12px 0",
+                    "fontSize": "16px"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Label",
+              "props": {
+                "label": "Your Previous Activities"
+              },
+              "style": {
+                "color": "#6b6d7c",
+                "marginTop": "12px",
+                "marginBottom": "8px",
+                "fontWeight": "bold",
+                "fontSize": "16px"
+              }
+            },
+            {
+              "type": "Container",
+              "props": {
+                "direction": "column"
+              },
+              "style": {
+                "background": "#f5f7fa",
+                "borderRadius": "12px",
+                "padding": "10px 14px"
+              },
+              "children": [
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "🏃 Running"
+                  },
+                  "style": {
+                    "fontWeight": "bold",
+                    "color": "#3068e4",
+                    "fontSize": "15px"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Apr 21, 2024 | 30 min"
+                  },
+                  "style": {
+                    "color": "#8b90a0",
+                    "marginBottom": "8px",
+                    "fontSize": "13.5px"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "🚴 Cycling"
+                  },
+                  "style": {
+                    "fontWeight": "bold",
+                    "color": "#30c2a0",
+                    "fontSize": "15px"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Apr 20, 2024 | 60 min"
+                  },
+                  "style": {
+                    "color": "#8b90a0",
+                    "marginBottom": "8px",
+                    "fontSize": "13.5px"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "🏊 Swimming"
+                  },
+                  "style": {
+                    "fontWeight": "bold",
+                    "color": "#20a1e6",
+                    "fontSize": "15px"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Apr 18, 2024 | 40 min"
+                  },
+                  "style": {
+                    "color": "#8b90a0",
+                    "marginBottom": "4px",
+                    "fontSize": "13.5px"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "Activity Entry Screen"
+    }
+  ],
+  "structure": {
+    "type": "App",
+    "description": "FitTrack is a fitness app that allows users to log in, select a sport, and enter the time they've spent on their chosen activity to help them track their fitness progress over time.",
+    "screens": [
+      {
+        "name": "Login Screen",
+        "description": "The user can enter their username and password to log into FitTrack. The app's name is displayed prominently. There is a submit button to continue. Optionally, users can choose a 'Forgot Password' link if needed."
+      },
+      {
+        "name": "Activity Entry Screen",
+        "description": "After logging in, the user can select a sport or physical activity from a dropdown or list (e.g., running, cycling, swimming). They should enter the amount of time (in minutes or hours) they spent on the activity. The screen displays the user's name, their previous activities (with sport, date, and duration), and has a button to submit/save the new activity."
+      }
+    ]
+  }
+}

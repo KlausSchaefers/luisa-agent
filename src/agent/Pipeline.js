@@ -7,8 +7,12 @@ import DLS  from './DLS'
 
 export default class Pipeline {
 
-  constructor(converters = []) {
+  constructor(converters = [], dls = new DLS()) {
     this.converters = converters;
+    if (dls === undefined) {
+      console.warn('no dsl passed')
+    }
+    this.dls = dls
   }
 
   static defaultPipeline() {
@@ -17,7 +21,11 @@ export default class Pipeline {
     const complex = new ComplexConverter(elements);
     const design = new DesignConverter(elements, dls)
     const props = new PropsConverter(elements)
-    return new Pipeline([complex, props, design])
+    return new Pipeline([complex, props, design], dls)
+  }
+
+  getDLS() {
+    return this.dls
   }
 
   addConverter(converter) {

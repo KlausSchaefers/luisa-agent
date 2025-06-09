@@ -1,0 +1,28 @@
+{
+  "screens": [
+    {
+      "type": "Screen",
+      "name": "Login Screen",
+      "children": [
+        {
+          "type": "Button",
+          "props": {
+            "label": "Button 0"
+          },
+          "name": "Button 0",
+          "w": 128,
+          "h": 32
+        }
+      ],
+      "props": {
+        "start": false
+      },
+      "style": {
+        "fontSize": 14,
+        "background": "#FFFFFF"
+      },
+      "w": 96,
+      "h": 40
+    }
+  ]
+}

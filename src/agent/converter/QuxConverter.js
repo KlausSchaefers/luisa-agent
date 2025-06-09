@@ -11,11 +11,14 @@ export default class QuxConverter extends Converter {
     this.containerPadding = 16;
     this.paddingX = 16;
     this.paddingY = 16;
+    this.gapX = 16
+    this.gapY = 16
     this.isRemoveContainers = false; 
     this.name = 'QuxConverter'
 
     this.typeMapping = {
       'Container': 'Box',
+      'Card': 'Box',
       'Input': 'TextBox'
     }
   }
@@ -35,8 +38,9 @@ export default class QuxConverter extends Converter {
   
         const scrn = this.convertTree(s)
      
-        Object.values(scrn.screens).forEach(s => {
+        Object.values(scrn.screens).forEach((s, i) => {
           result.screens[s.id] = s
+          s.props.start = i === 0
         })
         Object.values(scrn.widgets).forEach(w => {
           if (result.widgets[w.id]) {
@@ -52,18 +56,19 @@ export default class QuxConverter extends Converter {
   convertTree(tree) {
     tree = structuredClone(tree)
     this.setIDs(tree)
-    this.layoutTree(tree, this.screenSize.w, this.containerPadding, this.containerPadding);
+    this.layoutTree(tree, this.screenSize.w - this.gapX * 2, this.containerPadding, this.containerPadding);
     const app = this.flattenTree(tree, this.screenSize.w, this.screenSize.h);
     //console.debug(Object.values(app.screens)[0].h)
     this.convertTypes(app);
-    this.removeChildren(app)
+    this.cleanUpModel(app)
     return app;
   }
 
-  removeChildren(app) {
+  cleanUpModel(app) {
     Object.values(app.widgets).forEach(w => {
         delete w.children
         delete w.properties
+        delete w.container
     });
   }
 
@@ -84,44 +89,54 @@ export default class QuxConverter extends Converter {
       }
   }
 
-  layoutTree(node, width, offsetX = 0, offsetY = 0, gapX = 16, gapY = 16, indent = "") {
+  layoutTree(node, width, offsetX = 0, offsetY = 0, gapX = this.gapX, gapY = this.gapY, indent = "") {
     const groups = {}
 
     // if (node.children)
     //   console.debug(indent, ' + ', node.name, node.y, offsetY)
 
-    //console.debug(indent, node.type, node.name, node.id);
+    //console.debug(indent, node.type,this.isContainer(node));
 
-    let tempOffsetY = offsetY;
-    let tempOffsetX = offsetX;
+
     let paddingX = 0;
     let paddingY = 0;
-    if (!this.isRemoveContainers) {
-      paddingX = this.paddingX;
-      paddingY = this.paddingX;
-      width -= 2 * gapX;
+    
+    if (this.isContainer(node)) {
+      if (node?.style?.paddingLeft > 0) {
+        paddingX = node?.style?.paddingLeft;
+      }
+      if (node?.style?.paddingTop > 0) {
+        paddingY = node?.style?.paddingTop
+      }
+      width -= (paddingX * 2);
     }
 
+    let tempOffsetY = offsetY + paddingY;
+    let tempOffsetX = offsetX + paddingY;
+
+    //console.debug(indent, node.name, 'w', width, 'p', paddingX, 'o', tempOffsetY, node.style)
+    //console.debug(indent, node.name, 'p', paddingY, 'o', tempOffsetY)
+
     if (this.isRowContainer(node)) {
-      let offset = this.layoutRow(node, width, gapX, tempOffsetY, tempOffsetX, paddingY, gapY, indent);
+      let offset = this.layoutRow(node, width, tempOffsetY, tempOffsetX, paddingY, paddingX, gapY, gapX, indent);
       tempOffsetX = offset.x
     } else {
-      let offset = this.layoutColumn(node, tempOffsetX, width, tempOffsetY, paddingY, paddingX, gapX, gapY, indent);
+      let offset = this.layoutColumn(node, width, tempOffsetY, tempOffsetX, paddingY, paddingX, gapY, gapX, indent);
       tempOffsetY = offset.y
     }
 
     if (this.isContainer(node)) {
       node.h = this.computeChildHeight(node) + paddingY * 2;
       tempOffsetY = node.h + gapY
-      //console.debug(indent, '   + height:' + node.name + "-" + node.id + " " + o + " > " + node.h)
+     // console.debug(indent, ' = ', node.name, node.y, node.h + node.y, tempOffsetY)
     }
 
-   // console.debug(indent, ' = ', node.name, node.y, node.h + node.y)
+
     return { x: tempOffsetX, y: tempOffsetY };
   }
 
   
-  layoutColumn(node, tempOffsetX, width, tempOffsetY, paddingY, paddingX, gapX, gapY, indent) {
+  layoutColumn(node, width, tempOffsetY, tempOffsetX, paddingY, paddingX, gapY, gapX, indent) {
     if (node.children) {
       const children = node.children;
       for (let i = 0; i < children.length; i++) {
@@ -131,12 +146,11 @@ export default class QuxConverter extends Converter {
         child.w = width;
         child.y = tempOffsetY;
 
-        if (this.isContainer(child)) {
-          tempOffsetY += paddingY;
-        } else {
+        this.layoutTree(child, width, tempOffsetX, tempOffsetY, gapX, gapY, indent + "   ");
+        if (!this.isContainer(child)) {
           child.h = this.computeContentHeight(child, width);
         }
-        this.layoutTree(child, width, tempOffsetX + paddingX, tempOffsetY, gapX, gapY, indent + "   ");
+
         if (child.type === 'Label' && nextChild && this.isInput(nextChild)) {
           tempOffsetY += child.h;
         } else {
@@ -145,10 +159,11 @@ export default class QuxConverter extends Converter {
        // console.debug(indent, ' - col:' + child.name + " start:" + child.y + "  end: " + (child.y + child.h));
       }
     }
+
     return { x: tempOffsetX, y: tempOffsetY };;
   }
 
-  layoutRow(node, width, gapX, tempOffsetY, tempOffsetX, paddingY, gapY, indent) {
+  layoutRow(node, width, tempOffsetY, tempOffsetX, paddingY, paddingX, gapY, gapX, indent) {
     const l = node.children.length;
     const childWidth = Math.floor((width - ((l-1) * gapX)) / l)       
 
@@ -157,14 +172,16 @@ export default class QuxConverter extends Converter {
         child.y = tempOffsetY;
         child.x = tempOffsetX;
         child.w = childWidth;
-
+        
+        this.layoutTree(child, childWidth, tempOffsetX, tempOffsetY, gapX, gapY, indent + "   ");
         if (!this.isContainer(child)) {
           child.h = this.computeContentHeight(child, width);
         }
         tempOffsetX = child.w + tempOffsetX + gapX;
-        const offsets = this.layoutTree(child, width, tempOffsetX, tempOffsetY + paddingY, gapX, gapY, indent + "   ");
-        tempOffsetX = offsets.x;
-      });
+
+        //tempOffsetX = offsets.x;
+      })
+
     }
     return { x: tempOffsetX, y: tempOffsetY };
   }
@@ -224,8 +241,7 @@ export default class QuxConverter extends Converter {
       style: tree.style,
       children: [],
     };
-    scrn.props.start = true;
-
+    scrn.props.start = false;
     app.screens[scrn.id] = scrn;
 
     this.flattenNode(scrn, app, tree);

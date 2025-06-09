@@ -4,7 +4,19 @@ import wireframe from './dls/wireframe'
 export default class DLS {
 
     constructor (theme = wireframe) {
-        this.theme = theme
+        this.theme = this.buildLookup(theme)
+    }
+
+    buildLookup (theme) {
+        const result = {}
+        for (let type in theme) {
+            let values = theme[type]
+            for (let key in values) {
+                let value = values[key]
+                result[key] = value
+            }
+        }
+        return result
     }
 
     replaceVariables (widget) {
@@ -110,20 +122,26 @@ export default class DLS {
             return box
         }
         if (theme[box.w]) {
-            box.w = theme[box.w].value
+            box.w = theme[box.w]
         }
         if (theme[box.h]) {
-            box.h = theme[box.h].value
+            box.h = theme[box.h]
         }        
         return box
     }
 
 
-    replaceSingleStyle (t, style) {
+    replaceSingleStyle (theme, style) {
         for (let key in style) {
-            const value = style[key]
-            if (t[value]) {
-                style[key] = t[value].value
+            const value = style[key] 
+            if (theme[value] !== undefined) {
+                const styleValue = theme[value]
+                // allow one level of indirection
+                if (theme[styleValue]) {
+                     style[key] = theme[styleValue]
+                } else {
+                    style[key] = theme[value]
+                }
             }
         }
     }

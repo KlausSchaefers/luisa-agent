@@ -20,6 +20,9 @@ export default class PropsConverter extends Converter {
         if (element.properties) {
           element.props = element.properties
         }
+        if (data.container) {
+          element.container = true
+        }
         if (data.props) {
             for (const prop in data.props) {
                 if (!data.props[prop]) {

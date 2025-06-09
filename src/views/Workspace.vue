@@ -47,6 +47,18 @@ import OpenAI from '../agent/OpenAI'
 import QuxConverter from '../agent/converter/QuxConverter'
 import { IconTrash } from '@tabler/icons-vue';
 
+import fitness from '../examples/fitness'
+import card from '../examples/card'
+import grid from '../examples/grid'
+import dsl from '../examples/dsl'
+
+const examples = {
+  'fitness': fitness,
+  'card': card,
+  'grid': grid,
+  'dsl': dsl
+}
+
 export default {
   emits: ['update:modelValue', 'click', 'change'],
   props: {
@@ -54,7 +66,7 @@ export default {
   data() {
     return {
       isWorking: false,
-      size: 'm',
+      size: 'd',
       app: null,
       messages: [],
       selectedScreen: '',
@@ -140,8 +152,8 @@ export default {
 
      
       this.saveModel(result.raw)
-
-      const qux = new QuxConverter()
+      const s = this.getScreenSize()
+      const qux = new QuxConverter(s.w, s.h)
       this.app = qux.convert(result)
       this.raw = result.raw
       this.finish()
@@ -170,23 +182,34 @@ export default {
           })
         }
         return result.join('\n')
+    },
+    buildRaw(raw) {
+      const model = Pipeline.defaultPipeline().convert(structuredClone(raw))
+      const s = this.getScreenSize()
+      const qux = new QuxConverter(s.w, s.h)
+      this.app = qux.convert(model)
+      this.raw = raw
+      //console.debug(this.printRaw(raw))
+      //this.selectedScreen = Object.values(this.app.screens)[0].name
+      //console.debug(JSON.stringify(raw, null , 2))
     }
   },
   watch: {
     
   },
   mounted() {
+    if (this.$route.query.app) {
+      if (examples[this.$route.query.app]) {
+        //console.debug('mounted() > load example', this.$route.query.app)
+        const raw = examples[this.$route.query.app]
+        this.buildRaw(raw)
+        return
+      }
+    }
     const s = localStorage.getItem('luisaApp')
     if (s) {
       const raw = JSON.parse(s)
-
-      const model = Pipeline.defaultPipeline().convert(structuredClone(raw))
-      const qux = new QuxConverter()
-      this.app = qux.convert(model)
-      this.raw = raw
-      //console.debug(this.printRaw(model))
-
-     // console.debug(JSON.stringify(this.app, null , 2))
+      this.buildRaw(raw)
     }
   }
 }

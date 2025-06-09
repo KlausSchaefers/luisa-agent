@@ -31,6 +31,9 @@ export class Converter {
   }
 
   isContainer(element) {
+    if (element.container) {
+      return true
+    }
     return element && element?.type === "Container" || element?.type === "Box" || element?.type === "Screen";
   }
 

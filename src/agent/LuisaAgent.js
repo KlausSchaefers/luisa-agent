@@ -42,12 +42,16 @@ export default class LuisaAgent {
     for (let s of app.screens) {
       this.onProgress("- Create screen __" + s.name + "__")
       const screenMessage = this.prompts.messageScreen(message, s.description)
-      console.debug(screenMessage)
-      let scrn = await this.createScreen(screenMessage);
-      scrn.raw.name = s.name
 
-      result.screens.push(structuredClone(scrn.raw));
-      result.raw.screens.push(scrn.raw);
+      let scrn = await this.createScreen(screenMessage);
+      if (scrn.raw) {
+        scrn.raw.name = s.name         
+        result.screens.push(structuredClone(scrn.raw));
+        result.raw.screens.push(scrn.raw);
+      } else {
+        console.warn('run() > Could not create screen')
+      }
+
     }
 
     //3) plan design system

@@ -1,0 +1,241 @@
+{
+  "screens": [
+    {
+      "type": "Screen",
+      "name": "Login Screen",
+      "children": [
+        {
+          "type": "Button",
+          "props": {
+            "label": "Button 0"
+          },
+          "name": "Button 0",
+          "w": 128,
+          "h": 32
+        },
+        {
+          "type": "Card",
+          "props": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "Button",
+              "props": {
+                "label": "Button 1"
+              },
+              "name": "Button 1",
+              "w": 128,
+              "h": 32
+            },
+            {
+              "type": "Button",
+              "props": {
+                "label": "Button 2"
+              },
+              "name": "Button 2",
+              "w": 128,
+              "h": 32
+            },
+            {
+              "type": "Card",
+              "children": [
+                {
+                  "type": "Button",
+                  "props": {
+                    "label": "Button 3"
+                  },
+                  "name": "Button 3",
+                  "w": 128,
+                  "h": 32
+                },
+                {
+                  "type": "Button",
+                  "props": {
+                    "label": "Button 4"
+                  },
+                  "name": "Button 4",
+                  "w": 128,
+                  "h": 32
+                }
+              ],
+              "name": "ContainerRoot",
+              "props": {},
+              "has": {
+                "backgroundColor": true,
+                "border": true
+              },
+              "w": 96,
+              "h": 40
+            },
+             {
+                "type": "Button",
+                "props": {
+                "label": "End"
+                },
+                "name": "End",
+                "w": 128,
+                "h": 32
+            }
+          ],
+          "name": "Container",
+          "has": {
+            "backgroundColor": true,
+            "border": true
+          },
+          "w": 96,
+          "h": 40
+        },
+        {
+          "type": "Container",
+          "props": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "Button",
+              "props": {
+                "label": "Log your Activity"
+              },
+              "name": "Text",
+              "w": 128,
+              "h": 32
+            },
+            {
+              "type": "Container",
+              "props": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Button",
+                  "props": {
+                    "label": "Log your Activity"
+                  },
+                  "name": "Text",
+                  "w": 128,
+                  "h": 32
+                },
+                {
+                  "type": "Button",
+                  "props": {
+                    "label": "Log your Activity"
+                  },
+                  "name": "Text",
+                  "w": 128,
+                  "h": 32
+                }
+              ],
+              "name": "Container",
+              "w": 96,
+              "h": 40
+            },
+            {
+              "type": "Container",
+              "props": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Button",
+                  "props": {
+                    "label": "Log your Activity"
+                  },
+                  "name": "Text",
+                  "w": 128,
+                  "h": 32
+                },
+                {
+                  "type": "Container",
+                  "props": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Evil1"
+                      },
+                      "name": "Evil1",
+                      "w": 128,
+                      "h": 32
+                    },
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Evil2"
+                      },
+                      "name": "Evil2",
+                      "w": 128,
+                      "h": 32
+                    }
+                  ],
+                  "name": "Container",
+                  "w": 96,
+                  "h": 40
+                },
+                 {
+                  "type": "Container",
+                  "props": {
+                    "direction": "row"
+                  },
+                  "children": [
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Evil1"
+                      },
+                      "name": "Evil1",
+                      "w": 128,
+                      "h": 32
+                    },
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Evil2"
+                      },
+                      "name": "Evil2",
+                      "w": 128,
+                      "h": 32
+                    }
+                  ],
+                  "name": "Container",
+                  "w": 96,
+                  "h": 40
+                }
+              ],
+              "name": "Container",
+              "w": 96,
+              "h": 40
+            },
+             {
+                "type": "Button",
+                "props": {
+                "label": "End"
+                },
+                "name": "End",
+                "w": 128,
+                "h": 32
+            }
+          ],
+          "name": "Container",
+          "has": {
+            "backgroundColor": true,
+            "border": true
+          },
+          "w": 96,
+          "h": 40
+        }
+      ],
+      "props": {
+        "start": false
+      },
+      "style": {
+        "fontSize": 14,
+        "background": "#FFFFFF"
+      },
+      "w": 96,
+      "h": 40
+    }
+  ]
+}

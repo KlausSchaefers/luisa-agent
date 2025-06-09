@@ -1,0 +1,168 @@
+{
+  "screens": [
+    {
+      "type": "Screen",
+      "children": [
+        {
+          "type": "Container",
+          "props": {
+            "direction": "column"
+          },
+          "style": {
+            "background": "#F6F9FA",
+            "padding": "16px",
+            "gap": "20px"
+          },
+          "children": [
+            {
+              "type": "Card",
+              "props": {
+                "direction": "column"
+              },
+              "style": {
+                "background": "#EBF7FF",
+                "borderColor": "#B6E0FE",
+                "padding": "20px",
+                "borderRadius": "16px",
+                "gap": "16px",
+                "boxShadow": "0 2px 8px rgba(50,130,210, 0.04)"
+              },
+              "children": [
+                {
+                  "type": "Image",
+                  "props": {
+                    "src": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80",
+                    "alt": "Glass of Water",
+                    "height": "140px",
+                    "width": "100%",
+                    "style": {
+                      "borderRadius": "12px",
+                      "objectFit": "cover"
+                    }
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Stay Hydrated: Benefits of Drinking Water"
+                  },
+                  "style": {
+                    "fontSize": "22px",
+                    "fontWeight": "bold",
+                    "color": "#2980D9",
+                    "marginBottom": "6px"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "• Boosts energy and focus\n• Supports healthy skin\n• Improves physical performance\n• Aids in digestion and detox\n• Enhances mood and wellbeing"
+                  },
+                  "style": {
+                    "fontSize": "16px",
+                    "color": "#24618F",
+                    "whiteSpace": "pre-line"
+                  }
+                },
+                {
+                  "type": "Button",
+                  "props": {
+                    "label": "Learn More"
+                  },
+                  "style": {
+                    "background": "#2980D9",
+                    "color": "#fff",
+                    "borderRadius": "8px",
+                    "padding": "12px",
+                    "fontSize": "16px",
+                    "fontWeight": "bold",
+                    "marginTop": "10px"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Card",
+              "props": {
+                "direction": "column"
+              },
+              "style": {
+                "background": "#FFF6EB",
+                "borderColor": "#FFD8B2",
+                "padding": "20px",
+                "borderRadius": "16px",
+                "gap": "16px",
+                "boxShadow": "0 2px 8px rgba(224,153,86, 0.04)"
+              },
+              "children": [
+                {
+                  "type": "Image",
+                  "props": {
+                    "src": "https://images.unsplash.com/photo-1517960413843-0aee8e2d025c?auto=format&fit=crop&w=500&q=80",
+                    "alt": "Workout Motivation",
+                    "height": "140px",
+                    "width": "100%",
+                    "style": {
+                      "borderRadius": "12px",
+                      "objectFit": "cover"
+                    }
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Move Your Body: Benefits of Working Out"
+                  },
+                  "style": {
+                    "fontSize": "22px",
+                    "fontWeight": "bold",
+                    "color": "#E0942B",
+                    "marginBottom": "6px"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "• Increases strength and stamina\n• Lifts your mood\n• Promotes better sleep\n• Supports heart health\n• Helps manage weight"
+                  },
+                  "style": {
+                    "fontSize": "16px",
+                    "color": "#9D5E19",
+                    "whiteSpace": "pre-line"
+                  }
+                },
+                {
+                  "type": "Button",
+                  "props": {
+                    "label": "Get Started"
+                  },
+                  "style": {
+                    "background": "#E0942B",
+                    "color": "#fff",
+                    "borderRadius": "8px",
+                    "padding": "12px",
+                    "fontSize": "16px",
+                    "fontWeight": "bold",
+                    "marginTop": "10px"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "Landing Page"
+    }
+  ],
+  "structure": {
+    "type": "App",
+    "name": "Healthy Habits Hub",
+    "description": "A landing page designed to motivate users by showcasing the benefits of drinking water and working out, with engaging images and clear calls to action.",
+    "screens": [
+      {
+        "name": "Landing Page",
+        "description": "The landing page is divided into two visually distinct sections. The first section focuses on the benefits of drinking water, displaying an appealing image related to hydration, a list or paragraph highlighting physical and mental health benefits, and a 'Learn More' call-to-action button. The second section focuses on the benefits of working out, featuring an inspiring workout-related image, a summary or bullet points on how exercise improves life, and a 'Get Started' call-to-action button. No information is entered by the user; all content is informational with prompt actions to engage further."
+      }
+    ]
+  }
+}

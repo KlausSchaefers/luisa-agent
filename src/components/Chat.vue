@@ -106,9 +106,10 @@ export default {
     onChange () {
         const s = JSON.stringify(this.messages)
         localStorage.setItem('luisaMessages', s)
-
         setTimeout(() => {
-            this.$refs.bodyEnd.scrollIntoViewIfNeeded(true)
+            if (this.$refs.bodyEnd) {
+                this.$refs.bodyEnd.scrollIntoViewIfNeeded(true)
+            }
         }, 50)
     }
   },
