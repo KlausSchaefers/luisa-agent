@@ -1,0 +1,11 @@
+{
+  "type": "Button",
+  "variant": "Secondary",
+  "extends": "Button",
+  "name": "Secondary Button",
+  "style": {
+    "borderColor": "@button-primary-border-color",
+    "background": "#fff",
+    "color": "@button-primary-border-color"
+  }
+}

@@ -23,6 +23,11 @@ export default class PropsConverter extends Converter {
         if (data.container) {
           element.container = true
         }
+        if (data.layout) {
+          //console.debug('add', element.name, data.layout)
+          // for now do a hard override
+          element.layout = data.layout
+        }
         if (data.props) {
             for (const prop in data.props) {
                 if (!data.props[prop]) {

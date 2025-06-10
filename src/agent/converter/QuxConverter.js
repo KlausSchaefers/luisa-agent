@@ -14,6 +14,7 @@ export default class QuxConverter extends Converter {
     this.gapX = 16
     this.gapY = 16
     this.isRemoveContainers = false; 
+    this.growRowChildrenInHeight = true
     this.name = 'QuxConverter'
 
     this.typeMapping = {
@@ -69,6 +70,14 @@ export default class QuxConverter extends Converter {
         delete w.children
         delete w.properties
         delete w.container
+        delete w.layout
+        delete w.variant
+
+        // to avoid some scalling issue in luisa
+        w.props.resize = {
+          left: true,
+          right:true
+        }
     });
   }
 
@@ -136,19 +145,19 @@ export default class QuxConverter extends Converter {
   }
 
   
-  layoutColumn(node, width, tempOffsetY, tempOffsetX, paddingY, paddingX, gapY, gapX, indent) {
+  layoutColumn(node, parentWidth, tempOffsetY, tempOffsetX, paddingY, paddingX, gapY, gapX, indent) {
     if (node.children) {
       const children = node.children;
       for (let i = 0; i < children.length; i++) {
         const child = children[i];
         const nextChild = children[i + 1];
         child.x = tempOffsetX;
-        child.w = width;
+        child.w = this.getColumnChildWidth(child, parentWidth);
         child.y = tempOffsetY;
 
-        this.layoutTree(child, width, tempOffsetX, tempOffsetY, gapX, gapY, indent + "   ");
+        this.layoutTree(child, parentWidth, tempOffsetX, tempOffsetY, gapX, gapY, indent + "   ");
         if (!this.isContainer(child)) {
-          child.h = this.computeContentHeight(child, width);
+          child.h = this.computeContentHeight(child, parentWidth);
         }
 
         if (child.type === 'Label' && nextChild && this.isInput(nextChild)) {
@@ -156,8 +165,10 @@ export default class QuxConverter extends Converter {
         } else {
           tempOffsetY += child.h + gapY;
         }
+
        // console.debug(indent, ' - col:' + child.name + " start:" + child.y + "  end: " + (child.y + child.h));
       }
+
     }
 
     return { x: tempOffsetX, y: tempOffsetY };;
@@ -168,7 +179,10 @@ export default class QuxConverter extends Converter {
     const childWidth = Math.floor((width - ((l-1) * gapX)) / l)       
 
     if (node.children) {
-      node.children.forEach((child) => {
+      let maxH = 0
+      const children = node.children;
+      for (let i = 0; i < children.length; i++) {
+        const child = children[i];
         child.y = tempOffsetY;
         child.x = tempOffsetX;
         child.w = childWidth;
@@ -178,12 +192,34 @@ export default class QuxConverter extends Converter {
           child.h = this.computeContentHeight(child, width);
         }
         tempOffsetX = child.w + tempOffsetX + gapX;
+        maxH = Math.max(maxH, child.h)
+      }
 
-        //tempOffsetX = offsets.x;
-      })
+      if (this.growRowChildrenInHeight) {
+        for (let i = 0; i < children.length; i++) {
+              const child = children[i];
+              child.h = this.getRowChildHeight(child, maxH)
+        }
+    }
+
 
     }
     return { x: tempOffsetX, y: tempOffsetY };
+  }
+
+  getColumnChildWidth (node, parentWidth) {
+    if (this.isNoLayoutGrow(node)) {
+
+      return node.w
+    }
+    return parentWidth
+  }
+
+  getRowChildHeight(node, maxH) {
+    if (this.isNoLayoutGrow(node)) {
+      return node.h
+    }
+    return maxH
   }
 
   computeChildHeight(node) {

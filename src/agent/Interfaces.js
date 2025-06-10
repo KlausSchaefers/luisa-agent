@@ -30,6 +30,11 @@ export class Converter {
     return element && element?.props?.direction === "row";
   }
 
+
+  isNoLayoutGrow(element) {
+    return element && element?.layout?.grow === 0;
+  }
+
   isContainer(element) {
     if (element.container) {
       return true

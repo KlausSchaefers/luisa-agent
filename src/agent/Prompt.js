@@ -71,25 +71,45 @@ export default class Prompts {
             Please return the result as JSON in the defined language:
         
             The basic building block is an "element". An element has a "type" and can have "children" elements.
-            In addition, an element can have a "style" object, which can have CSS properties like "color", "background" and "borderColor".
-            Each element has also a "props" object, which can have additional properties like "label", "placeholder", "type", "options", "columns" and "data".
+
+            In addition, an element can have a "layout" object, which is inspired by css flex box and describes 
+            the resize behavior. The "layout" element has one property called "grow" which can have the values 0 and 1.
+            0 means, the element has a fixed size, whereas 1 means it can stretch the the full width of the container.
+            
+            Each element has also a "props" object, which can have additional properties like 
+            "label", "placeholder", "type", "options", "columns" and "data".
+
+            Some elements can have a variant property. This is used to adjust for instance the visual style, or some behavior.
+        
 
             An example for an element is:
             \`\`\`json
             {
                 "type": "Container",
+                "layout": {
+                    grow: 1
+                }
                 "children": [
                     {
                         type: "Label",
                         properties: {
                             label: "Hello World"
                         },
-                        style: {
-                            color: "#000000",
-                            background: "#FFFFFF",
-                            borderColor: "#CCCCCC"
+                        "layout": {
+                            grow: 0
                         }
-                    }
+                    },
+                    {
+                        type: "Button",
+                        variant: "Primary"
+                        properties: {
+                            label: "Submit"
+                        },
+                        "layout": {
+                            grow: 0
+                        }
+                    },
+
                 ]
             }     
 

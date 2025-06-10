@@ -1,0 +1,9 @@
+{
+  "type": "Button",
+  "name": "Danger Button",
+  "variant": "Danger",
+  "extends": "Button",
+  "style": {
+    "background": "red"
+  }
+}

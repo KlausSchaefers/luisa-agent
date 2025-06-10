@@ -169,7 +169,7 @@ export default {
       //this.$refs.chat.onChangeLastAgentMessage("Done!")
     },
     printRaw(node, result = [], indent='') {
-        result.push(`${indent} ${node.type} [${node.name}] `)
+        result.push(`${indent} ${node.type}  ${node.variant} [${node.name}] `)
         if (node.children) {
           node.children.forEach(c => {
             this.printRaw(c, result, indent+'   ')
@@ -189,7 +189,7 @@ export default {
       const qux = new QuxConverter(s.w, s.h)
       this.app = qux.convert(model)
       this.raw = raw
-      //console.debug(this.printRaw(raw))
+      console.debug(this.printRaw(raw))
       //this.selectedScreen = Object.values(this.app.screens)[0].name
       //console.debug(JSON.stringify(raw, null , 2))
     }

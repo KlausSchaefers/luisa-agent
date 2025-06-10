@@ -197,6 +197,14 @@
                       "name": "Evil2",
                       "w": 128,
                       "h": 32
+                    },  {
+                      "type": "Button",
+                      "props": {
+                        "label": "Evil2"
+                      },
+                      "name": "Evil2",
+                      "w": 128,
+                      "h": 32
                     }
                   ],
                   "name": "Container",
@@ -210,11 +218,12 @@
             },
              {
                 "type": "Button",
+                "variant": "Danger",
                 "props": {
                 "label": "End"
                 },
-                "name": "End",
-                "w": 128,
+                "name": "Danger",
+                "w": 200,
                 "h": 32
             }
           ],
@@ -225,6 +234,16 @@
           },
           "w": 96,
           "h": 40
+        },
+        {
+          "type": "Button",
+          "variant": "Secondary",
+          "props": {
+            "label": "Secondary XXX"
+          },
+          "name": "Secondary End",
+          "w": 128,
+          "h": 32
         }
       ],
       "props": {
