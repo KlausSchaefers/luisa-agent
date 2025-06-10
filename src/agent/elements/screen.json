@@ -6,7 +6,7 @@
   "x": 0,
   "y": 0,
   "w": "@box-width-l",
-  "h": "@box-height-s",
+  "h": 800,
   "z": 0,
   "props": {
     "start": false

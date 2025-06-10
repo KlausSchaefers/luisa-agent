@@ -1,0 +1,47 @@
+{
+  "id": "HeroSection",
+  "type": "HeroSection",
+  "name": "HeroSection",
+  "description": "The login element allows users to enter their email and password in text fields. The element can not have any children",
+  "x": 0,
+  "y": 0,
+  "w": "@box-width-l",
+  "h": 600,
+  "z": 0,
+  "props": {},
+  "has": {
+    "backgroundColor": true,
+    "border": true
+  },
+  "actions": {},
+  "style": {
+    "fontSize": "@font-size-m",
+    "textAlign": "left",
+    "letterSpacing": "@letterSpacing",
+    "lineHeight": "@lineHeight",
+
+    "fontFamily": "@font-family",
+    "borderRadius": "@border-radius",
+    "borderWidth": "@border-width",
+    "borderColor": "orange",
+    "background": "orange"
+  },
+  "children": [
+        {
+            "type": "Label",
+            "name": "Headline",
+            "props": {
+                "label": "Headline"
+            }
+        },
+         {
+            "type": "Label",
+            "name": "Sublilne",
+            "props": {
+                "label": "Subline lore ipsum"
+            }
+        }
+      ]
+    
+  
+}

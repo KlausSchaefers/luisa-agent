@@ -24,7 +24,7 @@ test('Test ComplexConverter >  ', async () => {
     const scrn = result.screens[0]
     
     //console.log(JSON.stringify(result, null, 2))
-    expect(scrn.children[0].type).toBe("Container")
+    expect(scrn.children[0].type).toBe("Login")
 
 
 

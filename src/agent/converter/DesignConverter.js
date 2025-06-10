@@ -8,36 +8,38 @@ export default class DesignConverter extends Converter {
     this.dsl = dsl;
     this.elements = elements;
     this.name = 'DesignConverter'
+    this.properties = ['style', 'hover', 'error', 'active', 'focus', 'checked']
   }
 
   convertElement (element) {
     const data = this.elements.get(element)
     if (data) {
 
-      if (data.style) {
-        element.style = data.style;
-
+      for (let p of this.properties) {
+         if (data[p]) {
+              if (!element[p]) {
+                  element[p] = {}
+              }
+              this.mixin(element[p], data[p])
+          }
       }
-      if (data.hover) {
-        element.hover = data.hover;
+      if (element.w === undefined) {
+        element.w = data.w || 0;
       }
-      if (data.focus) {
-        element.focus = data.focus;
+      if (element.h === undefined) {
+        element.h = data.h || 0;
       }
-      if (data.error) {
-        element.focus = data.focus;
-      }
-      if (data.active) {
-        element.focus = data.active;
-      }
-      
-      element.w = data.w || 0;
-      element.h = data.h || 0;
-
-
       this.dsl.replaceVariables(element);
     } else {
       console.warn(`${this.name}.convertElement() > Element type ${element.type} not found in elements.`);
     }
+  }
+
+  mixin (element, parent) {
+      for (let key in parent) {
+          if (element[key] === undefined) {
+              element[key] = parent[key]
+          }
+      }
   }
 }

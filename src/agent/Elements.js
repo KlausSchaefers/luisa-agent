@@ -8,6 +8,7 @@ import label from './elements/label.json';
 import screen from './elements/screen.json';
 import login from './elements/login.json';
 import card from './elements/card.json';
+import hero from './elements/hero.json';
 
 export default class Elements {
 
@@ -22,6 +23,7 @@ export default class Elements {
         this.register(label);
         this.register(screen);
         this.register(card)
+        this.register(hero)
 
         this.registerComplex(login)
 

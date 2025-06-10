@@ -1,0 +1,17 @@
+{
+  "screens": [
+    {
+      "type": "Screen",
+      "name": "Login Screen",
+      "children": [       
+        {
+          "type": "HeroSection",
+          "name": "Hero Instance 1"
+        }
+      ],
+      "props": {
+        "start": false
+      }
+    }
+  ]
+}

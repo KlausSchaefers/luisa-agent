@@ -20,6 +20,7 @@ export default class QuxConverter extends Converter {
     this.typeMapping = {
       'Container': 'Box',
       'Card': 'Box',
+      'HeroSection': 'Box',
       'Input': 'TextBox'
     }
   }
@@ -72,6 +73,7 @@ export default class QuxConverter extends Converter {
         delete w.container
         delete w.layout
         delete w.variant
+        delete w.extends
 
         // to avoid some scalling issue in luisa
         w.props.resize = {
@@ -102,7 +104,7 @@ export default class QuxConverter extends Converter {
     const groups = {}
 
     // if (node.children)
-    //   console.debug(indent, ' + ', node.name, node.y, offsetY)
+    //console.debug(indent, ' + ', node.name, node.h)
 
     //console.debug(indent, node.type,this.isContainer(node));
 
@@ -135,6 +137,7 @@ export default class QuxConverter extends Converter {
     }
 
     if (this.isContainer(node)) {
+
       node.h = this.computeChildHeight(node) + paddingY * 2;
       tempOffsetY = node.h + gapY
      // console.debug(indent, ' = ', node.name, node.y, node.h + node.y, tempOffsetY)
@@ -223,6 +226,7 @@ export default class QuxConverter extends Converter {
   }
 
   computeChildHeight(node) {
+    // check here the min as the node.h??
     let top = 1000000;
     let bottom = 0;
     node.children.forEach((c) => {

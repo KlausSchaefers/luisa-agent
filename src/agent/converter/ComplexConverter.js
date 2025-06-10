@@ -15,7 +15,7 @@ export default class ComplexConverter extends Converter {
         if (data.children && data.children.length > 0 && (!element.children || element.children.length === 0)){
             element.children = data.children
             // make it a container
-            element.type = "Container"
+            // element.type = "Container"
         }   
     } else {
       console.warn(`${this.name}.convertElement() > Element type ${element.type} not found in elements.`);

@@ -12,7 +12,10 @@ export default class PropsConverter extends Converter {
     const data = this.elements.get(element)
     if (data) {
         if (element.type !== "Screen") {
-          element.name = data.name
+          if (!element.name) {
+            element.name = data.name
+          }
+
         }
         if (!element.props) {
             element.props = {};

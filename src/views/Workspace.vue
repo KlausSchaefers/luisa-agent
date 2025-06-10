@@ -51,11 +51,13 @@ import { IconTrash } from '@tabler/icons-vue';
 import fitness from '../examples/fitness'
 import card from '../examples/card'
 import grid from '../examples/grid'
+import hero from '../examples/hero'
 
 const examples = {
   'fitness': fitness,
   'card': card,
-  'grid': grid
+  'grid': grid,
+  'hero': hero
 }
 
 export default {
@@ -189,9 +191,9 @@ export default {
       const qux = new QuxConverter(s.w, s.h)
       this.app = qux.convert(model)
       this.raw = raw
-      console.debug(this.printRaw(raw))
+      //console.debug(this.printRaw(raw))
       //this.selectedScreen = Object.values(this.app.screens)[0].name
-      //console.debug(JSON.stringify(raw, null , 2))
+      //console.debug(JSON.stringify(this.app.widgets, null , 2))
     }
   },
   watch: {

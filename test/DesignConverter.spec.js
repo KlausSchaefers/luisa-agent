@@ -21,10 +21,9 @@ test('Test DesignConverter >  ', async () => {
     expect(result).toBeDefined()
 
     let scrn = result.screens[0]
+    //console.log(JSON.stringify(scrn, null, 2))
     expect(scrn.type).toBe('Screen')
     expect(scrn.style.background).toBe('#FFFFFF')
-
-    //console.log(JSON.stringify(scrn, null, 2))
 
 
 })

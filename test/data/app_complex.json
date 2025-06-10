@@ -1,11 +1,6 @@
 {
   "type": "Screen",
-  "style": {
-    "background": "#F0F4FF",
-    "color": "#262D3D"
-  },
-
-  "children": [
+   "children": [
     {
       "type": "Login"
     },

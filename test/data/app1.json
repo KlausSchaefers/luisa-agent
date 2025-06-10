@@ -1,24 +1,10 @@
 {
   "type": "Screen",
-  "style": {
-    "background": "#F0F4FF",
-    "color": "#262D3D"
-  },
   "children": [
     {
       "type": "Container",
       "props": {
         "flex-direction": "column"
-      },
-      "style": {
-        "background": "#FFFFFF",
-        "borderColor": "#90A4FA",
-        "borderRadius": "16px",
-        "padding": "40px",
-        "boxShadow": "0 8px 32px rgba(80,100,200,0.12)",
-        "width": "350px",
-        "margin": "80px auto",
-        "alignItems": "center"
       },
       "children": [
         {
@@ -26,11 +12,6 @@
           "props": {
             "label": "Welcome Back!",
             "size": "Headline"
-          },
-          "style": {
-            "color": "#3652DD",
-            "marginBottom": "12px",
-            "fontWeight": "bold"
           }
         },
         {
@@ -38,11 +19,6 @@
           "props": {
             "label": "Don’t worry, we won’t steal your password (much)! 😜",
             "size": "Paragraph"
-          },
-          "style": {
-            "color": "#576390",
-            "marginBottom": "22px",
-            "textAlign": "center"
           }
         },
         {
@@ -50,13 +26,6 @@
           "props": {
             "type": "Text",
             "placeholder": "Enter your email"
-          },
-          "style": {
-            "marginBottom": "18px",
-            "padding": "12px",
-            "borderColor": "#C7D4F2",
-            "borderRadius": "8px",
-            "width": "100%"
           }
         },
         {
@@ -64,13 +33,6 @@
           "props": {
             "type": "Password",
             "placeholder": "Super secret password"
-          },
-          "style": {
-            "marginBottom": "12px",
-            "padding": "12px",
-            "borderColor": "#C7D4F2",
-            "borderRadius": "8px",
-            "width": "100%"
           }
         },
         {
@@ -78,12 +40,7 @@
           "props": {
             "flex-direction": "row"
           },
-          "style": {
-            "justifyContent": "flex-start",
-            "alignItems": "center",
-            "width": "100%",
-            "marginBottom": "20px"
-          },
+
           "children": [
             {
               "type": "Input",
@@ -101,16 +58,6 @@
           "type": "Button",
           "props": {
             "label": "Let’s Go! 🚀"
-          },
-          "style": {
-            "background": "#3652DD",
-            "color": "#FFFFFF",
-            "borderRadius": "8px",
-            "padding": "14px 0",
-            "fontWeight": "bold",
-            "width": "100%",
-            "marginTop": "8px",
-            "boxShadow": "0 4px 12px rgba(54, 82, 221, 0.08)"
           }
         },
         {
@@ -118,13 +65,7 @@
           "props": {
             "label": "Forgot password? Oops! 🤭",
             "size": "Label"
-          },
-          "style": {
-            "color": "#90A4FA",
-            "marginTop": "16px",
-            "fontStyle": "italic",
-            "textAlign": "center"
-          }
+          }         
         }
       ]
     }
