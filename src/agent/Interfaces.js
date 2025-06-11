@@ -27,7 +27,7 @@ export class Converter {
   }
 
   isRowContainer(element) {
-    return element && element?.props?.direction === "row";
+    return element && (element?.layout?.direction === "row" || element?.props?.direction === "row")
   }
 
 

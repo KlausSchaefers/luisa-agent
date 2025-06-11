@@ -5,7 +5,7 @@
       "children": [
         {
           "type": "Container",
-          "props": {
+          "layout": {
             "direction": "column"
           },
           "style": {

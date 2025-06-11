@@ -79,6 +79,10 @@ export default class QuxConverter extends Converter {
         delete w.extends
 
         // to avoid some scalling issue in luisa
+        if (!w.props) {
+          console.warn("QuxConverter.cleanUpModel() > No props",)
+          w.props = {}
+        }
         w.props.resize = {
           left: true,
           right:true

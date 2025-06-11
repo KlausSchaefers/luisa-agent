@@ -82,14 +82,14 @@ export default class Prompts {
             "label", "placeholder", "type", "options", "columns" and "data".
 
             Some elements can have a variant property. This is used to adjust for instance the visual style, or some behavior.
-        
+
 
             An example for an element is:
             \`\`\`json
             {
                 "type": "Container",
                 "layout": {
-                    grow: 1
+                    "direction": "row"
                 }
                 "children": [
                     {
@@ -98,7 +98,6 @@ export default class Prompts {
                             label: "Hello World"
                         },
                         "layout": {
-                            grow: 0
                         }
                     },
                     {
@@ -108,10 +107,25 @@ export default class Prompts {
                             label: "Submit"
                         },
                         "layout": {
-                            grow: 0
                         }
                     },
-
+                    {
+                        "type": "Container",
+                        "layout": {
+                            "direction": "column"
+                        }
+                        "children": [ 
+                            {
+                                type: "Button",
+                                variant: "Primary"
+                                properties: {
+                                    label: "Submit"
+                                },
+                                "layout": {
+                                }
+                            }
+                        ]
+                    }
                 ]
             }     
 

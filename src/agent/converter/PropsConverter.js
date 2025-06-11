@@ -28,7 +28,7 @@ export default class PropsConverter extends Converter {
         }
         if (data.layout) {
           //console.debug('add', element.name, data.layout)
-          // for now do a hard override
+          // maybe we should just take the directiom
           if (!element.layout) {
             element.layout = {}
           }
