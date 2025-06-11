@@ -1,5 +1,5 @@
 import { Converter } from "../Interfaces.js";
-
+import * as Util from '../Util'
 export default class PropsConverter extends Converter {
 
   constructor(elements) {
@@ -29,7 +29,11 @@ export default class PropsConverter extends Converter {
         if (data.layout) {
           //console.debug('add', element.name, data.layout)
           // for now do a hard override
-          element.layout = data.layout
+          if (!element.layout) {
+            element.layout = {}
+          }
+          Util.mixin(element.layout, data.layout)
+    
         }
         if (data.props) {
             for (const prop in data.props) {

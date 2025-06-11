@@ -21,11 +21,11 @@
     "textAlign": "left",
     "letterSpacing": "@letterSpacing",
     "lineHeight": "@lineHeight",
-    "padding": 8,
+    "padding": "@container-padding",
     "fontFamily": "@font-family",
     "borderRadius": "@border-radius",
-    "borderWidth": 1,
-    "borderColor": "blue",
+    "borderWidth": "@container-border-width",
+    "borderColor": "@container-border-color",
     "background": "@container-background"
   }
 }

@@ -7,6 +7,10 @@ export default class DLS {
         this.theme = this.buildLookup(theme)
     }
 
+    set(key, value) {
+        this.theme[key] = value
+    }
+
     buildLookup (theme) {
         const result = {}
         for (let type in theme) {

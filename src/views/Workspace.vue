@@ -9,12 +9,17 @@
             </div>
             <div>
                <select v-model="selectedScreen" class="luisa-select">            
-                <option :value="name" v-for="name in screenNames">{{name}}</option>
-                
+                <option :value="name" v-for="name in screenNames">{{name}}</option>                
               </select>
+
+     
       
             </div>
             <div>
+              <select v-model="isDebug" class="luisa-select" @change="reRender">            
+                <option :value="true">Debug</option>
+                <option :value="false">Nice</option>
+              </select>
               <select v-model="size" class="luisa-select">            
                 <option value="m">Mobile</option>
                 <option value="d">Desktop</option>
@@ -52,12 +57,16 @@ import fitness from '../examples/fitness'
 import card from '../examples/card'
 import grid from '../examples/grid'
 import hero from '../examples/hero'
+import flex from '../examples/flex'
+import simple from '../examples/simple'
 
 const examples = {
   'fitness': fitness,
   'card': card,
   'grid': grid,
-  'hero': hero
+  'hero': hero,
+  "flex": flex,
+  "simple": simple
 }
 
 export default {
@@ -72,6 +81,7 @@ export default {
       messages: [],
       selectedScreen: '',
       progressMessage: 'Thinking...',
+      isDebug: false,
       status: {
         busy:false,
         messages: []
@@ -184,8 +194,21 @@ export default {
         }
         return result.join('\n')
     },
+    reRender () {
+      console.debug(this.isDebug)
+      localStorage.setItem('luisaAppDebug', this.isDebug)
+      this.app = null
+      this.$nextTick(() => {
+        this.buildRaw(this.raw)
+      })
+    },
     buildRaw(raw) {
       const dsl = new DLS()
+      if (this.isDebug) {
+        dsl.set("@container-border-width", 1)
+        dsl.set("@container-border-color", "blue")
+        dsl.set("@container-padding", 8)
+      }
       const model = Pipeline.defaultPipeline(dsl).convert(structuredClone(raw))
       const s = this.getScreenSize()
       const qux = new QuxConverter(s.w, s.h)
@@ -200,6 +223,7 @@ export default {
     
   },
   mounted() {
+    this.isDebug = localStorage.getItem('luisaAppDebug') === 'true'
     if (this.$route.query.app) {
       if (examples[this.$route.query.app]) {
         //console.debug('mounted() > load example', this.$route.query.app)

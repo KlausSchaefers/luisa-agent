@@ -7,7 +7,7 @@ export default {
     "@font-size-m": 14,
     "@font-size-l": 18,
     "@font-size-xl": 24,
-    "@font-size-xxl": 32
+    "@font-size-xxl": 64,
   },
   "fontFamily": {
     "@font-family": "Helvetica Neue,Helvetica,Arial,sans-serif"
@@ -28,7 +28,8 @@ export default {
     "@border-width": 1,
     "@border-width:hover": 1,
     "@border-width:focus": 1,
-    "@form-popup-border-width": 1
+    "@form-popup-border-width": 1,
+    "@container-border-width": 0
   },
   "borderRadius": {
     "@border-radius": 4,
@@ -40,11 +41,12 @@ export default {
     "@spacing-xs": 4,
     "@spacing-s": 8,
     "@spacing-m": 16,
-    "@spacing-l": 32
+    "@spacing-l": 32,
+    "@container-padding": 0
   },
   "color": {
-    "@container-background": "#FFFFFF",
-    "@container-border": "#000000",
+    "@container-background": "transparent",
+    "@container-border-color": "#fff",
     "@screen-background": "#FFFFFF",
     "@background-passive": "#e2e2e2",
     "@background-passive:hover": "#000000",

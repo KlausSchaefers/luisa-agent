@@ -3,10 +3,22 @@
     {
       "type": "Screen",
       "name": "Login Screen",
-      "children": [       
+      "children": [
         {
-          "type": "HeroSection",
-          "name": "Hero Instance 1"
+          "type": "Container",
+          "props": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "HeroSection",
+              "name": "Hero Instance 1",
+              "props": {
+                "headline": "This is the headline",
+                "subheading": "Luisa Agent - The fastest you can get"
+              }
+            }
+          ]
         }
       ],
       "props": {

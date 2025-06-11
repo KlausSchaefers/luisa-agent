@@ -35,6 +35,13 @@ export class Converter {
     return element && element?.layout?.grow === 0;
   }
 
+  isLayoutGrow(element) {
+    if (!element.layout) {
+      return true
+    }
+    return element && element?.layout?.grow === 1;
+  }
+
   isContainer(element) {
     if (element.container) {
       return true

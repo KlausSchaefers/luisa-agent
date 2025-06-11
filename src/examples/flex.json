@@ -1,0 +1,199 @@
+{
+  "screens": [
+    {
+      "type": "Screen",
+      "name": "Login Screen",
+      "children": [
+        {
+          "type": "Container",
+          "props": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "Container",
+              "props": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Button",
+                  "props": {
+                    "label": "Button 1"
+                  },
+                  "name": "Button1"
+                },
+                {
+                  "type": "Button",
+                  "props": {
+                    "label": "Button 2"
+                  },
+                  "name": "Button2"
+                }
+              ],
+              "name": "Container"
+            },
+            {
+              "type": "Container",
+              "props": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Container",
+                  "name": "Buggy",
+                  "props": {
+                    "direction": "column"
+                  },
+                  "layout": {
+                    "alignItems": "center",
+                                        "justifyContent": "center"
+                  },
+                  "children": [
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Log your Activity"
+                      },
+                      "name": "Text",
+                      "w": 128,
+                      "h": 32
+                    },
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Log your Activity"
+                      },
+                      "name": "Text",
+                      "w": 128,
+                      "h": 32
+                    }
+                  ]
+                },
+                {
+                  "type": "Container",
+                  "props": {
+                    "direction": "column"
+                  },
+                  "layout": {
+                    "justifyContent": "center"
+                  },
+                  "children": [
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Evil1"
+                      },
+                      "layout": {
+                        "grow": 1
+                      },
+                      "name": "Evil1",
+                      "w": 128,
+                      "h": 32
+                    },
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Evil2"
+                      },
+                      "name": "Evil2",
+                      "w": 200,
+                      "h": 32
+                    },
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Evil3"
+                      },
+                      "name": "Evil3",
+                      "w": 128,
+                      "h": 32
+                    }
+                  ],
+                  "name": "Container",
+                  "w": 96,
+                  "h": 40
+                },
+                {
+                  "type": "Container",
+                  "props": {
+                    "direction": "row"
+                  },
+                    "layout": {
+                    "alignItems": "center"
+                  },
+                  "children": [
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Evil1"
+                      },
+                      "name": "Evil1",
+                      "w": 128,
+                      "h": 32
+                    },
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Evil2"
+                      },
+                      "name": "Evil2",
+                      "w": 128,
+                      "h": 32
+                    },
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Evil2"
+                      },
+                      "name": "Evil2",
+                      "w": 128,
+                      "h": 32
+                    },
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Evil2"
+                      },
+                      "name": "Evil2",
+                      "w": 128,
+                      "h": 32
+                    }
+                  ],
+                  "name": "Container",
+                  "w": 96,
+                  "h": 40
+                }
+              ],
+              "name": "Container",
+              "w": 96,
+              "h": 40
+            },
+            {
+              "type": "Button",
+              "variant": "Danger",
+              "props": {
+                "label": "End"
+              },
+              "name": "Danger",
+              "w": 200,
+              "h": 32
+            }
+          ],
+          "name": "Container",
+          "has": {
+            "backgroundColor": true,
+            "border": true
+          }
+        }
+      ],
+      "props": {
+        "start": false
+      },
+      "style": {
+        "fontSize": 14,
+        "background": "#FFFFFF"
+      }
+    }
+  ]
+}

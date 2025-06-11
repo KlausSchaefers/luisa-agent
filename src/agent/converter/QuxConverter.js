@@ -58,9 +58,12 @@ export default class QuxConverter extends Converter {
   convertTree(tree) {
     tree = structuredClone(tree)
     this.setIDs(tree)
-    this.layoutTree(tree, this.screenSize.w - this.gapX * 2, this.containerPadding, this.containerPadding);
+    // forward pass to compute all out boxes
+    this.layoutTree(tree, this.screenSize.w);
+    // backward pass to compute inner alignment
+    this.alignTree(tree)
+    // now build flat model
     const app = this.flattenTree(tree, this.screenSize.w, this.screenSize.h);
-    //console.debug(Object.values(app.screens)[0].h)
     this.convertTypes(app);
     this.cleanUpModel(app)
     return app;
@@ -100,11 +103,40 @@ export default class QuxConverter extends Converter {
       }
   }
 
-  layoutTree(node, width, offsetX = 0, offsetY = 0, gapX = this.gapX, gapY = this.gapY, indent = "") {
-    const groups = {}
 
+  alignTree(node, indent = "") {
+
+    let paddingX = 0;
+    let paddingY = 0;
+    
+    if (this.isContainer(node)) {
+      if (node?.style?.paddingLeft > 0) {
+        paddingX = node?.style?.paddingLeft;
+      }
+      if (node?.style?.paddingTop > 0) {
+        paddingY = node?.style?.paddingTop
+      }
+    }
+
+    if (this.isContainer(node)) {
+      this.alignChildren(node, indent, paddingY, paddingX)
+    }
+
+    if (node.children) {
+      const children = node.children;
+      for (let i = 0; i < children.length; i++) {
+        const child = children[i];
+        this.alignTree(child, indent + "   ");
+      }
+    }
+  }
+
+  layoutTree(node, width, offsetX = 0, offsetY = 0, indent = "") {
+    const groups = {}
+    const gapX = this.gapX
+    const gapY = this.gapY
     // if (node.children)
-    //console.debug(indent, ' + ', node.name, node.h)
+    //console.debug(indent, ' + ', node.name, node.h, node.layout)
 
     //console.debug(indent, node.type,this.isContainer(node));
 
@@ -128,6 +160,7 @@ export default class QuxConverter extends Converter {
     //console.debug(indent, node.name, 'w', width, 'p', paddingX, 'o', tempOffsetY, node.style)
     //console.debug(indent, node.name, 'p', paddingY, 'o', tempOffsetY)
 
+    // 1) Align all children
     if (this.isRowContainer(node)) {
       let offset = this.layoutRow(node, width, tempOffsetY, tempOffsetX, paddingY, paddingX, gapY, gapX, indent);
       tempOffsetX = offset.x
@@ -136,15 +169,38 @@ export default class QuxConverter extends Converter {
       tempOffsetY = offset.y
     }
 
+    // 2) For container we set the height, and align children in them
     if (this.isContainer(node)) {
-
       node.h = this.computeChildHeight(node) + paddingY * 2;
+      //console.debug(indent, '-', node.name, this.computeChildHeight(node), node.h)
       tempOffsetY = node.h + gapY
-     // console.debug(indent, ' = ', node.name, node.y, node.h + node.y, tempOffsetY)
     }
+
+   // console.debug(indent, node.name, node.y, node.h)
 
 
     return { x: tempOffsetX, y: tempOffsetY };
+  }
+
+  alignChildren (node, indent, paddingY, paddingX) {
+    if (node?.layout?.alignItems === 'center') {
+      const h = node.h - paddingY * 2
+      const childTotalH = this.computeChildHeight(node, false)
+      const dif = h - childTotalH
+      const offsetY = Math.floor(dif/2)
+      for (let child of node.children) {
+        child.y += offsetY
+      } 
+    }
+
+    if (node?.layout?.justifyContent === 'center') {
+      const w = node.w - paddingX * 2
+      for (let child of node.children) {
+        const offSetX = Math.round((w - (child.w))/2) 
+        child.x += offSetX
+      } 
+    }
+
   }
 
   
@@ -158,7 +214,7 @@ export default class QuxConverter extends Converter {
         child.w = this.getColumnChildWidth(child, parentWidth);
         child.y = tempOffsetY;
 
-        this.layoutTree(child, parentWidth, tempOffsetX, tempOffsetY, gapX, gapY, indent + "   ");
+        this.layoutTree(child, parentWidth, tempOffsetX, tempOffsetY, indent + "   ");
         if (!this.isContainer(child)) {
           child.h = this.computeContentHeight(child, parentWidth);
         }
@@ -188,31 +244,41 @@ export default class QuxConverter extends Converter {
         const child = children[i];
         child.y = tempOffsetY;
         child.x = tempOffsetX;
-        child.w = childWidth;
+        child.w = this.getRowChildWidth(child, childWidth)
         
-        this.layoutTree(child, childWidth, tempOffsetX, tempOffsetY, gapX, gapY, indent + "   ");
+        this.layoutTree(child, childWidth, tempOffsetX, tempOffsetY, indent + "   ");
         if (!this.isContainer(child)) {
           child.h = this.computeContentHeight(child, width);
         }
-        tempOffsetX = child.w + tempOffsetX + gapX;
+        tempOffsetX = childWidth + tempOffsetX + gapX;
         maxH = Math.max(maxH, child.h)
       }
 
       if (this.growRowChildrenInHeight) {
         for (let i = 0; i < children.length; i++) {
-              const child = children[i];
-              child.h = this.getRowChildHeight(child, maxH)
+            const child = children[i];
+            child.h = this.getRowChildHeight(child, maxH)
         }
-    }
-
+      }
 
     }
     return { x: tempOffsetX, y: tempOffsetY };
   }
 
-  getColumnChildWidth (node, parentWidth) {
-    if (this.isNoLayoutGrow(node)) {
+  getRowChildWidth (child, childWidth) {
+      if (this.isContainer(child)) {
+          return childWidth;
+      } else {
+          if (this.isLayoutGrow(child)) {
+            return childWidth
+          }
+          return Math.min(childWidth, child.w);
+      }
+  }
 
+  getColumnChildWidth (node, parentWidth) {
+    // add here some logic to deal with flexible labels
+    if (this.isNoLayoutGrow(node)) {
       return node.w
     }
     return parentWidth
@@ -225,15 +291,19 @@ export default class QuxConverter extends Converter {
     return maxH
   }
 
-  computeChildHeight(node) {
+  computeChildHeight(node, includeParent = true) {
     // check here the min as the node.h??
-    let top = 1000000;
-    let bottom = 0;
+    let top = 0;
+    let bottom = 100000;
     node.children.forEach((c) => {
-      top = Math.min(top, c.y);
-      bottom = Math.max(bottom, c.y + c.h);
+      bottom = Math.min(bottom, c.y);
+      top = Math.max(top, c.y + c.h);
     });
-    return bottom - top;
+    const h = top - bottom;
+    if (includeParent) {
+      return Math.max(h, node.h)
+    }
+    return h
   }
 
   computeContentHeight(node, width) {

@@ -67,14 +67,16 @@ export default class Prompts {
     }
 
     jsonFormatScreen() {
+
+        /**
+         *             In addition, an element can have a "layout" object, which is inspired by css flex box and describes 
+            the resize behavior. The "layout" element has one property called "grow" which can have the values 0 and 1.
+            0 means, the element has a fixed size, whereas 1 means it can stretch the the full width of the container.
+         */
         return `
             Please return the result as JSON in the defined language:
         
             The basic building block is an "element". An element has a "type" and can have "children" elements.
-
-            In addition, an element can have a "layout" object, which is inspired by css flex box and describes 
-            the resize behavior. The "layout" element has one property called "grow" which can have the values 0 and 1.
-            0 means, the element has a fixed size, whereas 1 means it can stretch the the full width of the container.
             
             Each element has also a "props" object, which can have additional properties like 
             "label", "placeholder", "type", "options", "columns" and "data".
