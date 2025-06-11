@@ -1,0 +1,16 @@
+{
+  "type": "Button",
+  "name": "Danger Button",
+  "variant": "Disabled",
+  "extends": "Button",
+  "style": {
+    "borderColor": "@button-passive-border-color",
+    "background": "@button-passive-background",
+    "color": "@button-passive-color"
+  },
+  "hover": {
+    "borderColor": "@button-passive-border-color:hover",
+    "background": "@button-passive-background:hover",
+    "color": "@button-passive-color:hover"
+  }
+}

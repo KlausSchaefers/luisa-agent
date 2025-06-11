@@ -24,7 +24,7 @@
     "lineHeight": "@lineHeight",
     "padding": "@card-padding",
     "fontFamily": "@font-family",
-    "borderRadius": "@border-radius",
+    "borderRadius": "@border-radius-l",
     "borderWidth": "@card-border-width",
     "borderColor": "@card-border-color",
     "background": "@container-background",

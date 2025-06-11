@@ -37,6 +37,7 @@ export default {
   },
   "borderRadius": {
     "@border-radius": 4,
+    "@border-radius-l": 8,
     "@border-radius-round": 256,
     "@border-radius-none": 0,
     "@calendar-item-radius": 8
@@ -116,10 +117,10 @@ export default {
     "@button-danger-color:hover": "#FFFFFF",
     "@button-passive-border-color": "#e2e2e2",
     "@button-passive-background": "#e2e2e2",
-    "@button-passive-color": "#000000",
+    "@button-passive-color": "#333333",
     "@button-passive-border-color:hover": "#e2e2e2",
     "@button-passive-background:hover": "#e2e2e2",
-    "@button-passive-color:hover": "#FFFFFF"
+    "@button-passive-color:hover": "#333333"
   },
   "boxShadow": {
     "@box-shadow-s": null,

@@ -9,7 +9,7 @@
           "layout": {
             "direction": "column"
           },
-          "children": [
+          "children": [            
             {
               "type": "Container",
               "props": {
@@ -17,105 +17,57 @@
               },
               "children": [
                 {
-                  "type": "Button",
-                  "props": {
-                    "label": "Button 1"
-                  },
-                  "name": "Button1"
-                },
-                {
-                  "type": "Button",
-                  "props": {
-                    "label": "Button 2"
-                  },
-                  "name": "Button2"
-                }
-              ],
-              "name": "Container"
-            },
-            {
-              "type": "Container",
-              "props": {
-                "direction": "row"
-              },
-              "children": [
-                {
-                  "type": "Container",
+                  "type": "Card",
                   "name": "Buggy",
                   "props": {
                     "direction": "column"
                   },
                   "layout": {
-                    "alignItems": "center",
-                                        "justifyContent": "center"
+             
                   },
                   "children": [
                     {
                       "type": "Button",
                       "props": {
-                        "label": "Log your Activity"
-                      },
-                      "name": "Text",
-                      "w": 128,
-                      "h": 32
+                        "label": "Default"
+                      }
                     },
                     {
                       "type": "Button",
+                      "variant": "Danger",
                       "props": {
-                        "label": "Log your Activity"
-                      },
-                      "name": "Text",
-                      "w": 128,
-                      "h": 32
+                        "label": "Danger"
+                      }
+                    },
+                    {
+                      "type": "Button",
+                      "variant": "Secondary",
+                      "props": {
+                        "label": "Secondary"
+                      }
+                    },
+                    {
+                      "type": "Button",
+                      "variant": "FullWidth",
+                      "props": {
+                        "label": "FullWidth"
+                      }
+                    },
+                    {
+                      "type": "Button",
+                      "variant": "Disabled",
+                      "props": {
+                        "label": "Disabled"
+                      }
                     }
+
+                    
+                    
                   ]
                 },
+               
                 {
-                  "type": "Container",
-                  "props": {
-                    "direction": "column"
-                  },
-                  "layout": {
-                    "justifyContent": "center"
-                  },
-                  "children": [
-                    {
-                      "type": "Button",
-                      "props": {
-                        "label": "Evil1"
-                      },
-                      "layout": {
-                        "grow": 1
-                      },
-                      "name": "Evil1",
-                      "w": 128,
-                      "h": 32
-                    },
-                    {
-                      "type": "Button",
-                      "props": {
-                        "label": "Evil2"
-                      },
-                      "name": "Evil2",
-                      "w": 200,
-                      "h": 32
-                    },
-                    {
-                      "type": "Button",
-                      "props": {
-                        "label": "Evil3"
-                      },
-                      "name": "Evil3",
-                      "w": 128,
-                      "h": 32
-                    }
-                  ],
-                  "name": "Container",
-                  "w": 96,
-                  "h": 40
-                },
-                {
-                  "type": "Container",
+                  "type": "Card",
                   "props": {
                     "direction": "row"
                   },
@@ -123,61 +75,12 @@
                     "alignItems": "center"
                   },
                   "children": [
-                    {
-                      "type": "Button",
-                      "props": {
-                        "label": "Evil1"
-                      },
-                      "name": "Evil1",
-                      "w": 128,
-                      "h": 32
-                    },
-                    {
-                      "type": "Button",
-                      "props": {
-                        "label": "Evil2"
-                      },
-                      "name": "Evil2",
-                      "w": 128,
-                      "h": 32
-                    },
-                    {
-                      "type": "Button",
-                      "props": {
-                        "label": "Evil2"
-                      },
-                      "name": "Evil2",
-                      "w": 128,
-                      "h": 32
-                    },
-                    {
-                      "type": "Button",
-                      "props": {
-                        "label": "Evil2"
-                      },
-                      "name": "Evil2",
-                      "w": 128,
-                      "h": 32
-                    }
+                    
                   ],
-                  "name": "Container",
-                  "w": 96,
-                  "h": 40
+                  "name": "Container"
                 }
               ],
-              "name": "Container",
-              "w": 96,
-              "h": 40
-            },
-            {
-              "type": "Button",
-              "variant": "Danger",
-              "props": {
-                "label": "End"
-              },
-              "name": "Danger",
-              "w": 200,
-              "h": 32
+              "name": "Container"
             }
           ],
           "name": "Container",

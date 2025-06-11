@@ -1,6 +1,8 @@
 import button from './elements/button.json';
 import button_secondary from './elements/button_secondary.json';
 import button_danger from './elements/button_danger.json';
+import button_full_width from './elements/button_full_width.json';
+import button_disabled from './elements/button_disabled.json'; 
 import container from './elements/container.json';
 import input from './elements/input.json';
 import image from './elements/image.json';
@@ -12,12 +14,14 @@ import hero from './elements/hero.json';
 
 export default class Elements {
 
-    constructor() {
+    constructor() {    
         this.elements = {};
         this.register(container);
         this.register(button)
         this.register(button_secondary)
         this.register(button_danger)
+        this.register(button_full_width)
+        this.register(button_disabled)
         this.register(input);
         this.register(image);
         this.register(label);

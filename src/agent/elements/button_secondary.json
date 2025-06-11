@@ -3,9 +3,14 @@
   "variant": "Secondary",
   "extends": "Button",
   "name": "Secondary Button",
-  "style": {
-    "borderColor": "@button-primary-border-color",
-    "background": "#fff",
-    "color": "@button-primary-border-color"
-  }
+ "style": {
+			"borderColor": "@button-secundary-border-color",
+			"background": "@button-secundary-background",
+			"color": "@button-secundary-color"	
+		},
+		"hover": {
+			"borderColor": "@button-secundary-border-color:hover",
+			"background": "@button-secundary-background:hover",
+			"color": "@button-secundary-color:hover"	
+		}
 }

@@ -4,6 +4,13 @@
   "variant": "Danger",
   "extends": "Button",
   "style": {
-    "background": "red"
+    "borderColor": "@button-danger-border-color",
+    "background": "@button-danger-background",
+    "color": "@button-danger-color"
+  },
+  "hover": {
+    "borderColor": "@button-danger-border-color:hover",
+    "background": "@button-danger-background:hover",
+    "color": "@button-danger-color:hover"
   }
 }
