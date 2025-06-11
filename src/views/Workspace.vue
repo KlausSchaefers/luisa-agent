@@ -195,7 +195,7 @@ export default {
         return result.join('\n')
     },
     reRender () {
-      console.debug(this.isDebug)
+
       localStorage.setItem('luisaAppDebug', this.isDebug)
       this.app = null
       this.$nextTick(() => {
@@ -206,8 +206,9 @@ export default {
       const dsl = new DLS()
       if (this.isDebug) {
         dsl.set("@container-border-width", 1)
-        dsl.set("@container-border-color", "blue")
-        dsl.set("@container-padding", 8)
+          .set("@container-border-color", "#123ef099")
+          .set("@container-border-style", "dashed")
+          .set("@container-padding", 16)
       }
       const model = Pipeline.defaultPipeline(dsl).convert(structuredClone(raw))
       const s = this.getScreenSize()

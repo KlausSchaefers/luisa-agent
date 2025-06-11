@@ -25,6 +25,7 @@
     "fontFamily": "@font-family",
     "borderRadius": "@border-radius",
     "borderWidth": "@container-border-width",
+    "borderStyle": "@container-border-style",
     "borderColor": "@container-border-color",
     "background": "@container-background"
   }

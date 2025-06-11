@@ -23,13 +23,17 @@ export default {
   "lineHeight": {
     "@lineHeight": 1.5
   },
+  "borderStyle": {
+    "@container-border-style": "solid"
+  },
   "borderWidth": {
     "@border-width-none": 0,
     "@border-width": 1,
     "@border-width:hover": 1,
     "@border-width:focus": 1,
     "@form-popup-border-width": 1,
-    "@container-border-width": 0
+    "@container-border-width": 0,
+    "@card-border-width": 0
   },
   "borderRadius": {
     "@border-radius": 4,
@@ -41,10 +45,10 @@ export default {
     "@spacing-xs": 4,
     "@spacing-s": 8,
     "@spacing-m": 16,
-    "@spacing-l": 32,
-    "@container-padding": 0
+    "@spacing-l": 32
   },
   "color": {
+    "@card-border-color": "#e2e2e2",
     "@container-background": "transparent",
     "@container-border-color": "#fff",
     "@screen-background": "#FFFFFF",
@@ -121,11 +125,22 @@ export default {
     "@box-shadow-s": null,
     "@box-shadow-m": null,
     "@box-shadow-l": null,
-    "@panel-box-shadow": null
+    "@card-box-shadow": {
+			"v" : 2,
+			"h" : 0,
+			"b" : 16,
+			"s" : 0,
+			"c" : "rgba(0, 0, 0, 0.2)",
+			"i" : false
+		},
   },
   "red": {
     "@label-color": "#000000",
     "@label-color-secondary": "#777"
+  },
+  "padding": {
+    "@container-padding": 0,
+    "@card-padding": 32
   },
   "paddingHorizontal": {
     "@form-padding-horizontal": 8

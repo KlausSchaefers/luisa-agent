@@ -22,11 +22,12 @@
     "textAlign": "left",
     "letterSpacing": "@letterSpacing",
     "lineHeight": "@lineHeight",
-    "padding": 32,
+    "padding": "@card-padding",
     "fontFamily": "@font-family",
     "borderRadius": "@border-radius",
-    "borderWidth": 2,
-    "borderColor": "red",
-    "background": "@container-background"
+    "borderWidth": "@card-border-width",
+    "borderColor": "@card-border-color",
+    "background": "@container-background",
+    "boxShadow": "@card-box-shadow"
   }
 }

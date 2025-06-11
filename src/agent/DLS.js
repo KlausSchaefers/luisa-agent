@@ -9,6 +9,7 @@ export default class DLS {
 
     set(key, value) {
         this.theme[key] = value
+        return this
     }
 
     buildLookup (theme) {
