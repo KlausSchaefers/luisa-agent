@@ -154,14 +154,4 @@ export default class LuisaAgent {
       .map((m) => m.content)
       .join("\n\n");
   }
-
-  parseJSON(content) {
-    if (content.startsWith("```json")) {
-      content = content.substring(8, content.length - 3).trim();
-    }
-    if (content.startsWith("```")) {
-      content = content.substring(3, content.length - 3).trim();
-    }
-    return JSON.parse(content);
-  }
 }

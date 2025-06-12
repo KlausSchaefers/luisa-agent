@@ -70,7 +70,43 @@ export class Converter {
 }
 
 export class LLM {
-  runPrompt(/*messages, progressCallback*/) {
-    throw new Error("Method 'convert' must be implemented.");
+
+  async runEmbedding(/*messages*/) {
+    throw new Error("Method 'txt' must be implemented.");
+  }
+
+  async runPrompt(/*messages*/) {
+    throw new Error("Method 'runPrompt' must be implemented.");
+  }
+
+  async runJSONPrompt(messages) {
+    let res = await this.runPrompt(messages)
+    if (res.error) {
+      return {
+        error: res.error,
+      }
+    }
+    try {
+      const content = res.content;
+      const json = this.parseJSON(content);
+      return {
+        json: json
+      }
+    } catch (err) {
+      console.error('LLM.runJSONPrompt() > ', err.message)
+      return {
+        error: "error-json"
+      }
+    }
+  }
+
+  parseJSON(content) {
+    if (content.startsWith("```json")) {
+      content = content.substring(8, content.length - 3).trim();
+    }
+    if (content.startsWith("```")) {
+      content = content.substring(3, content.length - 3).trim();
+    }
+    return JSON.parse(content);
   }
 }

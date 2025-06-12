@@ -12,8 +12,6 @@
                 <option :value="name" v-for="name in screenNames">{{name}}</option>                
               </select>
 
-     
-      
             </div>
             <div>
               <select v-model="isDebug" class="luisa-select" @change="reRender">            
@@ -169,7 +167,12 @@ export default {
       this.raw = result.raw
       this.finish()
     },
-
+    async computeEmbedding(txt) {
+      const token = localStorage.getItem('luisaOpenAIKey')
+      const llm = new OpenAI(token)
+      const embedding = await llm.runEmbedding(txt)
+      console.debug(embedding)
+    },
     saveModel(app) {
         const s = JSON.stringify(app)
         localStorage.setItem('luisaApp', s)

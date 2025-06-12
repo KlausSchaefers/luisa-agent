@@ -13,6 +13,7 @@ export default class QuxConverter extends Converter {
     this.paddingY = 16;
     this.gapX = 16
     this.gapY = 16
+    this.z = 1
     this.isRemoveContainers = false; 
     this.growRowChildrenInHeight = true
     this.name = 'QuxConverter'
@@ -102,6 +103,7 @@ export default class QuxConverter extends Converter {
 
   setIDs(node) {
       node.id = 'w' + this.getUUID();
+      node.z = this.z++
       if (node.children) {
          node.children.forEach((child) => {
           this.setIDs(child)

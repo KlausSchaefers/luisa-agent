@@ -1,44 +1,27 @@
 import { LLM } from "./Interfaces";
 export default class OpenAI extends LLM {
   
-  constructor(token, model = "gpt-4.1") {
+  constructor(token, model = "gpt-4.1", embeddingModel = 'text-embedding-3-small') {
     super()
     this.token = token;
     this.model = model;
+    this.embeddingModel = embeddingModel
   }
 
-  async runJSONPrompt(messages) {
-    console.debug('runJSONPrompt')
-    let res  = await this.runPrompt(messages)
-    if (res.error) {
-      return {
-        error: res.error,
-      }
-    }
-    try {
-      const content = res.content;
-      const json = this.parseJSON(content);
-      return {
-        json: json
-      }
-    } catch (err) {
-      console.error('OpenAI.runJSONPrompt() > ', err.message)
-      return {
-        error: "error-json"
-      }
-    }
-  }
+   async runEmbedding(txt) {
 
-  parseJSON(content) {
-    if (content.startsWith("```json")) {
-      content = content.substring(8, content.length - 3).trim();
-    }
-    if (content.startsWith("```")) {
-      content = content.substring(3, content.length - 3).trim();
-    }
-    return JSON.parse(content);
+      const data = {
+        input: txt,
+        model: this.embeddingModel
+      };
+      const res = await this._post("https://api.openai.com/v1/embeddings", data);
+      if (res.data && res.data.length === 1) {
+        return res.data[0].embedding
+      }
+      return {
+        error: "error-embedding"
+      }
   }
-
 
   async runPrompt(messages) {
     const data = {
@@ -103,7 +86,7 @@ export default class OpenAI extends LLM {
               resolve(j);
             });
           } else {
-            this.onError(url, res);
+            console.error("OpenAI._post", res)
             reject(new Error("Could not post " + url));
           }
         })
