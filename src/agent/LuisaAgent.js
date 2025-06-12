@@ -88,27 +88,18 @@ export default class LuisaAgent {
       },
       { role: "user", content: prompt },
     ];
-    const res = await this.llm.runPrompt(aiMessages);
+    const res = await this.llm.runJSONPrompt(aiMessages);
     if (res.error) {
       return {
         error: res.error,
       };
     }
-
-    try {
-      const content = res.content;
-      const raw = this.parseJSON(content);
-
-      return {
-        app: raw,
-        prompt: prompt,
-        usage: res.usage,
-      };
-    } catch (err) {
-      return {
-        error: "Something went wrong when parsing " + err.message,
-      };
-    }
+    return {
+      app: res.json,
+      prompt: prompt,
+      usage: res.usage,
+    };
+   
   }
 
   async createScreen(message, currentModel) {
@@ -137,27 +128,18 @@ export default class LuisaAgent {
       { role: "user", content: prompt },
     ];
 
-    const res = await this.llm.runPrompt(aiMessages);
+    const res = await this.llm.runJSONPrompt(aiMessages);
     if (res.error) {
       return {
         error: res.error,
-      };
+      }
     }
-
-    try {
-      const content = res.content;
-      const raw = this.parseJSON(content);
-
-      return {
-        raw: raw,
-        prompt: prompt,
-        usage: res.usage,
-      };
-    } catch (err) {
-      return {
-        error: "Something went wrong when parsing",
-      };
-    }
+    return {
+      raw: res.json,
+      prompt: prompt,
+      usage: res.usage,
+    };
+    
   }
 
   onProgress (message) {

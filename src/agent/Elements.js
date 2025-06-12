@@ -6,7 +6,6 @@ import label from "./elements/label";
 import headline from "./elements/headline";
 import sub_headline from "./elements/sub_headline";
 import screen from "./elements/screen";
-import login from "./elements/login";
 import card from "./elements/card";
 import hero from "./elements/hero";
 
@@ -24,7 +23,6 @@ export default class Elements {
 
     this.registerComplex(card);
     this.registerComplex(hero);
-    this.registerComplex(login);
 
     this.fillExtensions();
 

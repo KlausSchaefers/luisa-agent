@@ -19,6 +19,60 @@
                 {
                   "type": "Card",
                   "name": "Buggy",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                     {
+                      "type": "Label",
+                      "props": {
+                        "label": "Text"
+                      }
+                    },
+                    {
+                      "type": "Input",
+                      "props": {
+                        	"label": "Enter a value"
+                      }
+                    },
+                     {
+                      "type": "Label",
+                      "props": {
+                        "label": "Password"
+                      }
+                    },
+                    {
+                      "type": "Password",
+                       "props": {
+                        	"label": "Enter a value"
+                      }
+                    }
+                    
+                  ]
+                },
+               
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    
+                  ],
+                  "name": "Container"
+                }
+              ],
+              "name": "Container"
+            },
+             {
+              "type": "Container",
+              "props": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Card",
+                  "name": "Buggy",
                   "props": {
                     "direction": "column"
                   },

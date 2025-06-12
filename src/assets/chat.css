@@ -16,8 +16,7 @@
   color: var(--chat-message-color);
   padding: var(--space-m);
   border-radius: var(--raduis-m);
-  padding-bottom: 16px;
-  padding-top: 8px;
+  font-size: 12px;
 }
 
 .luisa-chat-message-settings {
@@ -35,6 +34,12 @@
 .luisa-chat-message-header {
   display: flex;
   justify-content: flex-end;
+  height: 8px;
+}
+
+.luisa-chat-message-body {
+  padding: 0px 8px;
+  padding-bottom: 16px;
 }
 
 .luisa-chat-message-header svg{

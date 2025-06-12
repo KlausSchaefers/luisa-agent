@@ -1,8 +1,12 @@
-export default {
+export default [{
   id: "TextBox",
   type: "Input",
   name: "Text Box",
-  description: "The input elements renders as a text box, and allows users to enter text. The input field has a 'placeholder' property in the 'props' object, which gives the user a hint. An input field should have in most cases a label before.",
+  description: `
+The input element renders as a text box, and allows users to enter text. 
+The input field has a 'label' property in the 'props' object, which gives the user a hint as placeholder. 
+An input field should have in most cases a label before.
+`,
   x: 0,
   y: 0,
   w: "@form-width",
@@ -53,4 +57,36 @@ export default {
     background: "@form-background:error",
     color: "@form-color:error"
   }
+},
+{
+  type: "Password",
+  extends: "Input",
+  name: "Password  (Hide & Show)",
+  description: `
+The password element renders as a text box, and allows users to enter passwords. 
+The password field has a 'label' property in the 'props' object, which gives the user a hint as placeholder. 
+An password field should have in most cases a label before.
+`,
+  z: 0,
+  x: 0,
+  y: 0,
+  w: "@form-width",
+  h: "@form-height",
+  props: {
+    label: "",
+    cleartext: true,
+    cleartextHideLabel: "Hide",
+    cleartextShowLabel: "Show"
+  },
+  has: {
+    label: true,
+    backgroundColor: true,
+    border: true,
+    editable: true,
+    onclick: true,
+    padding: true
+  },
+  style: {			
+  }
 }
+]

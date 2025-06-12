@@ -7,6 +7,39 @@ export default class OpenAI extends LLM {
     this.model = model;
   }
 
+  async runJSONPrompt(messages) {
+    console.debug('runJSONPrompt')
+    let res  = await this.runPrompt(messages)
+    if (res.error) {
+      return {
+        error: res.error,
+      }
+    }
+    try {
+      const content = res.content;
+      const json = this.parseJSON(content);
+      return {
+        json: json
+      }
+    } catch (err) {
+      console.error('OpenAI.runJSONPrompt() > ', err.message)
+      return {
+        error: "error-json"
+      }
+    }
+  }
+
+  parseJSON(content) {
+    if (content.startsWith("```json")) {
+      content = content.substring(8, content.length - 3).trim();
+    }
+    if (content.startsWith("```")) {
+      content = content.substring(3, content.length - 3).trim();
+    }
+    return JSON.parse(content);
+  }
+
+
   async runPrompt(messages) {
     const data = {
         model: this.model,
@@ -28,22 +61,22 @@ export default class OpenAI extends LLM {
       if (res.error) {
         if (res.error.code === "invalid_api_key") {
           return {
-            error: "design-gpt.error-server-key",
+            error: "error-server-key",
           };
         }
         if (res.error.code === "insufficient_quota") {
           return {
-            error: "design-gpt.error-insufficient_quota",
+            error: "error-insufficient_quota",
           };
         }
       }
     } catch (err) {
       return {
-        error: "design-gpt.error-server",
+        error: "error-server",
       };
     }
     return {
-      error: "design-gpt.error-no-idea",
+      error: "error-no-idea",
     };
   }
 
