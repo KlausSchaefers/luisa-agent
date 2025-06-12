@@ -1,0 +1,58 @@
+export default {
+  id: "HeroSection",
+  type: "HeroSection",
+  name: "HeroSection",
+  container: true,
+  description: "The login element allows users to enter their email and password in text fields. The element can not have any children",
+  x: 0,
+  y: 0,
+  w: "@box-width-l",
+  h: 600,
+  z: 0,
+  props: {},
+  layout: {
+    alignItems: "center"
+  },
+  has: {
+    backgroundColor: true,
+    border: true
+  },
+  actions: {},
+  style: {
+    fontSize: "@font-size-m",
+    textAlign: "left",
+    letterSpacing: "@letterSpacing",
+    lineHeight: "@lineHeight",
+    padding: 24,
+    fontFamily: "@font-family",
+    borderRadius: "@border-radius",
+    borderWidth: "@border-width",
+    borderColor: "orange",
+    background: "orange"
+  },
+  children: [
+    {
+      type: "Label",
+      name: "Headline",
+      props: {
+        label: "@headline"
+      },
+      style: {
+        fontSize: "@font-size-xxl",
+        textAlign: "center"
+      },
+      h: 96
+    },
+    {
+      type: "Label",
+      name: "SubHeading",
+      props: {
+        label: "@subheading"
+      },
+      style: {
+        fontSize: "@font-size-m",
+        textAlign: "center"
+      }
+    }
+  ]
+}

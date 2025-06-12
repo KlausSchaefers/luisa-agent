@@ -1,0 +1,42 @@
+export default {
+  id: "Login",
+  type: "Login",
+  name: "Login",
+  description: `
+The login element allows users to enter their email and password 
+in text fields. The element can not have any children
+  `,
+  x: 0,
+  y: 0,
+  w: "@box-width-l",
+  h: "@box-height-l",
+  z: 0,
+  props: {},
+  has: {
+    backgroundColor: true,
+    border: true
+  },
+  actions: {},
+  style: {
+    fontSize: "@font-size-m",
+    textAlign: "left",
+    letterSpacing: "@letterSpacing",
+    lineHeight: "@lineHeight",
+    fontFamily: "@font-family",
+    borderRadius: "@border-radius",
+    borderWidth: "@border-width",
+    borderColor: "@container-background",
+    background: "@container-background"
+  },
+  children: [
+    {
+      type: "Label",
+      props: {
+        label: "Lore Ipsum"
+      }
+    },
+    {
+      type: "Input"
+    }
+  ]
+}

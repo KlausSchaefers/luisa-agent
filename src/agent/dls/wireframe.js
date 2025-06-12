@@ -15,6 +15,7 @@ export default {
   },
   "fontWeight": {
     "@font-weight": "",
+    "@font-weight-bold": 500,
     "@label-font-weight-default": "",
     "@label-font-weight-bold": "bold"
   },

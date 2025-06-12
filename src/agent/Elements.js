@@ -1,14 +1,14 @@
-import button from "./elements/button.js";
-import container from "./elements/container.js";
-import input from "./elements/input.json";
-import image from "./elements/image.json";
-import label from "./elements/label.json";
-import headline from "./elements/headline.json";
-import sub_headline from "./elements/sub_headline.json";
-import screen from "./elements/screen.json";
-import login from "./elements/login.json";
-import card from "./elements/card.json";
-import hero from "./elements/hero.json";
+import button from "./elements/button";
+import container from "./elements/container";
+import input from "./elements/input";
+import image from "./elements/image";
+import label from "./elements/label";
+import headline from "./elements/headline";
+import sub_headline from "./elements/sub_headline";
+import screen from "./elements/screen";
+import login from "./elements/login";
+import card from "./elements/card";
+import hero from "./elements/hero";
 
 export default class Elements {
   constructor() {

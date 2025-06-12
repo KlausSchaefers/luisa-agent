@@ -78,6 +78,20 @@
                         "label": "Label"
                       }
                     },
+                    {
+                      "type": "Label",
+                      "variant": "Hint",
+                      "props": {
+                        "label": "Hint..."
+                      }
+                    },
+                    {
+                      "type": "Label",
+                      "variant": "Emphasis",
+                      "props": {
+                        "label": "Emphasis..."
+                      }
+                    },
                      {
                       "type": "SubHeadline",
                       "props": {
