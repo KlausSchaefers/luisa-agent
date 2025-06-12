@@ -7,7 +7,8 @@ export default {
     "@font-size-m": 14,
     "@font-size-l": 18,
     "@font-size-xl": 24,
-    "@font-size-xxl": 64,
+    "@font-size-xxl": 32,
+    "@font-size-xxxl": 64
   },
   "fontFamily": {
     "@font-family": "Helvetica Neue,Helvetica,Arial,sans-serif"

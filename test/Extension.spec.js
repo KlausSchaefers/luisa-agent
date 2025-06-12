@@ -3,7 +3,7 @@ import { expect, test } from 'vitest'
 import Elements  from '../src/agent/Elements'
 
 import button_danger  from '../src/agent/elements/button_danger.json'
-import button  from '../src/agent/elements/button.json'
+import button  from '../src/agent/elements/button.js'
 
 test('Test Elements >  ', async () => {
 

@@ -135,11 +135,15 @@ export default class Prompts {
     }
 
     elements(elements) {
-        let result = "You can use the following elements to create your design:\n";
+        let result = "You can use the following elements to create your design:\n\n";
 
         const all = elements.getAll()
-        result += all.map(e => `"${e.type}" : ${e.description}`).join('\n\n')
+        result += all.map(e => `"${e.type}" : ${this.trim(e.description)}`).join('\n\n')
 
         return result
+    }
+
+    trim(s) {
+        return s.replace('\t', ' ').trim()
     }
 }    

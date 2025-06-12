@@ -1,8 +1,8 @@
-{
+[{
   "id": "Label",
   "type": "Label",
   "name": "Text",
-  "description": "An Element that can show text. It has a 'label' value in the 'props' object. It should be used for labels as the default element for text.",
+  "description": "An Element that can show text. It has a 'label' value in the 'props' object. It should be used for labels as the default element for all kind text. The label can have variants",
   "x": 0,
   "y": 0,
   "w": "@box-width-xl",
@@ -26,3 +26,4 @@
     "textShadow": null
   }
 }
+]

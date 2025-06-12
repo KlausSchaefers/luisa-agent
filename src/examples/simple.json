@@ -68,14 +68,28 @@
                
                 {
                   "type": "Card",
-                  "props": {
-                    "direction": "row"
-                  },
-                    "layout": {
-                    "alignItems": "center"
+                  "layout": {
+                    "direction": "column"
                   },
                   "children": [
-                    
+                     {
+                      "type": "Label",
+                      "props": {
+                        "label": "Label"
+                      }
+                    },
+                     {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "SubHeadline"
+                      }
+                    },
+                    {
+                      "type": "Headline",
+                      "props": {
+                        "label": "Headline"
+                      }
+                    }
                   ],
                   "name": "Container"
                 }

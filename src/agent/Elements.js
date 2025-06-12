@@ -1,106 +1,108 @@
-import button from './elements/button.json';
-import button_secondary from './elements/button_secondary.json';
-import button_danger from './elements/button_danger.json';
-import button_full_width from './elements/button_full_width.json';
-import button_disabled from './elements/button_disabled.json'; 
-import container from './elements/container.json';
-import input from './elements/input.json';
-import image from './elements/image.json';
-import label from './elements/label.json';
-import screen from './elements/screen.json';
-import login from './elements/login.json';
-import card from './elements/card.json';
-import hero from './elements/hero.json';
+import button from "./elements/button.js";
+import container from "./elements/container.js";
+import input from "./elements/input.json";
+import image from "./elements/image.json";
+import label from "./elements/label.json";
+import headline from "./elements/headline.json";
+import sub_headline from "./elements/sub_headline.json";
+import screen from "./elements/screen.json";
+import login from "./elements/login.json";
+import card from "./elements/card.json";
+import hero from "./elements/hero.json";
 
 export default class Elements {
+  constructor() {
+    this.elements = {};
+    this.register(container);
+    this.register(button);
+    this.register(input);
+    this.register(image);
+    this.register(label);
+    this.register(headline);
+    this.register(sub_headline);
+    this.register(screen);
 
-    constructor() {    
-        this.elements = {};
-        this.register(container);
-        this.register(button)
-        this.register(button_secondary)
-        this.register(button_danger)
-        this.register(button_full_width)
-        this.register(button_disabled)
-        this.register(input);
-        this.register(image);
-        this.register(label);
-        this.register(screen);
-        this.register(card)
-        this.register(hero)
+    this.registerComplex(card);
+    this.registerComplex(hero);
+    this.registerComplex(login);
 
-        this.registerComplex(login)
+    this.fillExtensions();
 
-        this.fillExtensions()
+    //console.debug(Object.keys(this.elements))
+  }
 
-        //console.debug(Object.keys(this.elements))
-    }
+  fillExtensions() {
+    const properties = ["props", "has", "layout", "style", "hover", "error", "active", "focus", "checked"];
+    for (let key in this.elements) {
+      const element = this.elements[key];
+      if (element.extends) {
+        if (this.elements[element.extends]) {
+          const parent = this.elements[element.extends];
 
-    fillExtensions () {
-        const properties = ['props', 'has', 'layout', 'style', 'hover', 'error', 'active', 'focus', 'checked']
-        for (let key in this.elements) {
-            const element = this.elements[key]
-            if (element.extends) {
-                if (this.elements[element.extends]) {
-                    const parent = this.elements[element.extends]
-                    
-                    for (let p of properties) {
-                        if (parent[p]) {
-                            if (!element[p]) {
-                                element[p] = {}
-                            }
-                            this.mixin(element[p], parent[p])
-                        }
-                    }                    
-
-                    if (element.w === undefined) {
-                        element.w = parent.w
-                    }
-                    if (element.h === undefined) {
-                        element.h = parent.h
-                    }
-                } else {
-                    console.warn("Elements.fillExtensions() > No parent", e.extends)
-                }
+          for (let p of properties) {
+            if (parent[p]) {
+              if (!element[p]) {
+                element[p] = {};
+              }
+              this.mixin(element[p], parent[p]);
             }
+          }
+
+          if (element.w === undefined) {
+            element.w = parent.w;
+          }
+          if (element.h === undefined) {
+            element.h = parent.h;
+          }
+        } else {
+          console.warn("Elements.fillExtensions() > No parent", e.extends);
         }
+      }
     }
+  }
 
-    mixin (element, parent) {
-        for (let key in parent) {
-            if (element[key] === undefined) {
-                element[key] = parent[key]
-            }
-        }
+  mixin(element, parent) {
+    for (let key in parent) {
+      if (element[key] === undefined) {
+        element[key] = parent[key];
+      }
     }
+  }
 
-    getAll() {
-        // filter out variants
-        return Object.values(this.elements).filter(e => !e.variant)
-    }
+  getAll() {
+    // filter out variants
+    return Object.values(this.elements).filter((e) => !e.variant);
+  }
 
-    get(e) {
-        let k = this.getKey(e)
-        if (this.elements[k]) {
-            return this.elements[k]
-        }
-        return this.elements[e.type]
+  get(e) {
+    let k = this.getKey(e);
+    if (this.elements[k]) {
+      return this.elements[k];
     }
+    return this.elements[e.type];
+  }
 
-    getKey(e) {
-        if (e.variant) {
-            return e.type + "." + e.variant
-        }
-        return e.type
+  getKey(e) {
+    if (e.variant) {
+      return e.type + "." + e.variant;
     }
-    
-    registerComplex (e) {
-        // make a different list later?
-        this.register(e)
-    }
+    return e.type;
+  }
 
-    register(e) {
-        let k = this.getKey(e)
+  registerComplex(e) {
+    // make a different list later?
+    this.register(e);
+  }
+
+  register(e) {
+    if (Array.isArray(e)) {
+      for (let x of e) {
+        this.register(x);
+      }
+    } else {
+        let k = this.getKey(e);
         this.elements[k] = e;
     }
+
+  }
 }

@@ -21,7 +21,9 @@ export default class QuxConverter extends Converter {
       'Container': 'Box',
       'Card': 'Box',
       'HeroSection': 'Box',
-      'Input': 'TextBox'
+      'Input': 'TextBox',
+      'Headline': 'Label',
+      'SubHeadline': 'Label'
     }
   }
 
@@ -180,7 +182,7 @@ export default class QuxConverter extends Converter {
       tempOffsetY = node.h + gapY
     }
 
-   // console.debug(indent, node.name, node.y, node.h)
+    console.debug(indent, node.name, node.w)
 
 
     return { x: tempOffsetX, y: tempOffsetY };
