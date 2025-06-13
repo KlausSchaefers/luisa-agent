@@ -35,7 +35,7 @@
                         	"label": "Enter a value"
                       }
                     },
-                     {
+                    {
                       "type": "Label",
                       "props": {
                         "label": "Password"
@@ -43,6 +43,18 @@
                     },
                     {
                       "type": "Password",
+                       "props": {
+                        	"label": "Enter a value"
+                      }
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "TextArea"
+                      }
+                    },
+                    {
+                      "type": "TextArea",
                        "props": {
                         	"label": "Enter a value"
                       }
@@ -57,7 +69,39 @@
                     "direction": "column"
                   },
                   "children": [
-                    
+                     {
+                      "type": "CheckBox",
+                       "props": {
+                        	"label": "Checky Maccy"
+                      }
+                    },
+                    {
+                      "type": "CheckBoxGroup",
+                       "props": {
+                        	"options": ["A", "B", "C", "D"]
+                      }
+                    }
+                  ],
+                  "name": "Container"
+                },
+                 {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "RadioBox",
+                       "props": {
+                        	"label": "Radio"
+                      }
+                    },
+                     {
+                      "type": "RadioGroup",
+                       "props": {
+                        	"options": ["A", "B", "C"]
+                      }
+                    }
                   ],
                   "name": "Container"
                 }

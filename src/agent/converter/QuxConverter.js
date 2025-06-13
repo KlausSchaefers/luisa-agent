@@ -24,7 +24,8 @@ export default class QuxConverter extends Converter {
       'HeroSection': 'Box',
       'Input': 'TextBox',
       'Headline': 'Label',
-      'SubHeadline': 'Label'
+      'SubHeadline': 'Label',
+      'RadioBox': 'LabeledRadioBox'
     }
   }
 
@@ -179,12 +180,12 @@ export default class QuxConverter extends Converter {
 
     // 2) For container we set the height, and align children in them
     if (this.isContainer(node)) {
-      node.h = this.computeChildHeight(node) + paddingY * 2;
-      //console.debug(indent, '-', node.name, this.computeChildHeight(node), node.h)
+      node.h = this.computeChildrenHeight(node) + paddingY * 2;
+      //console.debug(indent, '-', node.name, this.computeChildrenHeight(node), node.h)
       tempOffsetY = node.h + gapY
     }
 
-    console.debug(indent, node.name, node.w)
+   // console.debug(indent, node.name, node.w)
 
 
     return { x: tempOffsetX, y: tempOffsetY };
@@ -193,7 +194,7 @@ export default class QuxConverter extends Converter {
   alignChildren (node, indent, paddingY, paddingX) {
     if (node?.layout?.alignItems === 'center') {
       const h = node.h - paddingY * 2
-      const childTotalH = this.computeChildHeight(node, false)
+      const childTotalH = this.computeChildrenHeight(node, false)
       const dif = h - childTotalH
       const offsetY = Math.floor(dif/2)
       for (let child of node.children) {
@@ -202,11 +203,24 @@ export default class QuxConverter extends Converter {
     }
 
     if (node?.layout?.justifyContent === 'center') {
-      const w = node.w - paddingX * 2
-      for (let child of node.children) {
-        const offSetX = Math.round((w - (child.w))/2) 
-        child.x += offSetX
-      } 
+      if (this.isRowContainer(node)) {
+          const w = node.w - paddingX * 2
+          const childTotalW = this.computeChildrenWidth(node, false)
+          //console.debug(indent, node.name, w, childTotalW)
+          const dif = w - childTotalW
+          const offsetX = Math.floor(dif/2)
+          for (let child of node.children) {
+            //const offsetX = Math.round((w - (child.w))/2) 
+            child.x += offsetX
+          } 
+      } else {
+          const w = node.w - paddingX * 2
+          for (let child of node.children) {
+            const offsetX = Math.round((w - (child.w))/2) 
+            child.x += offsetX
+          } 
+      }
+     
     }
 
   }
@@ -258,7 +272,7 @@ export default class QuxConverter extends Converter {
         if (!this.isContainer(child)) {
           child.h = this.computeContentHeight(child, width);
         }
-        tempOffsetX = childWidth + tempOffsetX + gapX;
+        tempOffsetX = child.w + tempOffsetX + gapX;
         maxH = Math.max(maxH, child.h)
       }
 
@@ -299,7 +313,7 @@ export default class QuxConverter extends Converter {
     return maxH
   }
 
-  computeChildHeight(node, includeParent = true) {
+  computeChildrenHeight(node, includeParent = true) {
     // check here the min as the node.h??
     let top = 0;
     let bottom = 100000;
@@ -313,6 +327,21 @@ export default class QuxConverter extends Converter {
     }
     return h
   }
+
+  computeChildrenWidth(node, includeParent = true) {
+      // check here the min as the node.h??
+      let left = 100000;
+      let right = 0;
+      node.children.forEach((c) => {
+        left = Math.min(left, c.x);
+        right = Math.max(right, c.x + c.w);
+      });
+      const w = right - left;
+      if (includeParent) {
+        return Math.max(w, node.w)
+      }
+      return w
+    }
 
   computeContentHeight(node, width) {
     let result = node.h;

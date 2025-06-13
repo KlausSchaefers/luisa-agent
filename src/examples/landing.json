@@ -1,0 +1,46 @@
+{
+  "screens": [
+    {
+      "type": "Screen",
+      "name": "Login Screen",
+      "children": [
+            {
+                "type": "Nav",
+                "children": [
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Nav 1"
+                      }
+                    },
+                     {
+                      "type": "Button",
+                      "props": {
+                        "label": "Nav 2"
+                      }
+                    },
+                     {
+                      "type": "Button",
+                      "props": {
+                        "label": "Nav 3"
+                      }
+                    }
+                ]
+            },
+            {
+              "type": "HeroSection",
+              "name": "Hero Instance 1",
+              "props": {
+                "headline": "This is the headline",
+                "subheading": "Luisa Agent - The fastest you can get"
+              }
+            }
+          
+        
+      ],
+      "props": {
+        "start": false
+      }
+    }
+  ]
+}

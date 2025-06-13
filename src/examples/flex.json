@@ -33,6 +33,30 @@
               ],
               "name": "Container"
             },
+              {
+              "type": "Container",
+              "layout": {
+                "direction": "row",
+                "justifyContent": "center"
+              },
+              "children": [
+                {
+                  "type": "Button",
+                  "props": {
+                    "label": "Button 1"
+                  },
+                  "name": "Button1"
+                },
+                {
+                  "type": "Button",
+                  "props": {
+                    "label": "Button 2"
+                  },
+                  "name": "Button2"
+                }
+              ],
+              "name": "ContainerCenterTop"
+            },
             {
               "type": "Container",
               "props": {

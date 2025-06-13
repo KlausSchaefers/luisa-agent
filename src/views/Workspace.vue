@@ -29,7 +29,7 @@
             <div  v-if="status.busy" class="luisa-main-content-loading">
                 {{progressMessage}}
             </div>
-            <div  v-else :class="'luisa-preview-size-' + this.size" :style="'max-width:' + getScreenSize().w + 'px;  min-height:' + getScreenSize().h + 'px'">
+            <div  v-else :class="'luisa-preview-size-' + this.size" :style="'max-width:' + getScreenSize().w + 'px; width:100%;  min-height:' + getScreenSize().h + 'px'">
               <Preview :app="app" :screen="selectedScreen"></Preview>
             </div>
         </div>
@@ -57,6 +57,8 @@ import grid from '../examples/grid'
 import hero from '../examples/hero'
 import flex from '../examples/flex'
 import simple from '../examples/simple'
+import landing from '../examples/landing'
+
 
 const examples = {
   'fitness': fitness,
@@ -64,7 +66,8 @@ const examples = {
   'grid': grid,
   'hero': hero,
   "flex": flex,
-  "simple": simple
+  "simple": simple,
+  "landing": landing
 }
 
 export default {
@@ -116,7 +119,7 @@ export default {
       if (this.size === 'm') {
         return {w: 414, h: 896}
       }
-      return {w: 1024, h: 720}
+      return {w: 800, h: 720}
     },
 
     getConfig() {

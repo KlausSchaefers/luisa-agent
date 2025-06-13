@@ -30,6 +30,17 @@ export default class DesignConverter extends Converter {
         element.h = data.h || 0;
       }
       this.dsl.replaceVariables(element);
+
+      if (data.computeDynamicSize) {
+        const size = data.computeDynamicSize(element)
+        if (size.w) {
+          element.w = size.w
+        }
+        if (element.h) {
+          element.h = size.h
+        }
+        console.debug('computeDynamicSize', element.name, element.h)
+      }
     } else {
       console.warn(`${this.name}.convertElement() > Element type ${element.type} not found in elements.`);
     }

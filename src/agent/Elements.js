@@ -5,13 +5,17 @@ import image from "./elements/image";
 import label from "./elements/label";
 import headline from "./elements/headline";
 import sub_headline from "./elements/sub_headline";
+import checkbox from "./elements/checkbox";
+import radio from "./elements/radio";
 import screen from "./elements/screen";
+import nav from "./elements/nav";
 import card from "./elements/card";
 import hero from "./elements/hero";
 
 export default class Elements {
   constructor() {
     this.elements = {};
+    this.register(screen);
     this.register(container);
     this.register(button);
     this.register(input);
@@ -19,10 +23,13 @@ export default class Elements {
     this.register(label);
     this.register(headline);
     this.register(sub_headline);
-    this.register(screen);
+    this.register(checkbox)
+    this.register(radio)
+    this.register(nav)
 
     this.registerComplex(card);
     this.registerComplex(hero);
+    
 
     this.fillExtensions();
 
