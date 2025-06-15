@@ -2,6 +2,7 @@
 import PropsConverter from './converter/PropsConverter'
 import DesignConverter  from './converter/DesignConverter'
 import ComplexConverter from './converter/ComplexConverter'
+import ErrorCorrector from './converter/ErrorCorrector'
 import Elements  from './Elements'
 
 
@@ -16,10 +17,11 @@ export default class Pipeline {
       throw new Error("Please pass DLS object")
     }
     const elements = new Elements()
+    const error = new ErrorCorrector(elements);
     const complex = new ComplexConverter(elements);
     const design = new DesignConverter(elements, dls)
     const props = new PropsConverter(elements)
-    return new Pipeline([complex, props, design])
+    return new Pipeline([complex, props, design, error])
   }
 
   addConverter(converter) {

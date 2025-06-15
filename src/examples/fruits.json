@@ -4,491 +4,290 @@
       "type": "Screen",
       "children": [
         {
-          "type": "Container",
+          "type": "Nav",
+          "layout": {
+            "direction": "row"
+          },
           "children": [
             {
-              "type": "Nav",
-              "children": [                         
-                    {
-                      "type": "NavLink",
-                      "props": {
-                        "label": "Fruit Selector"
-                      },
-                      "variant": "Active"
-                    },
-                    {
-                      "type": "NavLink",
-                      "props": {
-                        "label": "Browse"
-                      },
-                      "variant": "Default"
-                    },
-                    {
-                      "type": "NavLink",
-                      "props": {
-                        "label": "Favorites"
-                      },
-                      "variant": "Default"
-                    },
-                    {
-                      "type": "NavLink",
-                      "props": {
-                        "label": "Help"
-                      },
-                      "variant": "Default"
-                    }
-              ],
+              "type": "Image",
+              "props": {
+                "value": "https://example.com/logo_freshfruit.png"
+              },
               "layout": {
-                "direction": "row"
+                "width": "60px",
+                "height": "60px",
+                "marginRight": "16px"
               }
             },
             {
-              "type": "Section",
+              "type": "NavLink",
+              "props": {
+                "label": "Home"
+              },
+              "variant": "Active"
+            },
+            {
+              "type": "NavLink",
+              "props": {
+                "label": "Catalog"
+              }
+            },
+            {
+              "type": "NavLink",
+              "props": {
+                "label": "Promotions"
+              }
+            },
+            {
+              "type": "NavLink",
+              "props": {
+                "label": "Contact Us"
+              }
+            },
+            {
+              "type": "NavLink",
+              "props": {
+                "label": "Subscribe"
+              },
+              "variant": "CallToAction"
+            }
+          ]
+        },
+       
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "row"
+          },
+          "children": [
+            {
+              "type": "Container",
+              "layout": {
+                "direction": "column"
+              },
+              "name": "MustGrow",
               "children": [
                 {
                   "type": "Headline",
                   "props": {
-                    "label": "Select Your Favorite Fruits"
+                    "label": "Promotions & Best Sellers"
                   }
                 },
                 {
-                  "type": "Container",
-                  "props": {},
+                  "type": "Card",
+                  "layout": {
+                    "direction": "row"
+                  },
                   "children": [
                     {
-                      "type": "Container",
-                      "children": [
-                        {
-                          "type": "Container",
-                          "props": {},
-                          "children": [
-                            {
-                              "type": "Container",
-                              "children": [
-                                {
-                                  "type": "Input",
-                                  "props": {
-                                    "label": "Search fruits..."
-                                  }
-                                }
-                              ],
-                              "layout": {
-                                "direction": "row"
-                              }
-                            },
-                            {
-                              "type": "Container",
-                              "children": [
-                                {
-                                  "type": "Label",
-                                  "props": {},
-                                  "children": [
-                                    {
-                                      "type": "Label",
-                                      "props": {
-                                        "label": "Your Selection:"
-                                      },
-                                      "variant": "Emphasis"
-                                    },
-                                    {
-                                      "type": "Label",
-                                      "props": {
-                                        "label": "No fruits selected"
-                                      },
-                                      "variant": "Hint"
-                                    }
-                                  ]
-                                }
-                              ],
-                              "layout": {
-                                "direction": "column"
-                              }
-                            }
-                          ]
-                        }
-                      ],
+                      "type": "Image",
+                      "props": {
+                        "value": "https://example.com/orange_deal.jpg"
+                      },
                       "layout": {
-                        "direction": "row"
+                        "height": "80px"
                       }
                     },
                     {
                       "type": "Container",
-                      "children": [
-                        {
-                          "type": "Card",
-                          "props": {},
-                          "children": [
-                            {
-                              "type": "Card",
-                              "children": [
-                                {
-                                  "type": "Image",
-                                  "props": {
-                                    "value": "https://images.unsplash.com/photo-1502741338009-cac2772e18bc"
-                                  }
-                                },
-                                {
-                                  "type": "SubHeadline",
-                                  "props": {
-                                    "label": "Apple"
-                                  }
-                                },
-                                {
-                                  "type": "CheckBox",
-                                  "props": {
-                                    "label": "Select"
-                                  }
-                                }
-                              ],
-                              "layout": {
-                                "direction": "column"
-                              }
-                            },
-                            {
-                              "type": "Card",
-                              "children": [
-                                {
-                                  "type": "Image",
-                                  "props": {
-                                    "value": "https://images.unsplash.com/photo-1465101178521-c1a9136a0a42"
-                                  }
-                                },
-                                {
-                                  "type": "SubHeadline",
-                                  "props": {
-                                    "label": "Banana"
-                                  }
-                                },
-                                {
-                                  "type": "CheckBox",
-                                  "props": {
-                                    "label": "Select"
-                                  }
-                                }
-                              ],
-                              "layout": {
-                                "direction": "column"
-                              }
-                            },
-                            {
-                              "type": "Card",
-                              "children": [
-                                {
-                                  "type": "Image",
-                                  "props": {
-                                    "value": "https://images.unsplash.com/photo-1506806732259-39c2d0268443"
-                                  }
-                                },
-                                {
-                                  "type": "SubHeadline",
-                                  "props": {
-                                    "label": "Orange"
-                                  }
-                                },
-                                {
-                                  "type": "CheckBox",
-                                  "props": {
-                                    "label": "Select"
-                                  }
-                                }
-                              ],
-                              "layout": {
-                                "direction": "column"
-                              }
-                            },
-                            {
-                              "type": "Card",
-                              "children": [
-                                {
-                                  "type": "Image",
-                                  "props": {
-                                    "value": "https://images.unsplash.com/photo-1519183071298-a2962be56693"
-                                  }
-                                },
-                                {
-                                  "type": "SubHeadline",
-                                  "props": {
-                                    "label": "Strawberry"
-                                  }
-                                },
-                                {
-                                  "type": "CheckBox",
-                                  "props": {
-                                    "label": "Select"
-                                  }
-                                }
-                              ],
-                              "layout": {
-                                "direction": "column"
-                              }
-                            },
-                            {
-                              "type": "Card",
-                              "children": [
-                                {
-                                  "type": "Image",
-                                  "props": {
-                                    "value": "https://images.unsplash.com/photo-1464306076886-debca5e8a6b0"
-                                  }
-                                },
-                                {
-                                  "type": "SubHeadline",
-                                  "props": {
-                                    "label": "Grape"
-                                  }
-                                },
-                                {
-                                  "type": "CheckBox",
-                                  "props": {
-                                    "label": "Select"
-                                  }
-                                }
-                              ],
-                              "layout": {
-                                "direction": "column"
-                              }
-                            },
-                            {
-                              "type": "Card",
-                              "children": [
-                                {
-                                  "type": "Image",
-                                  "props": {
-                                    "value": "https://images.unsplash.com/photo-1439122955806-6c6a0def9947"
-                                  }
-                                },
-                                {
-                                  "type": "SubHeadline",
-                                  "props": {
-                                    "label": "Pineapple"
-                                  }
-                                },
-                                {
-                                  "type": "CheckBox",
-                                  "props": {
-                                    "label": "Select"
-                                  }
-                                }
-                              ],
-                              "layout": {
-                                "direction": "column"
-                              }
-                            }
-                          ]
-                        }
-                      ],
                       "layout": {
-                        "direction": "row"
-                      }
-                    },
-                    {
-                      "type": "Container",
+                        "direction": "column"
+                      },
                       "children": [
                         {
-                          "type": "Card",
-                          "props": {},
-                          "children": [
-                            {
-                              "type": "Card",
-                              "children": [
-                                {
-                                  "type": "Image",
-                                  "props": {
-                                    "value": "https://images.unsplash.com/photo-1457369804613-52c61a468e7d"
-                                  }
-                                },
-                                {
-                                  "type": "SubHeadline",
-                                  "props": {
-                                    "label": "Kiwi"
-                                  }
-                                },
-                                {
-                                  "type": "CheckBox",
-                                  "props": {
-                                    "label": "Select"
-                                  }
-                                }
-                              ],
-                              "layout": {
-                                "direction": "column"
-                              }
-                            },
-                            {
-                              "type": "Card",
-                              "children": [
-                                {
-                                  "type": "Image",
-                                  "props": {
-                                    "value": "https://images.unsplash.com/photo-1504674900247-0877df9cc836"
-                                  }
-                                },
-                                {
-                                  "type": "SubHeadline",
-                                  "props": {
-                                    "label": "Watermelon"
-                                  }
-                                },
-                                {
-                                  "type": "CheckBox",
-                                  "props": {
-                                    "label": "Select"
-                                  }
-                                }
-                              ],
-                              "layout": {
-                                "direction": "column"
-                              }
-                            },
-                            {
-                              "type": "Card",
-                              "children": [
-                                {
-                                  "type": "Image",
-                                  "props": {
-                                    "value": "https://images.unsplash.com/photo-1464965911861-746a04b4bca4"
-                                  }
-                                },
-                                {
-                                  "type": "SubHeadline",
-                                  "props": {
-                                    "label": "Lemon"
-                                  }
-                                },
-                                {
-                                  "type": "CheckBox",
-                                  "props": {
-                                    "label": "Select"
-                                  }
-                                }
-                              ],
-                              "layout": {
-                                "direction": "column"
-                              }
-                            },
-                            {
-                              "type": "Card",
-                              "children": [
-                                {
-                                  "type": "Image",
-                                  "props": {
-                                    "value": "https://images.unsplash.com/photo-1519864600265-abb23847ef12"
-                                  }
-                                },
-                                {
-                                  "type": "SubHeadline",
-                                  "props": {
-                                    "label": "Cherry"
-                                  }
-                                },
-                                {
-                                  "type": "CheckBox",
-                                  "props": {
-                                    "label": "Select"
-                                  }
-                                }
-                              ],
-                              "layout": {
-                                "direction": "column"
-                              }
-                            },
-                            {
-                              "type": "Card",
-                              "children": [
-                                {
-                                  "type": "Image",
-                                  "props": {
-                                    "value": "https://images.unsplash.com/photo-1462436943261-234c3b0c6e02"
-                                  }
-                                },
-                                {
-                                  "type": "SubHeadline",
-                                  "props": {
-                                    "label": "Peach"
-                                  }
-                                },
-                                {
-                                  "type": "CheckBox",
-                                  "props": {
-                                    "label": "Select"
-                                  }
-                                }
-                              ],
-                              "layout": {
-                                "direction": "column"
-                              }
-                            },
-                            {
-                              "type": "Card",
-                              "children": [
-                                {
-                                  "type": "Image",
-                                  "props": {
-                                    "value": "https://images.unsplash.com/photo-1444065381814-865dc9da92c0"
-                                  }
-                                },
-                                {
-                                  "type": "SubHeadline",
-                                  "props": {
-                                    "label": "Mango"
-                                  }
-                                },
-                                {
-                                  "type": "CheckBox",
-                                  "props": {
-                                    "label": "Select"
-                                  }
-                                }
-                              ],
-                              "layout": {
-                                "direction": "column"
-                              }
-                            }
-                          ]
-                        }
-                      ],
-                      "layout": {
-                        "direction": "row"
-                      }
-                    },
-                    {
-                      "type": "Container",
-                      "children": [
-                        {
-                          "type": "Button",
+                          "type": "SubHeadline",
                           "props": {
-                            "label": "Confirm Selection"
-                          },
-                          "variant": "Primary"
+                            "label": "Orange Bundle - 20% Off!"
+                          }
+                        },
+                        {
+                          "type": "Label",
+                          "props": {
+                            "label": "Sweet navels, packed with vitamin C"
+                          }
                         }
-                      ],
-                      "layout": {
-                        "direction": "row"
-                      }
+                      ]
                     }
                   ]
                 }
-              ],
+              ]
+            },
+            {
+              "type": "Container",
               "layout": {
                 "direction": "column"
-              }
+              },
+              "children": [
+                {
+                  "type": "Headline",
+                  "props": {
+                    "label": "Customer Testimonials"
+                  }
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "\"Always fresh and delivered on time!\""
+                      },
+                      "variant": "Emphasis"
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "- Samira H."
+                      },
+                      "variant": "Hint"
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "\"Great selection and quality fruits.\""
+                      },
+                      "variant": "Emphasis"
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "- David P."
+                      },
+                      "variant": "Hint"
+                    }
+                  ]
+                }
+              ]
             }
-          ],
+          ]
+        },
+        {
+          "type": "Section",
           "layout": {
-            "direction": "column"
-          }
+            "direction": "row"
+          },
+          "children": [
+            {
+              "type": "Container",
+              "layout": {
+                "direction": "column"
+              },
+              "children": [
+                {
+                  "type": "Headline",
+                  "props": {
+                    "label": "Contact & Visit Us"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Address: 123 Orchard Lane, Fruitville"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Phone: (555) 123-4567"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Email: info@freshfruitstore.com"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Business Hours: Mon-Sat 8am – 8pm, Sun 10am – 6pm"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Container",
+              "layout": {
+                "direction": "column"
+              },
+              "children": [
+                {
+                  "type": "Headline",
+                  "props": {
+                    "label": "Newsletter"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Get updates, recipes and exclusive offers!"
+                  }
+                },
+                {
+                  "type": "Input",
+                  "props": {
+                    "label": "Your email address"
+                  }
+                },
+                {
+                  "type": "Button",
+                  "props": {
+                    "label": "Subscribe"
+                  },
+                  "variant": "Primary"
+                }
+              ]
+            },
+            {
+              "type": "Container",
+              "layout": {
+                "direction": "column",
+                "align": "center",
+                "justify": "center"
+              },
+              "children": [
+                {
+                  "type": "Button",
+                  "props": {
+                    "label": "Browse Product Catalog"
+                  },
+                  "variant": "Secondary"
+                },
+                {
+                  "type": "Button",
+                  "props": {
+                    "label": "Contact the Store"
+                  },
+                  "variant": "Primary"
+                }
+              ]
+            }
+          ]
         }
       ],
-      "name": "Fruit Selection Page"
+      "name": "Landing Page"
     }
   ],
   "structure": {
     "type": "App",
-    "description": "Fruit Selector is an app that allows users to choose multiple fruits from a list according to their preferences.",
+    "name": "FreshFruit Store",
+    "description": "This app provides a landing page for a fruit store, showcasing available fruits, store highlights, and ways for customers to engage.",
     "screens": [
       {
-        "name": "Fruit Selection Page",
-        "description": "Users can browse a visually appealing list of fruits, each displayed with its name and an image. The user can select or deselect multiple fruits using checkboxes or toggles next to each fruit. There is also a search bar to quickly find specific fruits. At the bottom, there is a button to confirm their selection. The user sees the app name at the top, and their current selections are summarized in a small area."
+        "name": "Landing Page",
+        "description": "The landing page greets users with the FreshFruit Store logo and a vibrant banner image. Users see featured fruits with images, prices, and short descriptions. There is a section highlighting promotions or best-sellers, alongside customer testimonials. The page displays store contact info (address, phone number, email) and business hours. Users can enter their email to subscribe to a newsletter and can click to browse the full product catalog or contact the store."
       }
     ]
   }

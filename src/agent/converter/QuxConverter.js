@@ -94,6 +94,14 @@ export default class QuxConverter extends Converter {
           left: true,
           right:true
         }
+
+        if (w.type === 'Image' && w.props.value) {
+          // w.style.backgroundImage = {
+          //   "url" : w.props.value,
+          //   "w" : 608,
+          //   "h" : 648
+          // }
+        }
     });
   }
 
@@ -222,9 +230,14 @@ export default class QuxConverter extends Converter {
             const offsetX = Math.round((w - (child.w))/2) 
             child.x += offsetX
           } 
-      }
-     
+      }     
     }
+
+    if (this.isColumnContainer(node)) {
+      
+    }
+
+    // should we still frow childgren to occupy all the space like in the fruits
 
   }
 

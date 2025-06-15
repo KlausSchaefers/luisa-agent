@@ -1,0 +1,590 @@
+{
+  "screens": [
+    {
+      "type": "Screen",
+      "children": [
+        {
+          "type": "Nav",
+          "children": [
+            {
+              "type": "NavLink",
+              "props": {},
+              "children": [
+                {
+                  "type": "NavLink",
+                  "props": {
+                    "label": "FreshBite"
+                  },
+                  "variant": "Default"
+                },
+                {
+                  "type": "NavLink",
+                  "props": {
+                    "label": "Store"
+                  },
+                  "variant": "Default"
+                },
+                {
+                  "type": "NavLink",
+                  "props": {
+                    "label": "Cart"
+                  },
+                  "variant": "Default"
+                },
+                {
+                  "type": "NavLink",
+                  "props": {
+                    "label": "Login"
+                  },
+                  "variant": "Default"
+                },
+                {
+                  "type": "NavLink",
+                  "props": {
+                    "label": "Sign Up"
+                  },
+                  "variant": "CallToAction"
+                }
+              ]
+            },
+            {
+              "type": "Input",
+              "props": {
+                "label": "Search fruits..."
+              }
+            }
+          ],
+          "layout": {
+            "direction": "row"
+          }
+        },
+        {
+          "type": "Container",
+          "children": [
+            {
+              "type": "Section",
+              "props": {},
+              "children": [
+                {
+                  "type": "Section",
+                  "children": [
+                    {
+                      "type": "Container",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "Container",
+                          "children": [
+                            {
+                              "type": "Image",
+                              "props": {
+                                "value": "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=600&q=80"
+                              }
+                            }
+                          ],
+                          "layout": {
+                            "direction": "row"
+                          }
+                        },
+                        {
+                          "type": "Container",
+                          "children": [
+                            {
+                              "type": "Hero",
+                              "props": {
+                                "headline": "Welcome to FreshBite",
+                                "call_to_action": "Shop the juiciest, freshest fruits delivered to your door."
+                              }
+                            }
+                          ],
+                          "layout": {
+                            "direction": "column"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "layout": {
+                    "direction": "row"
+                  }
+                },
+                {
+                  "type": "Section",
+                  "children": [
+                    {
+                      "type": "Headline",
+                      "props": {
+                        "label": "Featured Fruits"
+                      }
+                    },
+                    {
+                      "type": "Container",
+                      "children": [
+                        {
+                          "type": "Card",
+                          "props": {},
+                          "children": [
+                            {
+                              "type": "Card",
+                              "children": [
+                                {
+                                  "type": "Image",
+                                  "props": {
+                                    "value": "https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80"
+                                  }
+                                },
+                                {
+                                  "type": "SubHeadline",
+                                  "props": {
+                                    "label": "Strawberries"
+                                  }
+                                },
+                                {
+                                  "type": "Label",
+                                  "props": {},
+                                  "children": [
+                                    {
+                                      "type": "Label",
+                                      "props": {
+                                        "label": "Sweet and juicy, freshly picked."
+                                      }
+                                    },
+                                    {
+                                      "type": "Label",
+                                      "props": {
+                                        "label": "$3.99 / lb"
+                                      },
+                                      "variant": "Emphasis"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "Button",
+                                  "props": {
+                                    "label": "View Details"
+                                  },
+                                  "variant": "Primary"
+                                }
+                              ],
+                              "layout": {
+                                "direction": "column"
+                              }
+                            },
+                            {
+                              "type": "Card",
+                              "children": [
+                                {
+                                  "type": "Image",
+                                  "props": {
+                                    "value": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
+                                  }
+                                },
+                                {
+                                  "type": "SubHeadline",
+                                  "props": {
+                                    "label": "Blueberries"
+                                  }
+                                },
+                                {
+                                  "type": "Label",
+                                  "props": {},
+                                  "children": [
+                                    {
+                                      "type": "Label",
+                                      "props": {
+                                        "label": "Bursting with flavor and antioxidants."
+                                      }
+                                    },
+                                    {
+                                      "type": "Label",
+                                      "props": {
+                                        "label": "$4.49 / pint"
+                                      },
+                                      "variant": "Emphasis"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "Button",
+                                  "props": {
+                                    "label": "View Details"
+                                  },
+                                  "variant": "Primary"
+                                }
+                              ],
+                              "layout": {
+                                "direction": "column"
+                              }
+                            },
+                            {
+                              "type": "Card",
+                              "children": [
+                                {
+                                  "type": "Image",
+                                  "props": {
+                                    "value": "https://images.unsplash.com/photo-1519864600265-abb23847ef2b?auto=format&fit=crop&w=400&q=80"
+                                  }
+                                },
+                                {
+                                  "type": "SubHeadline",
+                                  "props": {
+                                    "label": "Bananas"
+                                  }
+                                },
+                                {
+                                  "type": "Label",
+                                  "props": {},
+                                  "children": [
+                                    {
+                                      "type": "Label",
+                                      "props": {
+                                        "label": "Naturally sweet and energy-rich."
+                                      }
+                                    },
+                                    {
+                                      "type": "Label",
+                                      "props": {
+                                        "label": "$1.29 / lb"
+                                      },
+                                      "variant": "Emphasis"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "Button",
+                                  "props": {
+                                    "label": "View Details"
+                                  },
+                                  "variant": "Primary"
+                                }
+                              ],
+                              "layout": {
+                                "direction": "column"
+                              }
+                            },
+                            {
+                              "type": "Card",
+                              "children": [
+                                {
+                                  "type": "Image",
+                                  "props": {
+                                    "value": "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80"
+                                  }
+                                },
+                                {
+                                  "type": "SubHeadline",
+                                  "props": {
+                                    "label": "Apples"
+                                  }
+                                },
+                                {
+                                  "type": "Label",
+                                  "props": {},
+                                  "children": [
+                                    {
+                                      "type": "Label",
+                                      "props": {
+                                        "label": "Crisp and refreshing, several varieties."
+                                      }
+                                    },
+                                    {
+                                      "type": "Label",
+                                      "props": {
+                                        "label": "$2.99 / lb"
+                                      },
+                                      "variant": "Emphasis"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "Button",
+                                  "props": {
+                                    "label": "View Details"
+                                  },
+                                  "variant": "Primary"
+                                }
+                              ],
+                              "layout": {
+                                "direction": "column"
+                              }
+                            },
+                            {
+                              "type": "Card",
+                              "children": [
+                                {
+                                  "type": "Image",
+                                  "props": {
+                                    "value": "https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=400&q=80"
+                                  }
+                                },
+                                {
+                                  "type": "SubHeadline",
+                                  "props": {
+                                    "label": "Oranges"
+                                  }
+                                },
+                                {
+                                  "type": "Label",
+                                  "props": {},
+                                  "children": [
+                                    {
+                                      "type": "Label",
+                                      "props": {
+                                        "label": "Vitamin C packed, perfect for juice."
+                                      }
+                                    },
+                                    {
+                                      "type": "Label",
+                                      "props": {
+                                        "label": "$2.79 / lb"
+                                      },
+                                      "variant": "Emphasis"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "Button",
+                                  "props": {
+                                    "label": "View Details"
+                                  },
+                                  "variant": "Primary"
+                                }
+                              ],
+                              "layout": {
+                                "direction": "column"
+                              }
+                            },
+                            {
+                              "type": "Card",
+                              "children": [
+                                {
+                                  "type": "Image",
+                                  "props": {
+                                    "value": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=400&q=80"
+                                  }
+                                },
+                                {
+                                  "type": "SubHeadline",
+                                  "props": {
+                                    "label": "Mangoes"
+                                  }
+                                },
+                                {
+                                  "type": "Label",
+                                  "props": {},
+                                  "children": [
+                                    {
+                                      "type": "Label",
+                                      "props": {
+                                        "label": "Tropical delight, rich and fragrant."
+                                      }
+                                    },
+                                    {
+                                      "type": "Label",
+                                      "props": {
+                                        "label": "$1.99 each"
+                                      },
+                                      "variant": "Emphasis"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "Button",
+                                  "props": {
+                                    "label": "View Details"
+                                  },
+                                  "variant": "Primary"
+                                }
+                              ],
+                              "layout": {
+                                "direction": "column"
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "layout": {
+                        "direction": "row"
+                      }
+                    }
+                  ],
+                  "layout": {
+                    "direction": "column"
+                  }
+                },
+                {
+                  "type": "Section",
+                  "children": [
+                    {
+                      "type": "Card",
+                      "props": {},
+                      "children": [
+                        {
+                          "type": "Card",
+                          "children": [
+                            {
+                              "type": "Headline",
+                              "props": {
+                                "label": "Current Promotions"
+                              }
+                            },
+                            {
+                              "type": "Label",
+                              "props": {},
+                              "children": [
+                                {
+                                  "type": "Label",
+                                  "props": {
+                                    "label": "10% off all berries this week!"
+                                  },
+                                  "variant": "Emphasis"
+                                },
+                                {
+                                  "type": "Label",
+                                  "props": {
+                                    "label": "Buy 2 mangoes, get 1 free."
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "Button",
+                              "props": {
+                                "label": "Shop Now"
+                              },
+                              "variant": "Primary"
+                            }
+                          ],
+                          "layout": {
+                            "direction": "column"
+                          }
+                        },
+                        {
+                          "type": "Card",
+                          "children": [
+                            {
+                              "type": "Headline",
+                              "props": {
+                                "label": "About Us"
+                              }
+                            },
+                            {
+                              "type": "Label",
+                              "props": {
+                                "label": "FreshBite is dedicated to bringing you the freshest, healthiest fruits sourced directly from local farmers. Enjoy quality you can taste and service you can trust."
+                              }
+                            }
+                          ],
+                          "layout": {
+                            "direction": "column"
+                          }
+                        },
+                        {
+                          "type": "Card",
+                          "children": [
+                            {
+                              "type": "Headline",
+                              "props": {
+                                "label": "Contact Us"
+                              }
+                            },
+                            {
+                              "type": "Label",
+                              "props": {},
+                              "children": [
+                                {
+                                  "type": "Label",
+                                  "props": {
+                                    "label": "Email: support@freshbite.com"
+                                  }
+                                },
+                                {
+                                  "type": "Label",
+                                  "props": {
+                                    "label": "Phone: (123) 456-7890"
+                                  }
+                                },
+                                {
+                                  "type": "Label",
+                                  "props": {
+                                    "label": "Hours: Mon-Sat 8am-8pm"
+                                  }
+                                }
+                              ]
+                            }
+                          ],
+                          "layout": {
+                            "direction": "column"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "layout": {
+                    "direction": "row"
+                  }
+                },
+                {
+                  "type": "Section",
+                  "children": [
+                    {
+                      "type": "Card",
+                      "children": [
+                        {
+                          "type": "Headline",
+                          "props": {
+                            "label": "Newsletter"
+                          }
+                        },
+                        {
+                          "type": "Label",
+                          "props": {
+                            "label": "Get the latest news, new arrivals and exclusive offers. Subscribe now!"
+                          },
+                          "variant": "Hint"
+                        },
+                        {
+                          "type": "Input",
+                          "props": {
+                            "label": "Your email address"
+                          }
+                        },
+                        {
+                          "type": "Button",
+                          "props": {
+                            "label": "Subscribe"
+                          },
+                          "variant": "FullWidth"
+                        }
+                      ],
+                      "layout": {
+                        "direction": "column"
+                      }
+                    }
+                  ],
+                  "layout": {
+                    "direction": "row"
+                  }
+                }
+              ]
+            }
+          ],
+          "layout": {
+            "direction": "column"
+          }
+        }
+      ],
+      "name": "Landing Page"
+    }
+  ],
+  "structure": {
+    "type": "App",
+    "description": "FreshBite is a vibrant and user-friendly landing page for a fruit store, designed to showcase the store's offerings, highlight special deals, and encourage users to explore and purchase fresh fruits online.",
+    "screens": [
+      {
+        "name": "Landing Page",
+        "description": "The user is greeted with the FreshBite logo and a welcoming banner image featuring fresh fruits. The screen displays featured fruits with pictures, names, brief descriptions, and prices. There is a section for current promotions or deals. The page also includes a brief 'About Us' section, store contact information, and a navigation menu for browsing the store, viewing the cart, and logging in or signing up. The user can enter their email address to subscribe to the store newsletter, search for specific fruits using a search bar, and click on featured fruits to view more details."
+      }
+    ]
+  }
+}

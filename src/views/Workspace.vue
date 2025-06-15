@@ -63,6 +63,7 @@ import flex from '../examples/flex'
 import simple from '../examples/simple'
 import landing from '../examples/landing'
 import fruits from '../examples/fruits'
+import fruits2 from '../examples/fruits2'
 
 const examples = {
   'fitness': fitness,
@@ -72,7 +73,8 @@ const examples = {
   "flex": flex,
   "simple": simple,
   "landing": landing,
-  "fruits": fruits
+  "fruits": fruits,
+  "fruits2": fruits2
 }
 
 export default {

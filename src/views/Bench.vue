@@ -126,9 +126,9 @@ export default {
                 this.$refs.chat.onAgentMessage("No OpenAI key!\n\n")
                 return
             }
-            //let p1 = this.runJSON(token)
+            let p1 = this.runJSON(token)
             let p2 = this.runHTML(token)
-            await Promise.all([p2])
+            await Promise.all([p1, p2])
 
             this.finish()
 
