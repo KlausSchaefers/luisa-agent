@@ -8,10 +8,18 @@ A radiobox element is used to get optional boolean input from a user,
 for instance of they want to select en ensurance. 
 It has a 'label' value in the 'props' object. 
     `,
+    descriptionHTML: `
+A radiobox element is used to get optional boolean input from a user, 
+for instance of they want to select en ensurance. 
+It has a 'label' property. 
+    `,
     x: 0,
     y: 0,
     w: "@form-width",
     h: "@form-height",
+    layout: {
+      grow: 0
+    },
     z: 0,
     props: {
       checked: true,
@@ -54,6 +62,11 @@ It has a 'label' value in the 'props' object.
     description: `
 An element where the user can select only one of several options. The elements has an "options" 
 property in the "props" element, which is ARRAY of strings and 
+describes the different options the user can choose from. The RadioGroup should only be
+used if the user can select a single option.`,
+    descriptionHTML: `
+An element where the user can select only one of several options. The element has an "options" 
+property, which is comma seperated list of Strings, which
 describes the different options the user can choose from. The RadioGroup should only be
 used if the user can select a single option.`,
     z: 0,

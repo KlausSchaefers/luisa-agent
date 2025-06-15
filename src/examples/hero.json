@@ -11,7 +11,7 @@
           },
           "children": [
             {
-              "type": "HeroSection",
+              "type": "Hero",
               "name": "Hero Instance 1",
               "props": {
                 "headline": "This is the headline",

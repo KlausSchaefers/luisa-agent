@@ -1,12 +1,17 @@
 export default [
   {
-    id: "HeroSection",
-    type: "HeroSection",
-    name: "HeroSection",
+    id: "Hero",
+    type: "Hero",
+    name: "Hero",
     container: true,
     description: `
-The HeroSection should be used on landing pages. It is used to communicate the main prupose of the app or website. It has two properties in the "props object called "headline" and "call_to_action". The
-headline should 
+The Hero should be used on landing pages. It is used to communicate the main prupose of the app or website. It has two properties in the "props object called "headline" and "call_to_action". The
+headline should be a catchy short message, the call_to_action longer message (< 10 words) that call the user to take action.
+At has the following variants "Default" and "Small".  
+  `,
+  descriptionHTML: `
+The Hero should be used on landing pages. It is used to communicate the main prupose of the app or website. It has two properties called "headline" and "call_to_action". The
+headline should be a catchy short message, the call_to_action longer message (< 10 words) that call the user to take action.
 At has the following variants "Default" and "Small".  
   `,
     x: 0,
@@ -65,9 +70,9 @@ At has the following variants "Default" and "Small".
     ],
   },
   {
-    type: "HeroSection",
-    name: "HeroSectionSmall",
-    extends: "HeroSection",
+    type: "Hero",
+    name: "HeroSmall",
+    extends: "Hero",
     variant: "Small",
     container: true,
     w: "@box-width-l",

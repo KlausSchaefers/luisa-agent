@@ -3,8 +3,10 @@
         <div class="luisa-zoom-textarea-backdrop" @click="isMax=false">
             <div class="luisa-icon-input" @click.stop>
                 <textarea class="luisa-input luisa-input-fw" @change="onChange" @keyup.enter="onEnter" v-model="text" ref="textarea" :disabled="disabled"></textarea>
-                <IconWindowMaximize v-if="!isMax" :size="16"  class="luisa-icon" @click.stop="show"/>
-                <IconWindowMinimize v-else :size="16"  class="luisa-icon" @click.stop="isMax=false"/>
+                <template v-if="!disabled">
+                  <IconWindowMaximize v-if="!isMax" :size="16"  class="luisa-icon" @click.stop="show"/>
+                  <IconWindowMinimize v-else :size="16"  class="luisa-icon" @click.stop="isMax=false"/>
+                </template>
             </div>
         </div>
     </div>

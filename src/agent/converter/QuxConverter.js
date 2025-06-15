@@ -21,13 +21,14 @@ export default class QuxConverter extends Converter {
     this.typeMapping = {
       'Container': 'Box',
       'Card': 'Box',
-      'HeroSection': 'Box',
+      'Hero': 'Box',
       'Input': 'TextBox',
       'Headline': 'Label',
       'SubHeadline': 'Label',
       'RadioBox': 'LabeledRadioBox',
       'Nav': 'Box',
-      'NavLink': 'Button'
+      'NavLink': 'Button',
+      'Section': 'Box'
     }
   }
 
@@ -281,6 +282,7 @@ export default class QuxConverter extends Converter {
       if (this.growRowChildrenInHeight) {
         for (let i = 0; i < children.length; i++) {
             const child = children[i];
+            // Only for containers???
             child.h = this.getRowChildHeight(child, maxH)
         }
       }

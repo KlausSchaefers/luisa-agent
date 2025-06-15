@@ -33,8 +33,15 @@ textarea.luisa-input {
 
 textarea.luisa-input:disabled {
    opacity: 0.2;
-   border-style: dashed;
+   background: #999;
 }
+
+textarea.luisa-input:disabled:hover {
+   opacity: 0.2;
+   background: #999;
+   border-color: #999;
+}
+
 .luisa-padding {
     padding: var(--space-m);
 }
@@ -68,6 +75,10 @@ textarea.luisa-input:disabled {
     display: flex;
     flex-direction: column;
     gap:16px;
+}
+
+.luisa-flex-grow {
+    flex-grow: 1;
 }
 
 .luisa-flex-row{

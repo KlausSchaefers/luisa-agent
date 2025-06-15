@@ -36,7 +36,7 @@
           ]
         },
         {
-          "type": "HeroSection",
+          "type": "Hero",
           "name": "Hero Instance 1",
           "variant": "Small",
           "props": {

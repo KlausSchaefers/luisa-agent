@@ -15,7 +15,9 @@ export default class PropsConverter extends Converter {
           if (!element.name) {
             element.name = data.name
           }
-
+        }
+        if (!element.name) {
+          element.name = data.type
         }
         if (!element.props) {
             element.props = {};

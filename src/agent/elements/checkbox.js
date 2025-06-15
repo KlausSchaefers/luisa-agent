@@ -6,11 +6,18 @@ export default [
 A checkbox element is used to get boolean input from a user, for instance of t
 hey want to receive a newsletter. It has a 'label' value in the 'props' object. 
     `,
+    descriptionHTML: `
+A checkbox element is used to get boolean input from a user, for instance of t
+hey want to receive a newsletter. It has a 'label' property. 
+    `,
     x: 0,
     y: 0,
     w: "@form-width",
-    h: "@form-height",
+    h: "@box-height-xxs",
     z: 0,
+    layout: {
+      grow: 0
+    },
     props: {
       checked: true,
       label: "Checkbox",
@@ -54,6 +61,12 @@ hey want to receive a newsletter. It has a 'label' value in the 'props' object.
 An element where the user can select one or more of several options. The elements has an "options" 
 property in the "props" element, which is ARRAY of strings and 
 describes the different options the user can choose from.  The CheckBoxGroup should be used, if the
+user can select several options, for instance product featues.
+    `,
+    descriptionHTML: `
+An element where the user can select one or more of several options. The elements has an "options" 
+property, which is comma seperated list of Strings, which
+describes the different options the user can choose from. The CheckBoxGroup should be used, if the
 user can select several options, for instance product featues.
     `,
     x: 0,

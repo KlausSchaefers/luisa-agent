@@ -14,6 +14,10 @@
 
             </div>
             <div>
+              <select v-model="useHTML" class="luisa-select" @change="setMode">            
+                <option :value=false>JSON</option>
+                <option :value=true>HTML</option>
+              </select>
               <select v-model="isDebug" class="luisa-select" @change="reRender">            
                 <option :value="true">Debug</option>
                 <option :value="false">Nice</option>
@@ -58,7 +62,7 @@ import hero from '../examples/hero'
 import flex from '../examples/flex'
 import simple from '../examples/simple'
 import landing from '../examples/landing'
-
+import fruits from '../examples/fruits'
 
 const examples = {
   'fitness': fitness,
@@ -67,7 +71,8 @@ const examples = {
   'hero': hero,
   "flex": flex,
   "simple": simple,
-  "landing": landing
+  "landing": landing,
+  "fruits": fruits
 }
 
 export default {
@@ -80,6 +85,7 @@ export default {
       size: 'd',
       app: null,
       messages: [],
+      useHTML : false,
       selectedScreen: '',
       progressMessage: 'Thinking...',
       isDebug: false,
@@ -125,6 +131,7 @@ export default {
     getConfig() {
       return {
         removeContainers: false,
+        useHTML: this.useHTML,
         screenSize: this.getScreenSize()
       }
     },
@@ -208,6 +215,9 @@ export default {
         this.buildRaw(this.raw)
       })
     },
+    setMode () {
+      localStorage.setItem('luisaUseHTML', this.useHTML)
+    },
     buildRaw(raw) {
       const dsl = new DLS()
       if (this.isDebug) {
@@ -223,7 +233,7 @@ export default {
       this.raw = raw
       //console.debug(this.printRaw(raw))
       //this.selectedScreen = Object.values(this.app.screens)[0].name
-      //console.debug(JSON.stringify(this.app.widgets, null , 2))
+      console.debug(JSON.stringify(this.raw, null , 2))
     }
   },
   watch: {
@@ -231,6 +241,7 @@ export default {
   },
   mounted() {
     this.isDebug = localStorage.getItem('luisaAppDebug') === 'true'
+    this.useHTML = localStorage.getItem('luisaUseHTML') === 'true'
     if (this.$route.query.app) {
       if (examples[this.$route.query.app]) {
         //console.debug('mounted() > load example', this.$route.query.app)

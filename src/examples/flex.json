@@ -10,6 +10,52 @@
             "direction": "column"
           },
           "children": [
+             {
+              "type": "Container",
+              "layout": {
+                "direction": "row"
+              },
+              "children": [
+                  {
+                    "type": "Container",
+                    "layout": {
+                      "direction": "column"
+                    },
+                    "children": [
+                      {
+                        "type": "Button",
+                        "props": {
+                          "label": "Button 1"
+                        },
+                        "name": "Button1"
+                      },
+                      {
+                        "type": "Button",
+                        "props": {
+                          "label": "Button 2"
+                        },
+                        "name": "Button2"
+                      }
+                    ],
+                    "name": "ContainerCenterTop"
+                  },
+                {
+                  "type": "CheckBox",
+                  "props": {
+                    "label": "Button 2"
+                  },
+                  "name": "Button2"
+                },
+                {
+                  "type": "Input",
+                  "props": {
+                    "label": "Button 2"
+                  },
+                  "name": "Button2"
+                }
+              ],
+              "name": "ContainerCenterTop"
+            },
             {
               "type": "Container",
               "props": {
@@ -33,7 +79,7 @@
               ],
               "name": "Container"
             },
-              {
+            {
               "type": "Container",
               "layout": {
                 "direction": "row",

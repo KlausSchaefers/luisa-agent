@@ -3,6 +3,7 @@ export default {
   type: "SubHeadline",
   name: "SubHeadline",
   description: "A sub headline can lead a paragraph or be used in a card element. They usyally have a few word which summarize and introduce the following UI. The can moe often used then headlines.",
+  descriptionHTML: "A sub headline can lead a paragraph or be used in a card element. They usyally have a few word which summarize and introduce the following UI. The can moe often used then headlines. It has label property.",
   x: 0,
   y: 0,
   w: "@box-width-xl",

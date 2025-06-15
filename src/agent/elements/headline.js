@@ -3,6 +3,7 @@ export default {
   type: "Headline",
   name: "Headline",
   description: "The headline is an element which contains two or three words which summarize and introduce the following UI section. There should be only a few headlines.",
+  descriptionHTML: "The headline is an element which contains two or three words which summarize and introduce the following UI section. There should be only a few headlines. It has a label property",
   x: 0,
   y: 0,
   w: "@box-width-xl",

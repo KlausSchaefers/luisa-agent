@@ -134,7 +134,7 @@ export default class Prompts {
         `
     }
 
-    elements(elements) {
+    jsonElements(elements) {
         let result = "You can use the following elements to create your design:\n\n";
 
         const all = elements.getAll()
@@ -142,6 +142,54 @@ export default class Prompts {
 
         return result
     }
+
+    /*******************************************
+     * HTML format
+     *******************************************/
+
+    htmlFormatScreen() {
+        return `
+            Please return the result as HTML. Please don't use any style attributes.
+        
+
+            An example for an element is:
+            \`\`\`html
+                <html>
+                    <body>
+                        <h1>This is a title.</h1>
+                        <div class="flex-row">
+                            <div class="card">
+                            </div>
+                        </div>
+                    </body>
+                </html>
+
+             \`\`\`
+
+        `
+    }
+
+    htmlElements(elements) {
+        let result = `
+        You can not use any HTML elements, only the ones of the following list. 
+        Each elements can have a css class attached, which is specified per element. 
+        Do not inlcude any other css classes.\n\n`;
+
+        const all = elements.getAll()
+        result += all.map(e => {
+            return `"${e.type}" : ${this.trim(e.descriptionHTML)}`
+        }).join('\n------\n\n')
+
+        return result
+    }
+
+    htmlSystem () {
+        return `
+            You are design GPT. You are really good at designing websites, app and all other kind of user interfaces. You are very create 
+            and create beautiful designs and code them in HTML.
+        `
+    }
+
 
     trim(s) {
         return s.replace('\t', ' ').trim()

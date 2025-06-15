@@ -9,13 +9,19 @@ It should be used for labels as the default element for all kind text.
 A label can have a 'variant' property, which can have the following values: 
 'Hint', 'Emphasis'. 
   `,
+   descriptionHTML: `
+An Element that can show text. It has a 'label' property. 
+It should be used for labels as the default element for all kind text. 
+A label can have a 'variant' property, which can have the following values: 
+'Hint', 'Emphasis'. 
+  `,
     x: 0,
     y: 0,
     w: "@box-width-xl",
     h: "@box-height-xs",
     z: 0,
     props: {
-      label: "Lore Ipsum",
+      label: "The text value to be shown",
     },
     has: {
       label: true,

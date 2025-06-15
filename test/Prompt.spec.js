@@ -5,12 +5,24 @@ import Prompt  from '../src/agent/Prompt'
 
 
 
-test('Test Prompt >  ', async () => {
+test('Test Prompt.jsonElements() >  ', async () => {
 
 
     const elements = new Elements()
    
-    const result = new Prompt().elements(elements)
+    const result = new Prompt().jsonElements(elements)
+
+    console.debug(result)
+
+    expect(result.indexOf('undefined')).toBe(-1)
+})
+
+test('Test Prompt.htmlElements() >  ', async () => {
+
+
+    const elements = new Elements()
+   
+    const result = new Prompt().htmlElements(elements)
 
     console.debug(result)
 

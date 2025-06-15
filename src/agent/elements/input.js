@@ -8,10 +8,18 @@ The input element renders as a text box, and allows users to enter text.
 The input field has a 'label' property in the 'props' object, which gives the user a hint as placeholder. 
 An input field should have in most cases a label before.
 `,
+   descriptionHTML: `
+The input element renders as a text box, and allows users to enter text. 
+The input field has a 'label' property, which gives the user a hint as placeholder. 
+An input field should have in most cases a label before.
+`,
     x: 0,
     y: 0,
     w: "@form-width",
     h: "@form-height",
+    layout: {
+      grow: 0
+    },
     z: 0,
     props: {
       label: "Enter a value",
@@ -68,6 +76,11 @@ The password element renders as a text box, and allows users to enter passwords.
 The password field has a 'label' property in the 'props' object, which gives the user a hint as placeholder. 
 An password field should have in most cases a label before.
 `,
+    descriptionHTML: `
+The password element renders as a text box, and allows users to enter passwords. 
+The password field has a 'label' property, which gives the user a hint as placeholder. 
+An password field should have in most cases a label before.
+    `,
     z: 0,
     x: 0,
     y: 0,
@@ -96,6 +109,11 @@ An password field should have in most cases a label before.
     description: `
 The TextArea element renders as a text area for multi line text input. It allows users to enter longer texts. 
 The TextArea has a 'label' property in the 'props' object, which gives the user a hint as placeholder. 
+An TextArea field should have in most cases a label before.
+`,
+    descriptionHTML: `
+The TextArea element renders as a text area for multi line text input. It allows users to enter longer texts. 
+The TextArea has a 'label' property, which gives the user a hint as placeholder. 
 An TextArea field should have in most cases a label before.
 `,
     z: 0,

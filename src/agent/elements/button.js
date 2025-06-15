@@ -10,6 +10,14 @@ A button can have a 'variant' property, which can have the following values:
 The Secondary buttons should be used for cancel actions and so an. 
 Danger for deletions and everything dangerous.
     `,
+    descriptionHTML: `
+The button element should be used for buttons where the user can click. 
+A button has a label property. 
+A button can have a 'variant' property, which can have the following values: 
+'Primary', 'Secondary', 'FullWidth', 'Disabled' and 'Danger'. 
+The Secondary buttons should be used for cancel actions and so an. 
+Danger for deletions and everything dangerous.
+    `,
     name: "Primary Button",
     x: 0,
     y: 0,

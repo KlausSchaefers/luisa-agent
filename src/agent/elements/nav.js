@@ -8,10 +8,20 @@ should be the first element in a desktop screen if navigation over multiple page
 On mobile screens, it can be also the last element at the bottom.
 If the nav element is placed in a Container, the container should have a "row" layout so
 the nav element is the first element on the left.
-A nav has an list of 'children' elements. These are usually "NavLink" elements. A nav 
+A nav has an list of 'children' elements. These are always "NavLink" or very seldom "Input" for a search. A nav 
 has an variable 'direction' in the 'layout' object. It can have the values 'row' 
 and 'column'. The default is "row", only when the nav element is placed in a container,
 it can be column.
+  `,
+  descriptionHTML: `
+The "Nav" element is used to to show the main navigational elements on a page. The nav element
+should be the first element in a desktop screen if navigation over multiple pages is required. 
+On mobile screens, it can be also the last element at the bottom.
+If the nav element is placed in a Container, the container should have a "row" layout so
+the nav element is the first element on the left.
+A nav has an list of 'children' elements. These are always "NavLink" or very seldom "Input" for a search. 
+A nav has an property 'flex-direction'. It can have the values 'row' and 'column'. 
+row means that the elements are aligned horizontal from left to right, column means the elements are aligned vertical from top to down.
   `,
     layout: {
       direction: "row",
@@ -54,6 +64,10 @@ it can be column.
     description: `
 The "NavLink" element is used inside a Nav element to render links to other pages. A NavLink can have a 'variant' property, which can have the following values: 
 'Default', 'Active', 'CallToAction'. The highlight variant should be used for important elements, like sign-up or sign-in buttons. 
+  `,
+  descriptionHTML: `
+The "NavLink" element is used inside a Nav element to render links to other pages. It has a label property. A NavLink can have a 'variant' property, which can have the following values: 
+'Default', 'Active', 'CallToAction'. The highlight variant should be used for important elements, like sign-up or sign-in buttons. A NavLink must not have any children 
   `,
     x: 0,
     y: 0,
