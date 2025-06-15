@@ -119,7 +119,7 @@ export default {
       if (this.size === 'm') {
         return {w: 414, h: 896}
       }
-      return {w: 800, h: 720}
+      return {w: 1200, h: 720}
     },
 
     getConfig() {

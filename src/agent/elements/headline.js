@@ -6,7 +6,7 @@ export default {
   x: 0,
   y: 0,
   w: "@box-width-xl",
-  h: "@box-height-xs",
+  h: "@box-height-ms",
   z: 0,
   props: {
     label: "Headline"

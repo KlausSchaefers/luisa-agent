@@ -4,39 +4,114 @@
       "type": "Screen",
       "name": "Login Screen",
       "children": [
+        {
+          "type": "Nav",
+          "children": [
             {
-                "type": "Nav",
-                "children": [
-                    {
-                      "type": "Button",
-                      "props": {
-                        "label": "Nav 1"
-                      }
-                    },
-                     {
-                      "type": "Button",
-                      "props": {
-                        "label": "Nav 2"
-                      }
-                    },
-                     {
-                      "type": "Button",
-                      "props": {
-                        "label": "Nav 3"
-                      }
-                    }
-                ]
+              "type": "NavLink",
+              "props": {
+                "label": "Nav 1"
+              }
             },
             {
-              "type": "HeroSection",
-              "name": "Hero Instance 1",
+              "type": "NavLink",
+              "variant": "Active",
               "props": {
-                "headline": "This is the headline",
-                "subheading": "Luisa Agent - The fastest you can get"
+                "label": "Nav 2"
+              }
+            },
+            {
+              "type": "NavLink",
+              "props": {
+                "label": "Nav 3"
+              }
+            },
+            {
+              "type": "NavLink",
+              "variant": "CallToAction",
+              "props": {
+                "label": "Login"
               }
             }
-          
-        
+          ]
+        },
+        {
+          "type": "HeroSection",
+          "name": "Hero Instance 1",
+          "variant": "Small",
+          "props": {
+            "headline": "This is the headline",
+            "call_to_action": "Luisa Agent - The fastest you can get"
+          }
+        },
+        {
+          "type": "Section",
+          "name": "Hero Instance 1",
+          "variant": "Small",
+
+          "props": {},
+          "children": [
+            {
+              "type": "Headline",
+              "props": {
+                "label": "Section 1"
+              }
+            },
+            {
+              "type": "Container",
+              "name": "Container",
+              "layout": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Card",
+                  "name": "Buggy",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Text"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "name": "Buggy",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Text"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "name": "Hero Instance 1",
+          "variant": "Small",
+          "props": {},
+          "children": [
+            {
+              "type": "Headline",
+              "props": {
+                "label": "Section 2"
+              }
+            }
+          ]
+        }
       ],
       "props": {
         "start": false

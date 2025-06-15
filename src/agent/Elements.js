@@ -9,6 +9,7 @@ import checkbox from "./elements/checkbox";
 import radio from "./elements/radio";
 import screen from "./elements/screen";
 import nav from "./elements/nav";
+import section from "./elements/section";
 import card from "./elements/card";
 import hero from "./elements/hero";
 
@@ -22,6 +23,7 @@ export default class Elements {
     this.register(image);
     this.register(label);
     this.register(headline);
+    this.register(section)
     this.register(sub_headline);
     this.register(checkbox)
     this.register(radio)

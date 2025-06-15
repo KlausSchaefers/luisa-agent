@@ -25,7 +25,9 @@ export default class QuxConverter extends Converter {
       'Input': 'TextBox',
       'Headline': 'Label',
       'SubHeadline': 'Label',
-      'RadioBox': 'LabeledRadioBox'
+      'RadioBox': 'LabeledRadioBox',
+      'Nav': 'Box',
+      'NavLink': 'Button'
     }
   }
 

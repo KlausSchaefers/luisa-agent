@@ -1,6 +1,10 @@
 export default {
   "dslColors": {
-    "@primary-color": "#333333"
+    "@primary-color": "#333333",
+    "@primary-color:hover": "#000000",
+    "@text-color": "#333",
+    "@text-color-secondary": "#555",
+    "@passive-color": "#eeeeee"
   },
   "fontSize": {
     "@font-size-s": 12,
@@ -51,16 +55,37 @@ export default {
     "@spacing-l": 32
   },
   "color": {
+    "@screen-background": "#FFFFFF",
+
+    "@nav-bar-background": "#ffffff",
+    "@nav-bar-color": "@text-color-secondary",
+    "@nav-bar-border-color": "#eeeeee",
+
+    "@nav-background": "#ffffff",
+    "@nav-color": "@text-color-secondary",
+    "@nav-border-color": "#ffffff",
+
+    "@nav-background:hover": "#eeeeee",
+    "@nav-color:hover": "@text-color",
+    "@nav-border-color:hover": "eeeeee",
+
+    "@section-border-color": "#eeeeee",
+    "@section-background": "transparent",
+
     "@card-border-color": "#e2e2e2",
+
     "@container-background": "transparent",
     "@container-border-color": "#fff",
-    "@screen-background": "#FFFFFF",
+
     "@background-passive": "#e2e2e2",
-    "@background-passive:hover": "#000000",
+    "@background-passive:hover": "@primary-color:hover",
+
     "@color-passive": "",
     "@color-passive:hover": "#FFFFFF",
-    "@background-active": "#000000",
-    "@background-active:hover": "dark#000000",
+
+    "@background-active": "@primary-color:hover",
+    "@background-active:hover": "@primary-color:hover",
+
     "@color-active": "#FFFFFF",
     "@color-active:hover": "#FFFFFF",
     "@background-danger": "#efc5c5",
@@ -79,49 +104,61 @@ export default {
     "@background-icon:hover": "transparent",
     "@color-icon": "#000000",
     "@color-icon:hover": "#000000",
+    
+    "@label-color": "@text-color",
+    "@label-color-secondary": "@text-color-secondary",
     "@label-color:hover": "#2784b1",
     "@label-color:error": "#f43535",
+
     "@form-border-color": "#000000",
     "@form-color": "#000000",
     "@form-background": "#FFFFFF",
+
     "@form-border-color:hover": "#000000",
     "@form-color:hover": "#000000",
     "@form-background:hover": "#e2e2e2",
+
     "@form-border-color:focus": "#000000",
     "@form-color:focus": "#000000",
     "@form-background:focus": "#FEFEFE",
+
     "@form-border-color:error": "#f43535",
     "@form-color:error": "#f43535",
     "@form-background:error": "#efc5c5",
+
     "@form-popup-border-color": "#000000",
     "@form-popup-color": "#000000",
     "@form-popup-background": "#FFFFFF",
     "@form-popup-backgrop": "rgba(0,0,0,0.8)",
     "@form-popup-color:hover": "#000000",
     "@form-popup-background:hover": "#e2e2e2",
+
     "@button-primary-border-color": "#000000",
     "@button-primary-background": "@primary-color",
     "@button-primary-color": "#FFFFFF",
     "@button-primary-border-color:hover": "#000000",
     "@button-primary-background:hover": "#000000",
     "@button-primary-color:hover": "#FFFFFF",
+
     "@button-secundary-border-color": "#000000",
     "@button-secundary-background": "#FFFFFF",
     "@button-secundary-color": "#000000",
     "@button-secundary-border-color:hover": "#000000",
     "@button-secundary-background:hover": "#000000",
     "@button-secundary-color:hover": "#FFFFFF",
+
     "@button-danger-border-color": "#f43535",
     "@button-danger-background": "#f43535",
     "@button-danger-color": "#FFFFFF",
     "@button-danger-border-color:hover": "#f60404",
     "@button-danger-background:hover": "#f60404",
     "@button-danger-color:hover": "#FFFFFF",
-    "@button-passive-border-color": "#e2e2e2",
-    "@button-passive-background": "#e2e2e2",
+
+    "@button-passive-border-color": "#@passive-color",
+    "@button-passive-background": "@passive-color",
     "@button-passive-color": "#333333",
-    "@button-passive-border-color:hover": "#e2e2e2",
-    "@button-passive-background:hover": "#e2e2e2",
+    "@button-passive-border-color:hover": "@passive-color",
+    "@button-passive-background:hover": "@passive-color",
     "@button-passive-color:hover": "#333333"
   },
   "boxShadow": {
@@ -131,19 +168,19 @@ export default {
     "@card-box-shadow": {
 			"v" : 2,
 			"h" : 0,
-			"b" : 16,
+			"b" : 8,
 			"s" : 0,
 			"c" : "rgba(0, 0, 0, 0.2)",
 			"i" : false
 		},
   },
-  "red": {
-    "@label-color": "#000000",
-    "@label-color-secondary": "#777"
+  "labes": {
+
   },
   "padding": {
     "@container-padding": 0,
-    "@card-padding": 32
+    "@card-padding": 32,
+    "@section-padding": 32
   },
   "paddingHorizontal": {
     "@form-padding-horizontal": 8
