@@ -21,8 +21,9 @@ export default class FlexConverter extends Converter {
 
 
   convertTree(tree) {
-    tree = structuredClone(tree)
     // forward pass to compute all out boxes
+    tree.x = 0
+    tree.y = 0
     this.layoutTree(tree, this.screenSize.w);
     // backward pass to compute inner alignment
     this.alignTree(tree)

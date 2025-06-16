@@ -127,7 +127,7 @@ export default {
       if (this.size === 'm') {
         return {w: 414, h: 896}
       }
-      return {w: 1200, h: 720}
+      return {w: 960, h: 720}
     },
 
     getConfig() {
@@ -235,7 +235,7 @@ export default {
       this.raw = raw
       //console.debug(this.printRaw(raw))
       //this.selectedScreen = Object.values(this.app.screens)[0].name
-      console.debug(JSON.stringify(this.raw, null , 2))
+      //console.debug(JSON.stringify(this.raw, null , 2))
     }
   },
   watch: {

@@ -5,7 +5,7 @@ import DLS  from '../src/agent/DLS'
 import fruits from '../src/examples/fruits'
 
 
-test('Test QuxConverter >  ', async () => {
+test('Test GrowColChildren >  ', async () => {
 
     
     const dls = new DLS()

@@ -17,7 +17,8 @@
     "luisa-vue": "^3.0.41",
     "marked": "^15.0.12",
     "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "yoga-layout": "^3.2.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.3",

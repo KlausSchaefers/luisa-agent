@@ -15,7 +15,7 @@
               "name": "Hero Instance 1",
               "props": {
                 "headline": "This is the headline",
-                "subheading": "Luisa Agent - The fastest you can get"
+                "call_to_action": "Luisa Agent - The fastest you can get"
               }
             }
           ]

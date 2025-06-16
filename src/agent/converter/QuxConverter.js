@@ -1,5 +1,6 @@
 import { Converter } from "../Interfaces.js";
 import FlexConverter from './FlexConverter'
+import YogaConverter from './YogaConverter.js'
 
 export default class QuxConverter extends Converter {
   constructor(w = 400, h = 800) {
@@ -26,7 +27,8 @@ export default class QuxConverter extends Converter {
       'Section': 'Box'
     }
 
-    this.flexConverter = new FlexConverter(w, h)
+    this.flexConverter = new FlexConverter(w,h)
+    //this.flexConverter = new YogaConverter(w, h)
   }
 
   convert(app) {

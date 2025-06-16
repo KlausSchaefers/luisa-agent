@@ -44,6 +44,7 @@ export class Converter {
   }
 
   isLayoutGrow(element) {
+    // default is grow
     if (!element.layout) {
       return true
     }
