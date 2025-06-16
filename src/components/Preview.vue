@@ -11,6 +11,9 @@
 
 <script>
 
+import '@mdi/font/css/materialdesignicons.css'
+
+
 export default {
   emits: ['update:modelValue', 'click', 'change'],
   props: ['app', 'screen'],

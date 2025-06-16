@@ -34,6 +34,9 @@ export class Converter {
     return !this.isRowContainer(element)
   }
 
+  hasChildren (node) {
+    return node.children && node.children.length > 0
+  }
 
 
   isNoLayoutGrow(element) {

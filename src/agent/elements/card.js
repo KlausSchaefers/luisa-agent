@@ -20,6 +20,9 @@ row means that the elements are aligned horizontal from left to right, column me
   w: "@box-width-l",
   h: "@box-height-s",
   z: 0,
+  layout: {
+    grow:1
+  },
   props: {
     paddingSnap: true
   },

@@ -233,12 +233,62 @@ export default class QuxConverter extends Converter {
       }     
     }
 
-    if (this.isColumnContainer(node)) {
-      
-    }
+
+    // grow stuff
+    // if (this.isColumnContainer(node) && this.hasChildren(node)) {
+    //   this.stretchColumnChildren(node, paddingY);
+    // } else {
+    //   this.strechRowChildren(node, paddingX, indent);
+    // }
 
     // should we still frow childgren to occupy all the space like in the fruits
 
+  }
+
+  strechRowChildren(node, paddingX, indent) {
+    const gapX = this.gapX;
+    const w = node.w - paddingX * 2;
+    const childTotalW = this.computeChildrenWidth(node, false);
+    const dif = w - childTotalW;
+    const growChildren = this.getGrowChildren(node);
+    //console.debug(indent, '', node.name, childTotalW, w, growChildren.map(c => c.name));
+
+    if (growChildren.length > 0 && dif > 8) {
+
+      const offsetW = Math.floor((dif) / growChildren.length);
+      let offsetX = growChildren[0].x;
+      for (let child of growChildren) {
+        child.x = offsetX;
+        child.w += offsetW;
+        offsetX += child.w + gapX;
+      }
+    }
+  }
+
+  stretchColumnChildren(node, paddingY) {
+    const gapY = this.gapY;
+    const h = node.h - paddingY * 2;
+    const childTotalH = this.computeChildrenHeight(node, false);
+    const dif = h - childTotalH;
+
+    const growChildren = this.getGrowChildren(node);
+    if (growChildren.length > 0 && dif > 8) {
+      //console.debug(indent, '', node.name, childTotalH, h, growChildren.map(c => c.name))
+      const offsetH = Math.floor(dif / growChildren.length);
+      let offsetY = growChildren[0].y;
+      for (let child of growChildren) {
+        child.y = offsetY;
+        child.h += offsetH;
+        offsetY += child.h + gapY;
+      }
+    }
+  }
+
+  getGrowChildren (node) {
+    return node.children.filter(c => {
+      // this should be better. Currently we want explicit grow
+      return c?.layout?.grow === 1
+    })
   }
 
   

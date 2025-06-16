@@ -6,6 +6,7 @@ export default class ErrorCorrector extends Converter {
   constructor(elements) {
     super()
     this.elements = elements
+    this.name = 'ErrorCorrector'
   }
 
   convertElement (element) {
@@ -22,6 +23,6 @@ export default class ErrorCorrector extends Converter {
   }
 
   correctNav(element) {
-    console.debug('correctNav()')
+
   }
 }

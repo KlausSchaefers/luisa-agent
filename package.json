@@ -10,10 +10,11 @@
     "test:unit": "vitest"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
     "@tabler/icons-vue": "^3.34.0",
     "fast-xml-parser": "^5.2.5",
     "highlight.js": "^11.11.1",
-    "luisa-vue": "^3.0.40",
+    "luisa-vue": "^3.0.41",
     "marked": "^15.0.12",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"

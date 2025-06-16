@@ -66,7 +66,7 @@
               "layout": {
                 "direction": "column"
               },
-              "name": "MustGrow",
+              "name": "GrowContainer",
               "children": [
                 {
                   "type": "Headline",
@@ -76,17 +76,17 @@
                 },
                 {
                   "type": "Card",
+                  "name": "GrowCard",
                   "layout": {
-                    "direction": "row"
+                    "direction": "row",
+                    "grow": 1
                   },
                   "children": [
                     {
                       "type": "Image",
+                      "variant": "Normal",
                       "props": {
                         "value": "https://example.com/orange_deal.jpg"
-                      },
-                      "layout": {
-                        "height": "80px"
                       }
                     },
                     {
@@ -127,6 +127,7 @@
                 },
                 {
                   "type": "Card",
+                  "name": "NoGrowCard1",
                   "layout": {
                     "direction": "column"
                   },
@@ -149,6 +150,7 @@
                 },
                 {
                   "type": "Card",
+                  "name": "NoGrowCard2",
                   "layout": {
                     "direction": "column"
                   },
