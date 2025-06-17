@@ -7,9 +7,12 @@ export class Converter {
         this.convertTree(s)
       })
     }
+    this.postConvert(app)
     return app
   }
 
+  postConvert(/* app */) {
+  }
 
   convertTree(tree) {
     this.convertElement(tree);

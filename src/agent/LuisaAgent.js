@@ -48,6 +48,7 @@ export default class LuisaAgent {
     for (let s of app.screens) {
       this.onProgress("- Create screen __" + s.name + "__")
       const screenMessage = this.prompts.messageScreen(message, s.description)
+      console.debug(screenMessage)
       let scrn = await this.createScreen(screenMessage);
       if (scrn.raw) {
         scrn.raw.name = s.name         
@@ -125,6 +126,8 @@ export default class LuisaAgent {
 
           ${message}
 
+          ${this.prompts.htmlRules()}
+
           
           Return the result as HTML Do not include any additional text.
       `;
@@ -169,6 +172,7 @@ export default class LuisaAgent {
 
             ${message}
 
+            ${this.prompts.jsonRules()}
             
             Return the result as JSON in the defined language. Do not include any additional text.
         `;

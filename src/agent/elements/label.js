@@ -13,7 +13,7 @@ A label can have a 'variant' property, which can have the following values:
 An Element that can show text. It has a 'label' property. 
 It should be used for labels as the default element for all kind text. 
 A label can have a 'variant' property, which can have the following values: 
-'Hint', 'Emphasis'. 
+'Hint', 'Emphasis'. Labels MUST not have any child elements.
   `,
     x: 0,
     y: 0,

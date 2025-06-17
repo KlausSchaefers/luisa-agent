@@ -19,6 +19,9 @@ A Headline can have a 'variant' property, which can have the following values:
   w: "@box-width-xl",
   h: "@box-height-ms",
   z: 0,
+  layout: {
+    grow: 1
+  },
   props: {
     label: "Headline"
   },

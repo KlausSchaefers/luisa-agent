@@ -12,6 +12,7 @@ A nav has an list of 'children' elements. These are always "NavLink" or very sel
 has an variable 'direction' in the 'layout' object. It can have the values 'row' 
 and 'column'. The default is "row", only when the nav element is placed in a container,
 it can be column.
+Never add a Nav element, if you are not going to add more then one NavLink elemeent!
   `,
   descriptionHTML: `
 The "Nav" element is used to to show the main navigational elements on a page. The nav element
@@ -22,6 +23,7 @@ the nav element is the first element on the left.
 A nav has an list of 'children' elements. These are always "NavLink" or very seldom "Input" for a search. 
 A nav has an property 'flex-direction'. It can have the values 'row' and 'column'. 
 row means that the elements are aligned horizontal from left to right, column means the elements are aligned vertical from top to down.
+Never add a Nav element, if you are not going to add more then one NavLink elemeent!
   `,
     layout: {
       direction: "row",

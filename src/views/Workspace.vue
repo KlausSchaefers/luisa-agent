@@ -26,7 +26,7 @@
                 <option :value="true">Debug View</option>
                 <option :value="false">Production View</option>
               </select>
-              <select v-model="size" class="luisa-select">            
+              <select v-model="size" class="luisa-select" @change="setSize">            
                 <option value="m">Mobile</option>
                 <option value="t">Tablet</option>
                 <option value="d">Desktop</option>
@@ -70,8 +70,7 @@ import landing from '../examples/landing'
 import fruits from '../examples/fruits'
 import fruits2 from '../examples/fruits2'
 import yoga from '../examples/yoga'
-
-
+import form from '../examples/form'
 
 const examples = {
   'fitness': fitness,
@@ -83,7 +82,8 @@ const examples = {
   "landing": landing,
   "fruits": fruits,
   "fruits2": fruits2,
-  "yoga": yoga
+  "yoga": yoga,
+  "form": form
 }
 
 export default {
@@ -237,12 +237,17 @@ export default {
       localStorage.setItem('luisaFlexEngine', this.flexEngine)
       this.reRender()
     },
+    setSize () {
+      localStorage.setItem('luisaSize', this.size)
+      this.reRender()
+    },
     buildRaw(raw) {
       const dsl = new DLS()
       if (this.isDebug) {
         dsl.set("@container-border-width", 1)
           .set("@container-border-color", "#123ef099")
           .set("@container-border-style", "dashed")
+          .set("@@section-background", "red")
           .set("@container-padding", 16)
       }
       const model = Pipeline.defaultPipeline(dsl).convert(structuredClone(raw))
@@ -261,6 +266,7 @@ export default {
   mounted() {
     this.isDebug = localStorage.getItem('luisaAppDebug') === 'true'
     this.useHTML = localStorage.getItem('luisaUseHTML') === 'true'
+    this.size =  localStorage.getItem('luisaSize') ?  localStorage.getItem('luisaSize')  : "m"
     this.flexEngine = localStorage.getItem('luisaFlexEngine')
     if (this.$route.query.app) {
       if (examples[this.$route.query.app]) {

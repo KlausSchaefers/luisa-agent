@@ -16,7 +16,7 @@ A button has a label property.
 A button can have a 'variant' property, which can have the following values: 
 'Primary', 'Secondary', 'FullWidth', 'Disabled' and 'Danger'. 
 The Secondary buttons should be used for cancel actions and so an. 
-Danger for deletions and everything dangerous.
+Danger for deletions and everything dangerous. Buttons must not have any children
     `,
     name: "Primary Button",
     x: 0,

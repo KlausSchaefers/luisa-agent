@@ -12,8 +12,7 @@ export default class YogaConverter extends Converter {
     this.containerPadding = 16;
     this.paddingX = 16;
     this.paddingY = 16;
-    this.gapX = 16;
-    this.gapY = 16;
+    this.screenGapY = 16;
     this.z = 1;
     this.isRemoveContainers = false;
     this.growRowChildrenInHeight = true;
@@ -38,13 +37,7 @@ export default class YogaConverter extends Converter {
 
     let root = Yoga.Node.create(config);
     root.setFlexDirection(FlexDirection.Column);
-    // root.setPadding(Edge.Left, 0);
-    // root.setPadding(Edge.Right, 0);
-    // root.setPadding(Edge.Bottom, 0);
-    // root.setPadding(Edge.Top, 0);
-    root.setGap(Gutter.All, 16);
-    // root.setWidth(this.screenSize.w);
-    // root.setMinHeight(this.screenSize.h);
+    root.setGap(Gutter.All, this.screenGapY);
     root.setFlexGrow(1)
 
     yogaNodes[copy.id] = root;
@@ -94,15 +87,27 @@ export default class YogaConverter extends Converter {
 
     for (let i = 0; i < node.children.length; i++) {
       const child = node.children[i];
-           
+      const nextChild = node.children[i+1];
+
       const yogaChild = this.createYogaChild(child, node, indent); 
       yogaParent.insertChild(yogaChild, i);
       yogaNodes[child.id] = yogaChild;
 
-      //console.debug(indent, "+", child.name, i, yogaChild.getParent())
-
+      // for labels we do not want a full gap
+      if (nextChild &&  this.isLabel(child) && ( this.isInput(nextChild) || this.isContainer(nextChild))) {
+        let gap = this.getGap(node)
+        //yogaChild.setMargin(Edge.Bottom, -1 * (gap -8))
+      }
       this.addNode(child, yogaChild, yogaNodes, indent + '   ')
     }
+  }
+  
+  isLabel(child) {
+    return child.type === 'Label' || child.type === 'Headline' || child.type === 'SubHeadline'
+  }
+
+  isInput(child) {
+    return child.type === 'Input' || child.type === 'TextArea' || child.type === 'CheckBox' || child.type === 'CheckBoxGroup' || child.type === 'RadioBox' || child.type === 'RadioGroup'
   }
 
   createYogaChild(child, parent, indent) {

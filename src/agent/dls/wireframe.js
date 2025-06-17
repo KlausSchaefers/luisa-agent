@@ -187,7 +187,7 @@ export default {
   "padding": {
     "@container-padding": 0,
     "@card-padding": 32,
-    "@section-padding": 64
+    "@section-padding": 32
   },
   "paddingHorizontal": {
     "@form-padding-horizontal": 8

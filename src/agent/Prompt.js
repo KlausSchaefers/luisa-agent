@@ -22,7 +22,13 @@ export default class Prompts {
     }
 
     messageScreen(context, description) {
-        return  context + "\n\n" + description
+        return  `
+            The bigger context of the app is as follows;
+            ${context} 
+            
+            IMPORTANT: You need to create now one screen that follows these instructions
+            ${description}
+        `.trim()
     }
     
     systemScreen (){
@@ -143,9 +149,29 @@ export default class Prompts {
         return result
     }
 
+    jsonRules() {
+        return this.htmlRules()
+    }
+
     /*******************************************
      * HTML format
      *******************************************/
+
+    htmlRules () {
+        return `
+            Important! Please follow this additonal rules when designing the screen:
+
+            - Use a "Nav" element only when you will add more the one "NavLink" elements
+
+            - If you create a form and place it in a "Section", make sure the related buttons, e.g. Submit and Cancel are in the same "Section"
+
+            - If you use sections under the "Screen" element, make there are now single Elements like headings on the same level.
+
+            - Do not use containers to group form elements. So do not use a Container if the only elements are a Label and a Input element.
+
+            - Do not place any "Section" in another "Section". Section should be only used under the "Screen" element.
+        `
+    }
 
     htmlFormatScreen() {
         return `
@@ -154,15 +180,31 @@ export default class Prompts {
 
             An example for an element is:
             \`\`\`html
-                <html>
-                    <body>
-                        <h1>This is a title.</h1>
-                        <div class="flex-row">
-                            <div class="card">
-                            </div>
-                        </div>
-                    </body>
-                </html>
+                <Screen>
+                        <Nav>
+                            <NavLink>Link1</NavLink>
+                            <NavLink>Link1</NavLink>
+                        </Nav>
+                        <Section>
+                            <Headline variant="H1" >This is a title.</Headline>
+                            <Container flex-direction="row">
+                                <Card flex-direction="colum">
+                                      <Headline variant="H2" >Card title</Headline>
+                                      <Label>
+                                        Some text to explain something
+                                      </Label>
+                                </Card>
+
+                                <Card flex-direction="colum">
+                                    <Headline variant="H2" >Other Title</Headline>
+                                      <Label>
+                                        Some text to explain something
+                                      </Label>
+                                </Card>
+                            </Container>
+                        </Section>
+                 
+                </Screen>
 
              \`\`\`
 

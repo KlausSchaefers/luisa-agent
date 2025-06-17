@@ -7,6 +7,7 @@ The Section element is used to group related elements in an page. The are usuall
 A Section has an list of 'children' elements. A Section has an variable 'direction' in the 'layout' object. It can have the values 'row' 
 and 'column'. 'row' means that the elements are aligned horizontal from left to right, 
 'column' means the elements are aligned vertical from top to down.
+A screen should never have only one single Section. Use the section only if you are going to add more than one section!
   `,
     descriptionHTML: `
 The Section element is used to group related elements in an page. The are usually directly children of the "Screen" element. 
@@ -14,12 +15,13 @@ A Section has an list of 'children' elements.
 A Section has an property 'flex-direction'. It can have the values 'row' and 'column'. 
 row means that the elements are aligned horizontal from left to right, 
 column means the elements are aligned vertical from top to down.
+A screen should never have only one single Section. Use the section only if you are going to add more than one section!
   `,
     container: true,
     x: 0,
     y: 0,
     w: "@box-width-l",
-    h: 240,
+    h: 32,
     z: 0,
     props: {
       paddingSnap: true,
@@ -45,7 +47,7 @@ column means the elements are aligned vertical from top to down.
       borderLeftWidth: 0,
       borderColor: "@section-border-color",
       background: "@section-background",
-      gap: "@gap-l"
+      gap: "@gap-m"
     },
   },
 ];

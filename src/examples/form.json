@@ -1,0 +1,134 @@
+{
+  "screens": [
+    {
+      "type": "Screen",
+      "children": [
+        {
+          "type": "Section",
+          "children": [
+            {
+              "type": "Headline",
+              "props": {
+                "label": "Tell Us About Yourself"
+              },
+              "variant": "H1"
+            },
+            {
+              "type": "Label",
+              "props": {},
+              "children": [
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Please fill out the form below so we can get to know you better."
+                  },
+                  "variant": "Hint"
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Full Name"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Hobbies"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Do you have pets?"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "If yes, please describe your pets."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Input",
+              "props": {
+                "label": "Enter your full name"
+              }
+            },
+            {
+              "type": "TextArea",
+              "props": {},
+              "children": [
+                {
+                  "type": "TextArea",
+                  "props": {
+                    "label": "List your hobbies here"
+                  }
+                },
+                {
+                  "type": "TextArea",
+                  "props": {
+                    "label": "Describe your pets"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "RadioGroup",
+              "props": {
+                "options": [
+                  "Yes",
+                  "No"
+                ]
+              }
+            },
+            {
+              "type": "Container",
+              "children": [
+                {
+                  "type": "Button",
+                  "props": {},
+                  "children": [
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Submit"
+                      },
+                      "variant": "Primary"
+                    },
+                    {
+                      "type": "Button",
+                      "props": {
+                        "label": "Cancel"
+                      },
+                      "variant": "Secondary"
+                    }
+                  ]
+                }
+              ],
+              "layout": {
+                "direction": "row"
+              }
+            }
+          ],
+          "layout": {
+            "direction": "column"
+          }
+        }
+      ],
+      "name": "Profile Form Screen"
+    }
+  ],
+  "structure": {
+    "type": "App",
+    "description": "This app collects personal details from the user, including their name, hobbies, and information about any pets they may have.",
+    "name": "Personal Profile Form",
+    "screens": [
+      {
+        "name": "Profile Form Screen",
+        "description": "The user is presented with a form to enter their name, list their hobbies, and indicate whether or not they have pets. The user should see a clear title, guidance for each field, and a submit button. The information to enter includes: their full name (text input), their hobbies (multi-line text or multiple choice), and a yes/no selection for if they have pets. If 'yes' is selected, an additional field appears for the user to describe their pets."
+      }
+    ]
+  }
+}
