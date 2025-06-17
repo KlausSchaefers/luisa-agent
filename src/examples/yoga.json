@@ -1,0 +1,62 @@
+{
+  "screens": [
+    {
+      "type": "Screen",
+      "name": "Screen",
+      "children": [
+        {
+          "type": "Container",
+          "name": "Root",
+          "layout": {
+            "direction": "column"
+          },
+
+          "children": [
+            {
+              "type": "Container",
+              "name": "ContaineRow",
+              "_hidden": false,
+              "layout": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Container",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [],
+                  "name": "RowChild1"
+                },
+                {
+                  "type": "Container",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [],
+                  "name": "RowChild2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Container",
+          "name": "Containe2",
+          "layout": {
+            "direction": "column"
+          },
+
+          "children": []
+        }
+      ],
+      "props": {
+        "start": false
+      },
+      "style": {
+        "fontSize": 14,
+        "background": "#FFFFFF"
+      }
+    }
+  ]
+}

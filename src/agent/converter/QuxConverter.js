@@ -3,7 +3,7 @@ import FlexConverter from './FlexConverter'
 import YogaConverter from './YogaConverter.js'
 
 export default class QuxConverter extends Converter {
-  constructor(w = 400, h = 800) {
+  constructor(w = 400, h = 800, flexEngine='') {
     super();
     this.screenSize = {
       w: w,
@@ -12,7 +12,7 @@ export default class QuxConverter extends Converter {
     this.lastUUID = 10000;   
     this.isRemoveContainers = false; 
     this.growRowChildrenInHeight = true
-    this.name = 'QuxConverter'
+    this.addParentOffset = false
 
     this.typeMapping = {
       'Container': 'Box',
@@ -27,8 +27,13 @@ export default class QuxConverter extends Converter {
       'Section': 'Box'
     }
 
-    this.flexConverter = new FlexConverter(w,h)
-    //this.flexConverter = new YogaConverter(w, h)
+    if (flexEngine === 'yoga') {
+      this.flexConverter = new YogaConverter(w, h)
+      this.addParentOffset = true
+    } else {
+      this.flexConverter = new FlexConverter(w,h)
+    }
+    this.name = 'QuxConverter (' + this.flexEngine + ")"
   }
 
   convert(app) {
@@ -149,26 +154,34 @@ export default class QuxConverter extends Converter {
     scrn.props.start = false;
     app.screens[scrn.id] = scrn;
 
-    this.flattenNode(scrn, app, tree);
+    
+    this.flattenNode(scrn, app, tree, null);
 
     return app;
   }
 
-  flattenNode(scrn, app, node, indent='') {
-    //Logger.log(-1, prefx + ' ' + node.id, node)
+  flattenNode(scrn, app, node, parent, indent='') {
+
     if (!node.children) {
       return;
     }
+
     node.children.forEach((child) => {
       if (this.isRemoveScreenOffset) {
         child.x -= scrn.x;
         child.y -= scrn.y;
       }
-      //console.debug(indent, " - " + child.name, child.y, ' - ', child.y + child.h)
+      // yoga gievs us a proper box model, flex gives us already abs position, which is kind if shit
+      if (this.addParentOffset && parent) {
+        //console.debug(indent, " - " + child.name, 'x: ', child.x, ' y:', child.y, ' parent:', node.name, node.x, node.y)
+        child.y += node.y
+        child.x += node.x     
+      }
+ 
 
       app.widgets[child.id] = child;
       scrn.children.push(child.id);
-      this.flattenNode(scrn, app, child, indent + "   ");
+      this.flattenNode(scrn, app, child, node, indent + "   ");
     });
   }
 

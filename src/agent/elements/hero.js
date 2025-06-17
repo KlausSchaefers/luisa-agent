@@ -25,6 +25,7 @@ At has the following variants "Default" and "Small".
     },
     layout: {
       alignItems: "center",
+      justifyContent: "center"
     },
     has: {
       backgroundColor: true,

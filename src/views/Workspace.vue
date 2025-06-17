@@ -14,13 +14,17 @@
 
             </div>
             <div>
+              <select v-model="flexEngine" class="luisa-select" @change="setFlex">            
+                <option value="yoga">Yoga</option>
+                <option value="flex">QUX</option>
+              </select>
               <select v-model="useHTML" class="luisa-select" @change="setMode">            
                 <option :value=false>JSON</option>
                 <option :value=true>HTML</option>
               </select>
               <select v-model="isDebug" class="luisa-select" @change="reRender">            
-                <option :value="true">Debug</option>
-                <option :value="false">Nice</option>
+                <option :value="true">Debug View</option>
+                <option :value="false">Production View</option>
               </select>
               <select v-model="size" class="luisa-select">            
                 <option value="m">Mobile</option>
@@ -64,6 +68,9 @@ import simple from '../examples/simple'
 import landing from '../examples/landing'
 import fruits from '../examples/fruits'
 import fruits2 from '../examples/fruits2'
+import yoga from '../examples/yoga'
+
+
 
 const examples = {
   'fitness': fitness,
@@ -74,7 +81,8 @@ const examples = {
   "simple": simple,
   "landing": landing,
   "fruits": fruits,
-  "fruits2": fruits2
+  "fruits2": fruits2,
+  "yoga": yoga
 }
 
 export default {
@@ -84,6 +92,7 @@ export default {
   data() {
     return {
       isWorking: false,
+      flexEngine: 'yoga',
       size: 'd',
       app: null,
       messages: [],
@@ -174,7 +183,7 @@ export default {
      
       this.saveModel(result.raw)
       const s = this.getScreenSize()
-      const qux = new QuxConverter(s.w, s.h)
+      const qux = new QuxConverter(s.w, s.h, this.flexEngine)
       this.app = qux.convert(result)
       this.raw = result.raw
       this.finish()
@@ -220,6 +229,10 @@ export default {
     setMode () {
       localStorage.setItem('luisaUseHTML', this.useHTML)
     },
+    setFlex () {
+      localStorage.setItem('luisaFlexEngine', this.flexEngine)
+      this.reRender()
+    },
     buildRaw(raw) {
       const dsl = new DLS()
       if (this.isDebug) {
@@ -230,7 +243,7 @@ export default {
       }
       const model = Pipeline.defaultPipeline(dsl).convert(structuredClone(raw))
       const s = this.getScreenSize()
-      const qux = new QuxConverter(s.w, s.h)
+      const qux = new QuxConverter(s.w, s.h, this.flexEngine)
       this.app = qux.convert(model)
       this.raw = raw
       //console.debug(this.printRaw(raw))
@@ -244,6 +257,7 @@ export default {
   mounted() {
     this.isDebug = localStorage.getItem('luisaAppDebug') === 'true'
     this.useHTML = localStorage.getItem('luisaUseHTML') === 'true'
+    this.flexEngine = localStorage.getItem('luisaFlexEngine')
     if (this.$route.query.app) {
       if (examples[this.$route.query.app]) {
         //console.debug('mounted() > load example', this.$route.query.app)

@@ -1,0 +1,26 @@
+ {
+              "type": "Container",
+              "name": "ContaineRow",
+                        "_hidden": false,
+              "layout": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Container",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [],
+                  "name": "RowChild1"
+                },
+                {
+                  "type": "Container",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [],
+                  "name": "RowChild2"
+                }
+              ]
+            }
