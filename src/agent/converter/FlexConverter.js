@@ -16,7 +16,7 @@ export default class FlexConverter extends Converter {
     this.z = 1
     this.isRemoveContainers = false; 
     this.growRowChildrenInHeight = true
-    this.name = 'FlexConverter'
+    this.name = 'FlexConverter (' + w + ")"
   }
 
 

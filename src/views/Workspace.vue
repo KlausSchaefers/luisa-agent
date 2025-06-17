@@ -28,6 +28,7 @@
               </select>
               <select v-model="size" class="luisa-select">            
                 <option value="m">Mobile</option>
+                <option value="t">Tablet</option>
                 <option value="d">Desktop</option>
               </select>
               <IconTrash :size="16" stroke="2" @click="clear" class="luisa-icon"></IconTrash>
@@ -136,7 +137,10 @@ export default {
       if (this.size === 'm') {
         return {w: 414, h: 896}
       }
-      return {w: 960, h: 720}
+      if (this.size === 't') {
+        return {w: 960, h: 720}
+      }
+      return {w: 1200, h: 720}
     },
 
     getConfig() {

@@ -17,8 +17,8 @@ A label can have a 'variant' property, which can have the following values:
   `,
     x: 0,
     y: 0,
-    w: "@box-width-xl",
-    h: "@box-height-xs",
+    w: "@box-width-xxl",
+    h: "@font-size-m",
     z: 0,
     props: {
       label: "The text value to be shown",

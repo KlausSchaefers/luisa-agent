@@ -9,17 +9,7 @@
             "direction": "row"
           },
           "children": [
-            {
-              "type": "Image",
-              "props": {
-                "value": "https://example.com/logo_freshfruit.png"
-              },
-              "layout": {
-                "width": "60px",
-                "height": "60px",
-                "marginRight": "16px"
-              }
-            },
+           
             {
               "type": "NavLink",
               "props": {
@@ -70,13 +60,14 @@
               "children": [
                 {
                   "type": "Headline",
+                  "variant": "H2",
                   "props": {
                     "label": "Promotions & Best Sellers"
                   }
                 },
                 {
                   "type": "Card",
-                  "name": "GrowCard",
+                  "name": "GrowCardXX",
                   "layout": {
                     "direction": "row",
                     "grow": 1
@@ -121,6 +112,7 @@
               "children": [
                 {
                   "type": "Headline",
+                  "variant": "H2",
                   "props": {
                     "label": "Customer Testimonials"
                   }
@@ -177,6 +169,7 @@
         },
         {
           "type": "Section",
+          "name": "Footer",
           "layout": {
             "direction": "row"
           },

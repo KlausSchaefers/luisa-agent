@@ -21,7 +21,7 @@ export default class Pipeline {
     const complex = new ComplexConverter(elements);
     const design = new DesignConverter(elements, dls)
     const props = new PropsConverter(elements)
-    return new Pipeline([complex, props, design, error])
+    return new Pipeline([complex, props, error, design])
   }
 
   addConverter(converter) {

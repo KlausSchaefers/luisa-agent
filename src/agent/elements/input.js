@@ -18,7 +18,7 @@ An input field should have in most cases a label before.
     w: "@form-width",
     h: "@form-height",
     layout: {
-      grow: 0
+      grow: 1
     },
     z: 0,
     props: {

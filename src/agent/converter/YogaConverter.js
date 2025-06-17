@@ -17,14 +17,12 @@ export default class YogaConverter extends Converter {
     this.z = 1;
     this.isRemoveContainers = false;
     this.growRowChildrenInHeight = true;
-    this.name = "YogaConverter";
+    this.name = "YogaConverter (" + w + ")";
   }
 
   convertTree(treeNode) {
     const copy = treeNode;
     this.setIDs(copy);
-
-    console.debug(this.screenSize)
 
     const yogaNodes = {};
 
@@ -97,7 +95,7 @@ export default class YogaConverter extends Converter {
     for (let i = 0; i < node.children.length; i++) {
       const child = node.children[i];
            
-      const yogaChild = this.createYogaChild(child, node.children.length, indent); 
+      const yogaChild = this.createYogaChild(child, node, indent); 
       yogaParent.insertChild(yogaChild, i);
       yogaNodes[child.id] = yogaChild;
 
@@ -107,13 +105,16 @@ export default class YogaConverter extends Converter {
     }
   }
 
-  createYogaChild(child, siblingCount, indent) {
+  createYogaChild(child, parent, indent) {
     const { paddingX, paddingY } = this.getPadding(child);
-    const isRow= this.isRowContainer(child)
+    const isRow = this.isRowContainer(child)
+    const isParentRow = this.isRowContainer(parent)
     const isGrow = this.isLayoutGrow(child)
     const isContainer = this.isContainer(child)
     const yogaChild = Yoga.Node.create();
-    
+    const p = 1 / parent.children.length * 100
+    const gap = this.getGap(child)
+
     yogaChild.setFlexDirection(FlexDirection.Column);
 
     if (this.isJustifyCenter(child)) {
@@ -129,17 +130,21 @@ export default class YogaConverter extends Converter {
       //yogaChild.setWidthPercent(p)
       yogaChild.setHeightAuto();
       yogaChild.setFlexGrow(1)
+      //yogaChild.setFlexShrink(1)
     } else {
-      //console.debug(indent, '  W/H', child.name, child.w, child.h);
-      //yogaChild.setFlexGrow(1);      
+      //console.debug(indent, '  W/H', child.name, child.w, child.h, isGrow);
       if (isGrow) {
-        yogaChild.setWidthPercent(100)
-        yogaChild.setFlexGrow(1);   
+        if (!isParentRow) {
+          yogaChild.setWidthPercent(100)      
+        } else {
+          yogaChild.setFlexGrow(1)
+        }
+     
+    
       } else {
         yogaChild.setFlexShrink(1); 
         yogaChild.setWidth(child.w);
-      }
-   
+      }   
       yogaChild.setHeight(child.h);
     }
 
@@ -153,21 +158,30 @@ export default class YogaConverter extends Converter {
       yogaChild.setPadding(Edge.Top, paddingY);
 
       if (isRow) {
-        console.debug(indent, 'row:', child.name, child.h , child.h + paddingX * 2)
+        //console.debug(indent, 'row:', child.name, child.h , child.h + paddingX * 2)
         yogaChild.setFlexDirection(FlexDirection.Row);
-        yogaChild.setGap(Gutter.All, this.gapY);
+        yogaChild.setGap(Gutter.All, gap);
         yogaChild.setFlexBasis(child.w)
         yogaChild.setMinHeight(child.h + paddingY * 2)
-
-      
             
       } else {
-        console.debug(indent, 'col:', child.name, child.h , child.h + paddingX * 2, this.isJustifyCenter(child), this.isAlignCenter(child))
+        //console.debug(indent, 'col:', child.name, child.h , child.h + paddingX * 2, this.isJustifyCenter(child), this.isAlignCenter(child))
         yogaChild.setFlexDirection(FlexDirection.Column);
-        yogaChild.setGap(Gutter.All, this.gapX);
+        yogaChild.setGap(Gutter.All, gap);
 
-        const p = 1 / siblingCount * 100
-        //yogaChild.setWidthPercent(p)
+        if (isParentRow) {       
+          // check of all children are containers?
+          if (this.allChildrenCanGrow(parent)) {       
+            yogaChild.setFlexBasisPercent(p)
+            yogaChild.setFlexGrow(0)
+            yogaChild.setFlexShrink(1)
+          } else {
+            yogaChild.setFlexGrow(1)
+          }
+        } else {
+          yogaChild.setFlexGrow(1)
+        }
+      
        // yogaChild.setFlexGrow(1)
         //yogaChild.setFlexShrink(1)
         //console.debug(indent, '  W/ %', child.name, child.w, 1 / siblingCount, p);
@@ -186,6 +200,11 @@ export default class YogaConverter extends Converter {
 
     }
     return yogaChild
+  }
+
+  allChildrenCanGrow (node) {
+    const nonContainer = node.children.find(c => !c.container)
+    return nonContainer === undefined
   }
 
   isJustifyCenter(child) {
@@ -210,6 +229,16 @@ export default class YogaConverter extends Converter {
       }
     }
     return { paddingX, paddingY };
+  }
+
+  getGap(node) {
+    if (this.isContainer(node)) { 
+      if (node?.style?.gap > 0) {
+        return node?.style?.gap
+      }
+      return 16
+    }
+    return 0
   }
 
   setIDs(node) {

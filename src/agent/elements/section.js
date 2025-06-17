@@ -45,6 +45,7 @@ column means the elements are aligned vertical from top to down.
       borderLeftWidth: 0,
       borderColor: "@section-border-color",
       background: "@section-background",
+      gap: "@gap-l"
     },
   },
 ];

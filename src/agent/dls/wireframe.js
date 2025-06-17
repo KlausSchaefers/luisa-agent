@@ -10,9 +10,10 @@ export default {
     "@font-size-s": 12,
     "@font-size-m": 14,
     "@font-size-l": 18,
-    "@font-size-xl": 24,
-    "@font-size-xxl": 32,
-    "@font-size-xxxl": 64
+    "@font-size-xl": 20,
+    "@font-size-xxl": 24,
+    "@font-size-xxxl": 32,
+    "@font-size-xxxxl": 64
   },
   "fontFamily": {
     "@font-family": "Helvetica Neue,Helvetica,Arial,sans-serif"
@@ -31,6 +32,12 @@ export default {
   },
   "borderStyle": {
     "@container-border-style": "solid"
+  },
+  "gap": {
+    "@gap-s": 16,
+    "@gap-m": 32,
+    "@gap-l": 48,
+    "@gap-xl": 64,
   },
   "borderWidth": {
     "@border-width-none": 0,
@@ -180,7 +187,7 @@ export default {
   "padding": {
     "@container-padding": 0,
     "@card-padding": 32,
-    "@section-padding": 32
+    "@section-padding": 64
   },
   "paddingHorizontal": {
     "@form-padding-horizontal": 8

@@ -52,7 +52,7 @@ At has the following variants "Default" and "Small".
           label: "@headline",
         },
         style: {
-          fontSize: "@font-size-xxxl",
+          fontSize: "@font-size-xxxxl",
           textAlign: "center",
         },
         h: 96,

@@ -16,7 +16,7 @@ hey want to receive a newsletter. It has a 'label' property.
     h: "@box-height-xxs",
     z: 0,
     layout: {
-      grow: 0
+      grow: 1
     },
     props: {
       checked: true,

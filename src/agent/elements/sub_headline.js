@@ -24,7 +24,7 @@ export default {
     textAlign: "left",
     letterSpacing: 1,
     lineHeight: 1,
-    color: "@label-color",
+    color: "@label-color-secondary",
     textShadow: null
   }
 }
