@@ -96,7 +96,7 @@ export default class YogaConverter extends Converter {
       // for labels we do not want a full gap
       if (nextChild &&  this.isLabel(child) && ( this.isInput(nextChild) || this.isContainer(nextChild))) {
         let gap = this.getGap(node)
-        //yogaChild.setMargin(Edge.Bottom, -1 * (gap -8))
+        yogaChild.setMargin(Edge.Bottom, -1 * (gap -8))
       }
       this.addNode(child, yogaChild, yogaNodes, indent + '   ')
     }

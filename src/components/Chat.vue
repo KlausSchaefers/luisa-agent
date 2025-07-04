@@ -5,23 +5,15 @@
                Chat
             </div>
             <IconTrash :size="16" stroke="2" @click="clear" class="luisa-icon"></IconTrash>
-            <IconAdjustmentsAlt :size="16" stroke="2" :class="['luisa-icon', {'luisa-icon-active': showSettings}]" @click="showSettings = !showSettings"/>
-        </div>
+         </div>
         <div class="luisa-chat-body">
-            <template v-if="showSettings">
-                <div class="luisa-chat-message luisa-chat-message-settings ">Please enter your OpenAi Key. The key will only be saved in the browser.</div>
-                <div class="luisa-icon-input">
-                    <input class="luisa-input luisa-input-fw" @change="onSaveOpenAI" type="password"></input>
-                    <IconCornerRightUp  :size="16"  class="luisa-icon" @click="onSaveOpenAI"/>
-                </div>
-            </template>
-            <template v-else>
+           
                 
                 <template v-for="(m,i) in messages" :key="i">
                     <ChatMessage :message="m" @delete="deleteMessage(i)"></ChatMessage>
                 </template>
                 <div ref="bodyEnd"></div>        
-            </template>
+        
 
         </div>
         <div class="luisa-padding">

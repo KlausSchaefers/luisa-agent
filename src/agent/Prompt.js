@@ -23,7 +23,8 @@ export default class Prompts {
 
     messageScreen(context, description) {
         return  `
-            The bigger context of the app is as follows;
+            The overall global context of the app is as follows:
+            
             ${context} 
             
             IMPORTANT: You need to create now one screen that follows these instructions

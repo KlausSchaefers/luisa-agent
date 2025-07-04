@@ -3,6 +3,9 @@ export default [
     id: "Label",
     type: "Label",
     name: "Text",
+    layout: {
+      grow: 1
+    },
     description: `
 An Element that can show text. It has a 'label' value in the 'props' object. 
 It should be used for labels as the default element for all kind text. 

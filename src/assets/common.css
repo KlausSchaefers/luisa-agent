@@ -95,6 +95,9 @@ textarea.luisa-input:disabled:hover {
     border-radius: var(--raduis-m);  
     outline: none;
     cursor: pointer;
+    &.luisa-input{
+        padding: var(--form-padding);
+    }
 }
 
 .luisa-select:hover {
@@ -128,5 +131,32 @@ textarea.luisa-input:disabled:hover {
     textarea {
         height: 256px;
         border: 0px;
+    }
+}
+
+.luisa-button{
+    background: #111;
+    color:#fff;
+    padding: 8px 16px;
+    border-radius: var(--raduis-m);  
+    border: none;
+    cursor: pointer;
+
+    &:hover{
+        background: #000;
+    }
+}
+
+.luisa-button-bar{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.luisa-form-row{
+    display: flex;
+    flex-direction: column;
+
+    label {
+        font-weight: 600;
     }
 }
