@@ -1,4 +1,4 @@
-export default class Prompts {
+export default class ScreenPrompt {
 
     screenSize(screenSize) {
         if (screenSize.w < 500) {
@@ -14,21 +14,26 @@ export default class Prompts {
     }
 
 
-    systemStructure () {
-        return `
-            You are UX GPT. You are very good and specifieng the user requirements for an app, and break ity down into the
-            main screens that the app should have. 
-        `
-    }
 
-    messageScreen(context, description) {
+    messageScreen(context, currentScreen, section) {
+
+        const screenList = section.screens.map(s => s.name+ ":" + s.description).join('---\n');
+
         return  `
             The overall global context of the app is as follows:
             
             ${context} 
+
+            The app will have the following screens:
+
+            ${screenList}
+
             
-            IMPORTANT: You need to create now one screen that follows these instructions
-            ${description}
+            IMPORTANT: You need to create now the "${currentScreen.name}" screen that follows these instructions:
+            ${currentScreen.description}
+
+            If you add a navigation elements, please make sure to follow the app's navigation structure and link
+            all screens accordingly.
         `.trim()
     }
     
@@ -38,40 +43,6 @@ export default class Prompts {
         `;
     }
 
-
-    jsonFormatStructure () {
-        return `
-            Please return the result as JSON in the defined language:
-
-            The app will have several screens. Return for each screen a description. the description should contain
-            what the screen is about, and which information the user should see, and which information the user should
-            enter.
-
-            Please think also about a good name for the app. Also, if the users asks for a single screen or page, 
-            don't create more than one screen.
-
-            An example for an app is:
-            \`\`\`json
-            {
-                "type": "App",
-                "description": "This app will allow users to create an account"
-                "screens": [
-                    {
-                       "name": "Login Screen",
-                       "description": "the user can enter his name and password. She will also so the name of the app. There is also a button to submit"
-                    },
-                    {
-                        "name": "Welcome Screen",
-                       "description": "After the login, the user is welcomes with a friendly message to the app"
-                    }
-                ]
-            }     
-
-             \`\`\`
-
-
-        `
-    }
 
     jsonFormatScreen() {
 

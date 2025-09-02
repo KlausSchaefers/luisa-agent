@@ -88,6 +88,10 @@ export default {
         this.messages[this.messages.length-1].content += txt
         this.onChange()
     },
+    clearAgentMessages() {
+        this.messages = this.messages.filter(m => m.role !== "agent");
+        this.onChange()
+    },
     onAgentMessage (txt) {
         this.messages.push({
             "role": "agent",

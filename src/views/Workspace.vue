@@ -97,6 +97,7 @@ import Preview from '../components/Preview.vue'
 import LuisaAgent from '../agent/LuisaAgent'
 import Pipeline from '../agent/Pipeline'
 import OpenAI from '../agent/OpenAI'
+import Claude from '../agent/Claude'
 import DLS from '../agent/DLS'
 
 import QuxConverter from '../agent/converter/QuxConverter'
@@ -161,7 +162,9 @@ export default {
       models: [
         {label: "OpenAI - GPT-4.1", value: "gpt-4.1"},
         {label: "OpenAI - GPT-4o-Mini", value: "gpt-4o-mini"},
-        {label: "OpenAI - GPT-4o-Namo", value:'gpt-4.1-nano'}
+        {label: "OpenAI - GPT-4o-Namo", value:'gpt-4.1-nano'},
+        {label: "OpenAI - GPT-5-Nano", value:'gpt-5-nano'},
+        {label: "Claude - Sonnet", value:'claude-3-5-sonnet-latest'}
       ]
     }
   },
@@ -243,18 +246,17 @@ export default {
       this.app = null
       this.selectedScreen = ''
       const chat = this.$refs.chat
-   
-      const token = localStorage.getItem('luisaOpenAIKey')
-      if (!token) {
-        this.$refs.chat.onAgentMessage("No OpenAI key!\n\n")
-        return
-      }
-      
-      chat.onAgentMessage(`Great. I will start building the design with ${this.selectedModel} !\n\n`)
+
+      chat.clearAgentMessages()
+      chat.onAgentMessage(`Great. I will start building the design with **${this.selectedModel}** !\n\n`)
 
       const filteredMessages = this.messages.filter(m => m.role ==='user' || m.role === 'system')
-      
-      const llm = new OpenAI(token, this.selectedModel)
+      const llm = this.getLLM()
+      if (!llm) {
+        this.finish()
+        return
+      } 
+
       const agent = new LuisaAgent(llm, this.getConfig())
       agent.setProgressCallback((m) => {
         chat.onChangeLastAgentMessage(m + '\n\n')
@@ -275,6 +277,29 @@ export default {
       this.app = qux.convert(result)
       this.raw = result.raw
       this.finish()
+    },
+    getLLM () {
+      console.debug('getLLM', this.selectedModel)
+
+      if (this.selectedModel.startsWith('gpt')) {
+        const token = localStorage.getItem('luisaOpenAIKey')
+        if (!token) {
+          this.$refs.chat.onAgentMessage("No OpenAI key!\n\n")
+          return
+        }      
+        return new OpenAI(token, this.selectedModel)
+      }
+
+      if (this.selectedModel.startsWith('claude')) {
+        const token = localStorage.getItem('luisaClaudeKey')
+        if (!token) {
+          this.$refs.chat.onAgentMessage("No Claude key!\n\n")
+          return
+        }      
+        return new Claude(token, this.selectedModel)
+      }
+     
+
     },
     async computeEmbedding(txt) {
       const token = localStorage.getItem('luisaOpenAIKey')

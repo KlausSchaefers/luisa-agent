@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest'
 
 import Elements  from '../src/agent/Elements'
-import Prompt  from '../src/agent/Prompt'
+import Prompt  from '../src/agent/prompts/ScreenPrompt'
 
 
 

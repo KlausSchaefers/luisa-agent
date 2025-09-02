@@ -1,9 +1,15 @@
 {
     "name": "Test App",
-    "screens": [
+    "sections": [
         {
-            "name": "Test Screen 1",
-            "description": "Lore ipsum"
+            "name": "Test App",
+            "description": "This is a test app",
+            "screens": [
+                {
+                    "name": "Test Screen 1",
+                    "description": "Lore ipsum"
+                }
+            ]
         }
     ]
 }

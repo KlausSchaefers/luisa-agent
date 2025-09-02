@@ -1,4 +1,5 @@
-import Prompts from "./Prompt";
+import AppPrompt from "./prompts/AppPrompt";
+import ScreenPrompt from "./prompts/ScreenPrompt";
 import Pipeline from "./Pipeline";
 import DLS from "./DLS";
 import Elements from "./Elements";
@@ -10,7 +11,8 @@ export default class LuisaAgent {
     this.config = config;
     this.screenSize = config.screenSize ? config.screenSize : { w: 400, h: 800 }
     this.dsl = config.dls ? config.dls : new DLS()
-    this.prompts = config.prompts ? config.prompts :  new Prompts();
+    this.appPrompt = config.appPrompt ? config.appPrompt :  new AppPrompt();
+    this.screenPrompts = config.screenPrompt ? config.screenPrompt :  new ScreenPrompt();
     this.pipeline = config.pipeline ? config.pipeline : Pipeline.defaultPipeline(this.dsl);
     this.elements = config.elements ? config.elements : new Elements()
     this.useHTML = config.useHTML ? config.useHTML : false
@@ -40,24 +42,25 @@ export default class LuisaAgent {
       return structure
     }
 
+    console.debug("run() > structure ", structure)
+
     result.raw.structure = structure.app;
     const app = structure.app
     result.name = app.name
 
     // 2) create the screens
-    for (let s of app.screens) {
-      this.onProgress("- Create screen __" + s.name + "__")
-      const screenMessage = this.prompts.messageScreen(message, s.description)
-      console.debug(screenMessage)
-      let scrn = await this.createScreen(screenMessage);
-      if (scrn.raw) {
-        scrn.raw.name = s.name         
-        result.screens.push(structuredClone(scrn.raw));
-        result.raw.screens.push(scrn.raw);
-      } else {
-        console.warn('run() > Could not create screen')
+    for (let section of app.sections) {
+      for (let s of section.screens) {
+        this.onProgress("- Create screen __" + s.name + "__")
+        const scrn = await this.createScreen(message, s, section, currentModel);
+        if (scrn.raw) {
+          scrn.raw.name = s.name         
+          result.screens.push(structuredClone(scrn.raw));
+          result.raw.screens.push(scrn.raw);
+        } else {
+          console.warn('run() > Could not create screen')
+        }
       }
-
     }
 
     //3) plan design system
@@ -73,7 +76,7 @@ export default class LuisaAgent {
 
     const prompt = `
 
-          ${this.prompts.jsonFormatStructure()}
+          ${this.appPrompt.jsonFormatStructure()}
 
     
           Please generate an app:
@@ -87,7 +90,7 @@ export default class LuisaAgent {
     const aiMessages = [
       {
         role: "system",
-        content: this.prompts.systemStructure(),
+        content: this.appPrompt.systemStructure(),
       },
       { role: "user", content: prompt },
     ];
@@ -105,28 +108,30 @@ export default class LuisaAgent {
    
   }
 
-  async createScreen(message, currentModel) {
+  async createScreen(message, currentScreen, app, currentModel) {
+    const screenMessage = this.screenPrompts.messageScreen(message, currentScreen, app)
+    //console.debug("createScreen() > ", screenMessage)
     if (this.useHTML) {
-      return this.createScreenHTML(message, currentModel)
+      return this.createScreenHTML(screenMessage, currentModel)
     } else {
-      return this.createScreenJSON(message, currentModel)
+      return this.createScreenJSON(screenMessage, currentModel)
     }
   }
 
   async createScreenHTML(message, currentModel) {
     const prompt = `
 
-          ${this.prompts.htmlFormatScreen()}
+          ${this.screenPrompts.htmlFormatScreen()}
 
-          ${this.prompts.htmlElements(this.elements)}
+          ${this.screenPrompts.htmlElements(this.elements)}
 
-          ${this.prompts.screenSize(this.screenSize)}
+          ${this.screenPrompts.screenSize(this.screenSize)}
 
           Please generate a screen:
 
           ${message}
 
-          ${this.prompts.htmlRules()}
+          ${this.screenPrompts.htmlRules()}
 
           
           Return the result as HTML Do not include any additional text.
@@ -135,7 +140,7 @@ export default class LuisaAgent {
     const aiMessages = [
       {
         role: "system",
-        content: this.prompts.htmlSystem(),
+        content: this.screenPrompts.htmlSystem(),
       },
       { role: "user", content: prompt },
     ];
@@ -162,17 +167,17 @@ export default class LuisaAgent {
 
     const prompt = `
 
-            ${this.prompts.jsonFormatScreen()}
+            ${this.screenPrompts.jsonFormatScreen()}
 
-            ${this.prompts.jsonElements(this.elements)}
+            ${this.screenPrompts.jsonElements(this.elements)}
 
-            ${this.prompts.screenSize(this.screenSize)}
+            ${this.screenPrompts.screenSize(this.screenSize)}
 
             Please generate a screen:
 
             ${message}
 
-            ${this.prompts.jsonRules()}
+            ${this.screenPrompts.jsonRules()}
             
             Return the result as JSON in the defined language. Do not include any additional text.
         `;
@@ -180,7 +185,7 @@ export default class LuisaAgent {
     const aiMessages = [
       {
         role: "system",
-        content: this.prompts.systemScreen(),
+        content: this.screenPrompts.systemScreen(),
       },
       { role: "user", content: prompt },
     ];
