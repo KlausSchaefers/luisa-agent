@@ -352,7 +352,7 @@ export default {
       this.reRender()
     },
     buildRaw(raw) {
-      console.debug('buildRaw() ', this.isDebug)
+      console.debug('buildRaw() ', this.isDebug, raw)
       const dsl = new DLS()
       if (this.isDebug) {
         dsl.set("@container-border-width", 3)

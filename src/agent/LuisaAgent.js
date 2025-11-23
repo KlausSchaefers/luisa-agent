@@ -27,9 +27,11 @@ export default class LuisaAgent {
     
     const result = {
       name : "",
+      screenSize: this.screenSize,
       screens: [],
       raw: {
         screens: [],
+        screenSize: this.screenSize,
       },
     };
 
@@ -64,7 +66,6 @@ export default class LuisaAgent {
     }
 
     //3) plan design system
-    
  
     // 4) Set basic props and design system
     this.pipeline.convert(result);

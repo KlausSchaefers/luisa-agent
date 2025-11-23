@@ -9,7 +9,7 @@ export default class ErrorCorrector extends Converter {
     this.name = 'ErrorCorrector'
   }
 
-  convertElement (element) {
+  convertElement (element, app) {
     //const data = this.elements.get(element)
     const callback = "correct" + element.type
     if (this[callback]) {
@@ -17,6 +17,7 @@ export default class ErrorCorrector extends Converter {
     }
 
     this.fixColumnImages(element)
+    // fox somehow that the columns dont have more the 2 children on mobile
   }
 
   fixColumnImages(element) {

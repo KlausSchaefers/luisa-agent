@@ -4,7 +4,7 @@ export class Converter {
     if (app.screens) {
       app.screens.forEach(s => {
         //console.debug('convert() > ', s.name)
-        this.convertTree(s)
+        this.convertTree(s, app)
       })
     }
     this.postConvert(app)
@@ -14,18 +14,18 @@ export class Converter {
   postConvert(/* app */) {
   }
 
-  convertTree(tree) {
-    this.convertElement(tree);
+  convertTree(tree, app) {
+    this.convertElement(tree, app);
     if (tree.children) {
       //console.debug('  convertTree() > ', tree.type, tree.children.length)
       for (let i = 0; i < tree.children.length; i++) {
-        this.convertTree(tree.children[i]);
+        this.convertTree(tree.children[i], app);
       }
     }
     return tree;
   }
 
-  convertElement(/* element */) {
+  convertElement(/* element, app */) {
     console.warn("Method 'convertElement' must be implemented.");
   }
 
