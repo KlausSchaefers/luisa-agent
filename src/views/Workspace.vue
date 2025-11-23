@@ -122,6 +122,7 @@ import fruits from '../examples/fruits'
 import fruits2 from '../examples/fruits2'
 import yoga from '../examples/yoga'
 import form from '../examples/form'
+import banana from '../examples/banana'
 
 const examples = {
   'fitness': fitness,
@@ -134,7 +135,8 @@ const examples = {
   "fruits": fruits,
   "fruits2": fruits2,
   "yoga": yoga,
-  "form": form
+  "form": form,
+  'banana': banana
 }
 
 export default {
@@ -350,9 +352,10 @@ export default {
       this.reRender()
     },
     buildRaw(raw) {
+      console.debug('buildRaw() ', this.isDebug)
       const dsl = new DLS()
       if (this.isDebug) {
-        dsl.set("@container-border-width", 1)
+        dsl.set("@container-border-width", 3)
           .set("@container-border-color", "#123ef099")
           .set("@container-border-style", "dashed")
           .set("@@section-background", "red")

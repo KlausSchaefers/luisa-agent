@@ -6,10 +6,35 @@ import QuxConverter from '../src/agent/converter/QuxConverter'
 import DLS  from '../src/agent/DLS'
 import fruits from '../src/examples/fruits'
 import hero from '../src/examples/hero'
+import banana from '../src/examples/banana'
 import * as Util from './TestUtil'
 
 import Yoga, { Edge, FlexDirection, Direction, Gutter, Edge } from "yoga-layout";
 
+
+test('Test YogaConverter > banana ', async () => {
+
+    
+    const dls = new DLS()
+
+    const pipeline = Pipeline.defaultPipeline(dls)
+    const raw =  pipeline.convert(banana)
+    
+    const yogo = new YogaConverter()
+    const result = yogo.convert(raw)
+    console.log(Util.printTree(result.screens[0]))
+
+    // let w = Object.values(result.widgets).find(w => w.name === 'Hero Instance 1')
+    // expect(w.h).toBe(648)// with padding
+
+
+    // w = Object.values(result.widgets).find(w => w.name === 'Headline')
+    // expect(w.props.label).toBe("This is the headline")
+    // expect(result).toBeDefined()
+    // expect(result.widgets).toBeDefined()
+    // expect(Object.values(result.screens).length).toBe(1)
+    // expect(Object.values(result.widgets).length).toBe(9)
+})
 
 
 // test('Test YogaConverter > fruits ', async () => {
@@ -37,24 +62,24 @@ import Yoga, { Edge, FlexDirection, Direction, Gutter, Edge } from "yoga-layout"
 // })
 
 
-test('Test YogaConverter >  hero', async () => {
+// test('Test YogaConverter >  hero', async () => {
 
     
-    const dls = new DLS()
-    dls.set("@container-border-width", 1)
-          .set("@container-border-color", "#123ef099")
-          .set("@container-border-style", "dashed")
-          .set("@container-padding", 16)
+//     const dls = new DLS()
+//     dls.set("@container-border-width", 1)
+//           .set("@container-border-color", "#123ef099")
+//           .set("@container-border-style", "dashed")
+//           .set("@container-padding", 16)
 
-    const pipeline = Pipeline.defaultPipeline(dls)
-    const raw =  pipeline.convert(hero)
+//     const pipeline = Pipeline.defaultPipeline(dls)
+//     const raw =  pipeline.convert(hero)
     
     
-    const yogo = new YogaConverter(1000)
-    const result = yogo.convert(structuredClone(raw))
+//     const yogo = new YogaConverter(1000)
+//     const result = yogo.convert(structuredClone(raw))
 
-    console.debug("---")
-    console.log(Util.printTree(result.screens[0]))
+//     console.debug("---")
+//     console.log(Util.printTree(result.screens[0]))
 
     // console.debug("---")
 
@@ -72,7 +97,7 @@ test('Test YogaConverter >  hero', async () => {
 
     //console.log(JSON.stringify(result.screens[0], null, 2))
 
-})
+//})
 
 // test('Test YogaConverter >  ', async () => {
 

@@ -20,6 +20,14 @@ export default class YogaConverter extends Converter {
   }
 
   convertTree(treeNode) {
+
+    this.labelSizeCntr = document.createElement("div");
+    this.labelSizeCntr.style.position = "absolute";
+    this.labelSizeCntr.style.with = "0px";
+    this.labelSizeCntr.style.height = "0px";
+    this.labelSizeCntr.style.visibility = "hidden";
+    document.body.appendChild(this.labelSizeCntr); 
+
     const copy = treeNode;
     this.setIDs(copy);
 
@@ -28,6 +36,7 @@ export default class YogaConverter extends Converter {
     const config = Yoga.Config.create();
     config.setPointScaleFactor(1);
     config.setErrata(Errata.All);
+    config.setUseWebDefaults(true);
 
     copy.id = "s" + this.getUUID();
     copy.w = this.screenSize.w;
@@ -46,17 +55,63 @@ export default class YogaConverter extends Converter {
 
     root.calculateLayout(this.screenSize.w, "auto", Direction.LTR);
 
+    // run again to adjust label heights
+    this.updateLabelHeights(copy, yogaNodes);
+    root.calculateLayout(this.screenSize.w, "auto", Direction.LTR);
    
     this.readNodes(copy, yogaNodes);
   
     copy.h = Math.max(copy.h, this.screenSize.h)
     root.freeRecursive();
 
+    document.body.removeChild(this.labelSizeCntr);
     return copy;
   }
 
+  updateLabelHeights(node, yogaNodes, indent = "") {
+    if (node.type === 'Label' || node.type === 'Headline' || node.type === 'SubHeadline') {
+      // adjust height based on width and text length
+
+      const yNode = yogaNodes[node.id];
+      if (!yNode) {
+        console.warn(this.name, "updateLabels() no node with id", node.id);
+      } else {
+        const w = yNode.getComputedWidth();
+        const newHeight = this.computeContentHeight(node, w);
+        if (newHeight > 0) {
+          node.h = newHeight;
+          yNode.setHeight(newHeight);
+        }
+      }
+    }
+
+    if (node.children) {
+      for (let i = 0; i < node.children.length; i++) {
+        const child = node.children[i];
+        this.updateLabelHeights(child, yogaNodes, indent + '   ')
+      }
+    }
+  }
+
+    computeContentHeight(node, width) {
+      let result = node.h;
+
+      const div = document.createElement("div");
+      div.innerText = node.props.label;
+      div.style.width = width + "px";
+      div.style.fontFamily = node.style.fontFamily;
+      div.style.lineHeight = node.style.lineHeight;
+
+      div.style.fontSize = node.style.fontSize + "px";
+      
+      this.labelSizeCntr.appendChild(div);
+      result = div.offsetHeight;
+
+      return result;
+  }
+
   readNodes(node, yogaNodes, indent = "") {
-    let yNode = yogaNodes[node.id];
+    const yNode = yogaNodes[node.id];
     if (!yNode) {
       console.warn(this.name, "readNodes() no node with id", node.id);
     } else {
@@ -107,7 +162,7 @@ export default class YogaConverter extends Converter {
   }
 
   isInput(child) {
-    return child.type === 'Input' || child.type === 'TextArea' || child.type === 'CheckBox' || child.type === 'CheckBoxGroup' || child.type === 'RadioBox' || child.type === 'RadioGroup'
+    return child.type === 'Input' || child.type === 'TextArea' || child.type === 'CheckBox' || child.type === 'CheckBoxGroup' || child.type === 'RadioBox' || child.type === 'RadioGroup' || child.type === 'Password'
   }
 
   createYogaChild(child, parent, indent) {
@@ -156,7 +211,10 @@ export default class YogaConverter extends Converter {
 
     if (isContainer) {
       // yogaChild.setFlexShrink(1); 
-      // yogaChild.setFlexGrow(1);    
+
+      //console.debug(indent, 'container:', child.name, paddingY, child.h + paddingY * 2)
+      // FIXME: long texts will cause line break and this mess
+      // up the calculation.
       yogaChild.setPadding(Edge.Left, paddingX);
       yogaChild.setPadding(Edge.Right, paddingX);
       yogaChild.setPadding(Edge.Bottom, paddingY);
@@ -225,7 +283,6 @@ export default class YogaConverter extends Converter {
     let paddingY = 0;
 
     if (this.isContainer(node)) {
- 
       if (node?.style?.paddingLeft > 0) {
         paddingX = node?.style?.paddingLeft;
       }

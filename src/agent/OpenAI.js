@@ -28,7 +28,6 @@ export default class OpenAI extends LLM {
         model: this.model,
         messages: messages      
     };
-
     try {
       const res = await this._post("https://api.openai.com/v1/chat/completions", data);
 

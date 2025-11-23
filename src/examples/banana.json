@@ -1,0 +1,153 @@
+{
+  "screens": [
+    {
+      "type": "Screen",
+      "children": [
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "Headline",
+              "variant": "H1",
+              "props": {
+                "label": "Banana Bliss"
+              }
+            },
+            {
+              "type": "Image",
+              "variant": "FullWidth",
+              "props": {
+                "value": "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=500&q=80"
+              }
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "Headline",
+              "variant": "H2",
+              "props": {
+                "label": "A Journey from Jungle to Snack"
+              }
+            },
+            {
+              "type": "Label",
+              "props": {
+                "label": "Bananas trace their juicy origins to the lush rainforests of Southeast Asia, where they have been enjoyed for millennia as both a tasty fruit and a sustaining food crop."
+              }
+            },
+            {
+              "type": "Image",
+              "variant": "Normal",
+              "props": {
+                "value": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+              }
+            },
+                   {
+              "type": "Label",
+              "props": {
+                "label": "Bananas trace their juicy origins to the lush rainforests of Southeast Asia, where they have been enjoyed for millennia as both a tasty fruit and a sustaining food crop."
+              }
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "row"
+          },
+          "children": [
+            {
+              "type": "SubHeadline",
+              "props": {
+                "label": "Nutritional Boost"
+              }
+            },
+            {
+              "type": "Label",
+              "props": {
+                "label": "Packed with potassium, fiber, and vitamins, bananas give your body energy and support a happy, healthy heart."
+              }
+            },
+            {
+              "type": "Image",
+              "variant": "Normal",
+              "props": {
+                "value": "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80"
+              }
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "SubHeadline",
+              "props": {
+                "label": "Did You Know?"
+              }
+            },
+            {
+              "type": "Card",
+              "layout": {
+                "direction": "column"
+              },
+              "children": [
+                {
+                  "type": "Label",
+                  "variant": "Emphasis",
+                  "props": {
+                    "label": "✨ Bananas float in water (just like apples and watermelons)!"
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "🍌 There are more than 1,000 types of bananas, but the Cavendish is the most common."
+                  }
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "🌏 Bananas are grown in over 135 countries around the globe!"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "Banana Landing Page"
+    }
+  ],
+  "structure": {
+    "type": "App",
+    "description": "This app provides a beautiful and informative landing page about bananas.",
+    "name": "Banana Bliss",
+    "sections": [
+      {
+        "name": "Landing",
+        "description": "This section contains the single landing page introducing users to bananas.",
+        "hasNavigation": false,
+        "navigation": [],
+        "screens": [
+          {
+            "name": "Banana Landing Page",
+            "description": "A visually engaging page with the app name 'Banana Bliss' prominently displayed. The user will see images of bananas, a brief description about their origins, nutritional benefits, and fun banana facts. No user input is required; all information is presented for browsing and delight."
+          }
+        ]
+      }
+    ]
+  }
+}

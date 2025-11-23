@@ -10,17 +10,27 @@ export default class ErrorCorrector extends Converter {
   }
 
   convertElement (element) {
-    const data = this.elements.get(element)
+    //const data = this.elements.get(element)
     const callback = "correct" + element.type
     if (this[callback]) {
       this[callback](element)
     }
-    if (data) {
 
-    } else {
-      console.warn(`${this.name}.convertElement() > Element type ${element.type} not found in elements.`);
+    this.fixColumnImages(element)
+  }
+
+  fixColumnImages(element) {
+    if (element.children && element.children.length > 0 && this.isColumnContainer(element)) {      
+      const images = element.children.filter(c => c.type === 'Image')
+      for (let img of images) {
+          img.variant = 'FullWidth' 
+          img.layout = {
+            grow: 1
+          }       
+      }
     }
   }
+
 
   correctCard(card) {
     const childCards = this.getAllChildren(card).filter(c => c.type === 'Card')

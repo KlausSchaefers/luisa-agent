@@ -31,7 +31,7 @@ export default class Pipeline {
   convert(tree) {
     let result = tree;
     for (const converter of this.converters) {
-      console.debug('Pipeline.convert() > ', converter.name)
+      //console.debug('Pipeline.convert() > ', converter.name)
       result = converter.convert(result);
     }
     return result;
