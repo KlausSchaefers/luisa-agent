@@ -37,3 +37,7 @@ npm run test:unit
 ## Links
 
 https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview
+
+https://aistudio.google.com/projects
+
+https://console.anthropic.com/settings/billing

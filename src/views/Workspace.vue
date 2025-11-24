@@ -59,6 +59,10 @@
             <input class="luisa-input" v-model="claudeKey" />
           </div>
           <div class="luisa-form-row">
+            <label>Gemini Key</label>
+            <input class="luisa-input" v-model="geminiKey" />
+          </div>
+          <div class="luisa-form-row">
             <label>LLM output format</label>
             <select v-model="useHTML" class="luisa-select luisa-input" @change="setMode">            
                 <option :value=false>JSON</option>
@@ -98,6 +102,7 @@ import LuisaAgent from '../agent/LuisaAgent'
 import Pipeline from '../agent/Pipeline'
 import OpenAI from '../agent/OpenAI'
 import Claude from '../agent/Claude'
+import Gemini from '../agent/Gemini'
 import DLS from '../agent/DLS'
 
 import QuxConverter from '../agent/converter/QuxConverter'
@@ -156,6 +161,7 @@ export default {
       isDebug: false,
       claudeKey: '',
       openAIKey: '',
+      geminiKey: '',
       status: {
         busy:false,
         messages: []
@@ -166,7 +172,9 @@ export default {
         {label: "OpenAI - GPT-4o-Mini", value: "gpt-4o-mini"},
         {label: "OpenAI - GPT-4o-Namo", value:'gpt-4.1-nano'},
         {label: "OpenAI - GPT-5-Nano", value:'gpt-5-nano'},
-        {label: "Claude - Sonnet", value:'claude-3-5-sonnet-latest'}
+        {label: "Claude - Sonnet", value:'claude-sonnet-4-5-20250929'},
+        {label: "Gemini - 2.5 Flash", value: "gemini-2.5-flash"},
+        {label: "Gemini - 3 Pro", value: "gemini-3-pro-preview"}
       ]
     }
   },
@@ -186,7 +194,6 @@ export default {
   computed: {
      jsonCode() {
         const jsonStr = JSON.stringify(this.raw, null, 2)
-        console.debug(jsonStr)
         const result = hljs.highlight(jsonStr, { language: 'javascript' }).value
         return result
     },
@@ -214,6 +221,7 @@ export default {
     saveSettings() {
       localStorage.setItem('luisaOpenAIKey', this.openAIKey )
       localStorage.setItem('luisaClaudeKey', this.claudeKey)
+      localStorage.setItem('luisaGeminiKey', this.geminiKey)
       this.$refs.settingsDialog.close()
     },
 
@@ -301,7 +309,16 @@ export default {
         return new Claude(token, this.selectedModel)
       }
      
+      if (this.selectedModel.startsWith('gemini')) {
+        const token = localStorage.getItem('luisaGeminiKey')
+        if (!token) {
+          this.$refs.chat.onAgentMessage("No Gemini key!\n\n")
+          return
+        }      
+        return new Gemini(token, this.selectedModel)
+      }
 
+      console.error('Unknown LLM model: ', this.selectedModel)
     },
     async computeEmbedding(txt) {
       const token = localStorage.getItem('luisaOpenAIKey')
