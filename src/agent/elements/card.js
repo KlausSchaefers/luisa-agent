@@ -41,7 +41,7 @@ row means that the elements are aligned horizontal from left to right, column me
     borderRadius: "@border-radius-l",
     borderWidth: "@card-border-width",
     borderColor: "@card-border-color",
-    background: "@container-background",
+    background: "@card-background",
     boxShadow: "@card-box-shadow"
   }
 }

@@ -20,15 +20,22 @@
                 <option v-for="m in models " :value="m.value">{{m.label}}</option>
               </select>
 
-              <select v-model="isDebug" class="luisa-select" @change="reRender">            
+              <!-- <select v-model="isDebug" class="luisa-select" @change="reRender">            
                 <option :value="true">Debug View</option>
                 <option :value="false">Production View</option>
-              </select>
+              </select> -->
+
               <select v-model="size" class="luisa-select" @change="setSize">            
                 <option value="m">Mobile</option>
                 <option value="t">Tablet</option>
                 <option value="d">Desktop</option>
               </select>
+
+              <select v-model="useCustomDLS" class="luisa-select" @change="setDLS">            
+                <option :value="true">Custom Design</option>
+                <option :value="false">Wireframe</option>
+              </select>
+
 
               <IconCode :size="16" stroke="2" :class="['luisa-icon']" @click="showCode" v-if="app"></IconCode>
               <IconAdjustmentsAlt :size="16" stroke="2" :class="['luisa-icon']" @click="showSettings"/>
@@ -156,6 +163,7 @@ export default {
       app: null,
       messages: [],
       useHTML : false,
+      useCustomDSL: true,
       selectedScreen: '',
       progressMessage: 'Thinking...',
       isDebug: false,
@@ -218,6 +226,11 @@ export default {
       this.$refs.settingsDialog.show(e.target)
     },
 
+    setDLS() {
+      localStorage.setItem('luisaUseCustomDSL', this.useCustomDLS)
+      this.reRender()
+    },
+
     saveSettings() {
       localStorage.setItem('luisaOpenAIKey', this.openAIKey )
       localStorage.setItem('luisaClaudeKey', this.claudeKey)
@@ -245,6 +258,7 @@ export default {
       return {
         removeContainers: false,
         useHTML: this.useHTML,
+        useCustomDSL: this.useCustomDSL,
         screenSize: this.getScreenSize()
       }
     },
@@ -279,9 +293,9 @@ export default {
         this.finish()
         return
       }
-
      
       this.saveModel(result.raw)
+
       const s = this.getScreenSize()
       const qux = new QuxConverter(s.w, s.h, this.flexEngine)
       this.app = qux.convert(result)
@@ -289,7 +303,6 @@ export default {
       this.finish()
     },
     getLLM () {
-      console.debug('getLLM', this.selectedModel)
 
       if (this.selectedModel.startsWith('gpt')) {
         const token = localStorage.getItem('luisaOpenAIKey')
@@ -371,14 +384,14 @@ export default {
     buildRaw(raw) {
       console.debug('buildRaw() ', this.isDebug, raw)
       const dsl = new DLS()
-      if (this.isDebug) {
-        dsl.set("@container-border-width", 3)
-          .set("@container-border-color", "#123ef099")
-          .set("@container-border-style", "dashed")
-          .set("@@section-background", "red")
-          .set("@container-padding", 16)
-      }
-      const model = Pipeline.defaultPipeline(dsl).convert(structuredClone(raw))
+      // if (this.isDebug) {
+      //   dsl.set("@container-border-width", 3)
+      //     .set("@container-border-color", "#123ef099")
+      //     .set("@container-border-style", "dashed")
+      //     .set("@@section-background", "red")
+      //     .set("@container-padding", 16)
+      // }
+      const model = Pipeline.defaultPipeline(dsl, this.useCustomDLS).convert(structuredClone(raw))
       const s = this.getScreenSize()
       const qux = new QuxConverter(s.w, s.h, this.flexEngine)
       this.app = qux.convert(model)
@@ -399,6 +412,7 @@ export default {
     this.openAIKey = localStorage.getItem('luisaOpenAIKey')
     this.claudeKey = localStorage.getItem('luisaClaudeKey')
     this.selectedModel = localStorage.getItem('luisaLLMModel') || 'gpt-4.1'
+    this.useCustomDLS = localStorage.getItem('luisaUseCustomDSL') === 'true'
     if (this.$route.query.app) {
       if (examples[this.$route.query.app]) {
         //console.debug('mounted() > load example', this.$route.query.app)

@@ -63,6 +63,7 @@ export default {
   },
   "color": {
     "@screen-background": "#FFFFFF",
+    "@card-background": "#ffffff",
 
     "@nav-bar-background": "#ffffff",
     "@nav-bar-color": "@text-color-secondary",
