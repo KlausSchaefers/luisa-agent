@@ -8,10 +8,7 @@
               Luisa - Agent
             </div>
             <div>
-               <select v-model="selectedScreen" class="luisa-select">            
-                <option :value="name" v-for="name in screenNames">{{name}}</option>                
-              </select>
-
+              
             </div>
             <div>
             
@@ -44,12 +41,20 @@
             </div>
         </div>
         <div :class="'luisa-main-content-body'  ">
+
             <div  v-if="status.busy" class="luisa-main-content-loading">
                 {{progressMessage}}
             </div>
-            <div  v-else :class="'luisa-preview-size-' + this.size" :style="'max-width:' + getScreenSize().w + 'px; width:100%;  min-height:' + getScreenSize().h + 'px'">
-              <Preview :app="app" :screen="selectedScreen"></Preview>
-            </div>
+    
+            <template v-else>
+              <ZoomableCanvas :cellWidth="maxScreenWidth" :cellHeight="maxScreenHeight">
+                <div v-for="s in getScreens" class="luisa-preview-cntr" :style="'width:' + s.w + 'px;  height:' + s.h + 'px'">
+                    <div :class="'luisa-preview-size-' + this.size" :style="'width:' + s.w + 'px;  min-height:' + s.h + 'px'">
+                      <Preview :app="app" :screen="s.name"></Preview>
+                    </div>
+                </div>
+              </ZoomableCanvas>
+          </template>
         </div>
      
       </div>
@@ -99,8 +104,9 @@
 
     </div>
 </template>
+<style lang="css">
 
-
+</style>
 <script>
 import Chat from '../components/Chat.vue'
 import Dialog from '../components/Dialog.vue'
@@ -122,6 +128,7 @@ import xml from 'highlight.js/lib/languages/xml';
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('xml', xml);
 
+import ZoomableCanvas from '../components/ZoomableCanvas.vue'
 
 import fitness from '../examples/fitness'
 import card from '../examples/card'
@@ -197,10 +204,35 @@ export default {
     'IconTrash': IconTrash,
     'IconCode': IconCode,
     'IconAdjustmentsAlt': IconAdjustmentsAlt,
-    'Dialog': Dialog
+    'Dialog': Dialog,
+    'ZoomableCanvas': ZoomableCanvas
   },
   computed: {
-     jsonCode() {
+    getScreens() {
+      if (this.app) {
+        return Object.values(this.app.screens)
+      }
+      return []
+    },
+    maxScreenWidth() {
+      let maxW = 0
+      this.getScreens.forEach(s => {
+        if (s.w > maxW) {
+          maxW = s.w
+        }
+      })
+      return maxW
+    },
+    maxScreenHeight() {
+      let maxH = 0
+      this.getScreens.forEach(s => {
+        if (s.h > maxH) {
+          maxH = s.h
+        }
+      })
+      return maxH
+    },
+    jsonCode() {
         const jsonStr = JSON.stringify(this.raw, null, 2)
         const result = hljs.highlight(jsonStr, { language: 'javascript' }).value
         return result

@@ -56,10 +56,13 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    flex-grow:1;
-    overflow: auto;
+    overflow: hidden;
+    width: calc(100vw - 320px);
 }
 
+.luisa-preview-cntr {
+    border: 1px solid var(--color-border);
+}
 .luisa-main-content-loading {
     color: #999;
     font-size: 24px;
