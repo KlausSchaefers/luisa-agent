@@ -11,6 +11,9 @@ export default defineConfig({
       target: 'esnext'
     }
   },
+  build: {
+    target: 'esnext'
+  },
   plugins: [
     vue(),
     vueDevTools(),
