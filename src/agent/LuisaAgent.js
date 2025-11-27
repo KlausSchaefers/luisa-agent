@@ -56,6 +56,10 @@ export default class LuisaAgent {
     result.raw.structure = structure.app;
     const app = structure.app;
     result.name = app.name;
+    result.raw.name = app.name;
+
+    console.debug("run() > app ", app.name);
+
 
     // 2) create the screens
     for (let section of app.sections) {
@@ -81,6 +85,7 @@ export default class LuisaAgent {
     // 4) Set basic props and design system
     this.pipeline.convert(result);
 
+    console.debug("run() > app ", app.name);
     return result;
   }
 

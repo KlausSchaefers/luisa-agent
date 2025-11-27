@@ -13,9 +13,7 @@ export default class Screen extends Tool {
   async run(messages, currentScreen, section, app, currentModel) {
     const message = this.getUserMessages(messages);
 
-    console.debug("ScreenTool.run() > ", section);
-    const screenMessage = this.prompt.messageScreen(message, currentScreen, section);
-    console.debug("createScreen() > ", screenMessage);
+    //const screenMessage = this.prompt.messageScreen(message, currentScreen, section);
 
     const prompt = `
 

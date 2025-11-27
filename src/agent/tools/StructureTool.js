@@ -19,7 +19,8 @@ export default class StructureTool extends Tool {
 
           ${message}
 
-          Return the result as JSON in the defined language. Do not include any additional text.
+          Do not forget to give the app a name property.
+          Return the result as JSON in the defined language. Do not include any additional text. 
     `;
 
     const aiMessages = [

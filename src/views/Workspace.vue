@@ -33,7 +33,7 @@
                 <option :value="false">Wireframe</option>
               </select>
 
-
+                <IconHistory :size="16" stroke="2" @click="showHistory" class="luisa-icon"></IconHistory>
               <IconCode :size="16" stroke="2" :class="['luisa-icon']" @click="showCode" v-if="app"></IconCode>
               <IconAdjustmentsAlt :size="16" stroke="2" :class="['luisa-icon']" @click="showSettings"/>
               <IconTrash :size="16" stroke="2" @click="clear" class="luisa-icon"></IconTrash>
@@ -96,11 +96,13 @@
      
       </Dialog>
 
-        <Dialog ref="codeDialog">
-          <div class="luisa-padding luisa-dialog-content">
-              <pre class="luisa-code"><code class="language-javascript" v-html="jsonCode"></code></pre>
-          </div>
-        </Dialog>
+      <Dialog ref="codeDialog">
+        <div class="luisa-padding luisa-dialog-content">
+            <pre class="luisa-code"><code class="language-javascript" v-html="jsonCode"></code></pre>
+        </div>
+      </Dialog>
+
+      <HistoryDialog ref="historyDialog"/>
 
     </div>
 </template>
@@ -111,15 +113,17 @@
 import Chat from '../components/Chat.vue'
 import Dialog from '../components/Dialog.vue'
 import Preview from '../components/Preview.vue'
+import HistoryDialog from '../components/HistoryDialog.vue'
 import LuisaAgent from '../agent/LuisaAgent'
 import Pipeline from '../agent/Pipeline'
 import OpenAI from '../agent/llm/OpenAI'
 import Claude from '../agent/llm/Claude'
 import Gemini from '../agent/llm/Gemini'
 import DLS from '../agent/DLS'
+import HistoryService from '../services/HistoryService.js';
 
 import QuxConverter from '../agent/converter/QuxConverter'
-import { IconTrash, IconAdjustmentsAlt, IconCode } from '@tabler/icons-vue';
+import { IconTrash, IconAdjustmentsAlt, IconCode, IconHistory } from '@tabler/icons-vue';
 
 import hljs from 'highlight.js';
 import javascript from 'highlight.js/lib/languages/javascript';
@@ -207,7 +211,9 @@ export default {
     'IconCode': IconCode,
     'IconAdjustmentsAlt': IconAdjustmentsAlt,
     'Dialog': Dialog,
-    'ZoomableCanvas': ZoomableCanvas
+    'ZoomableCanvas': ZoomableCanvas,
+    'IconHistory': IconHistory,
+    'HistoryDialog': HistoryDialog
   },
   computed: {
     getScreens() {
@@ -248,6 +254,14 @@ export default {
   },
   methods: {
 
+    showHistory (e) {
+      this.$refs.historyDialog.show(e, (app) => {
+        console.debug('HistoryDialog loaded app:', app)
+        const raw = JSON.parse(JSON.stringify(app.content))
+        this.saveModel(raw, false)
+        this.buildRaw(raw)
+      })
+    },
     showCode (e) {
       this.$refs.codeDialog.show(e.target)
     },
@@ -372,9 +386,19 @@ export default {
       const llm = new OpenAI(token)
       const embedding = await llm.runEmbedding(txt)
     },
-    saveModel(app) {
+    saveModel(app, saveToHistory = true) {
         const s = JSON.stringify(app)
         localStorage.setItem('luisaApp', s)
+        if (saveToHistory) {
+          this.historyService.create(app.name || 'Unnamed App', app)
+        }
+    },
+    async loadLastModel() {
+      const s = localStorage.getItem('luisaApp')
+      if (s) {
+        const raw = JSON.parse(s)
+        this.buildRaw(raw)
+      }
     },
     finish() {
       this.isWorking = false
@@ -439,6 +463,9 @@ export default {
     
   },
   mounted() {
+    this.historyService = new HistoryService()
+    this.historyService.init()
+
     this.isDebug = localStorage.getItem('luisaAppDebug') === 'true'
     this.useHTML = localStorage.getItem('luisaUseHTML') === 'true'
     this.size =  localStorage.getItem('luisaSize') ?  localStorage.getItem('luisaSize')  : "m"
@@ -455,11 +482,7 @@ export default {
         return
       }
     }
-    const s = localStorage.getItem('luisaApp')
-    if (s) {
-      const raw = JSON.parse(s)
-      this.buildRaw(raw)
-    }
+    this.loadLastModel()
   }
 }
 </script>

@@ -34,6 +34,7 @@ export default class StructurePrompt {
             \`\`\`json
             {
                 "type": "App",
+                "name": "User Account App",
                 "description": "This app will allow users to create an account",
                 "sections": [
                     {
