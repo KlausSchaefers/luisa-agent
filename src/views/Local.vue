@@ -44,7 +44,7 @@
 <script>
 
 import Chat from '../components/Chat.vue';
-import DeepSeekLocal from '@/agent/DeepSeekLocal';
+import DeepSeekLocal from '@/agent/llm/DeepSeekLocal';
 import { uiPrompt } from './demo.js';
 
 // https://dev.to/emojiiii/running-deepseek-r1-in-the-browser-a-comprehensive-guide-3j63

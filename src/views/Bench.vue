@@ -37,7 +37,7 @@
 import Chat from '../components/Chat.vue'
 import Preview from '../components/Preview.vue'
 import LuisaAgent from '../agent/LuisaAgent'
-import OpenAI from '../agent/OpenAI'
+import OpenAI from '../agent/llm/OpenAI'
 
 import hljs from 'highlight.js';
 import javascript from 'highlight.js/lib/languages/javascript';

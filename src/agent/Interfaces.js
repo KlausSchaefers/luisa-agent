@@ -81,6 +81,24 @@ export class Converter {
   }
 }
 
+export class Tool {
+
+  constructor(llm) {
+    this.llm = llm;
+  }
+
+  async run(/*message, currentModel*/) {
+    throw new Error("Method 'run' must be implemented.");
+  }
+
+  getUserMessages(messages) {
+    return messages
+      .filter((m) => m.role == "user")
+      .map((m) => m.content)
+      .join("\n\n");
+  }
+}
+
 export class LLM {
 
   async runEmbedding(/*messages*/) {

@@ -1,4 +1,4 @@
-import { LLM } from "./Interfaces";
+import { LLM } from "../Interfaces";
 
 export default class DeepSeekLocal extends LLM {
   constructor(modelName = "onnx-community/DeepSeek-R1-Distill-Qwen-1.5B-ONNX") {

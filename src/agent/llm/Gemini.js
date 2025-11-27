@@ -1,4 +1,4 @@
-import { LLM } from "./Interfaces";
+import { LLM } from "../Interfaces";
 import { GoogleGenAI } from "@google/genai";
 
 export default class Gemini extends LLM {

@@ -32,7 +32,7 @@ export default {
     },
     zoomSensitivity: {
       type: Number,
-      default: 0.05
+      default: 0.02
     },
     initialZoom: {
       type: Number,
@@ -55,12 +55,12 @@ export default {
       default: '40px'
     },
     cellWidth: {
-      type: String,
-      default: '200'
+      type: Number,
+      default: 200
     },
     cellHeight: {
-      type: String,
-      default: '400'
+      type: Number,
+      default: 400
     }
   },
   data() {
@@ -92,34 +92,47 @@ export default {
     handleWheel(event) {
       event.preventDefault()
       
-      const container = this.$refs.container
-      const rect = container.getBoundingClientRect()
-      
-      // Get mouse position relative to container
-      const mouseX = event.clientX - rect.left
-      const mouseY = event.clientY - rect.top
-      
-      // Calculate zoom delta
-      const delta = -event.deltaY * this.zoomSensitivity
-      const newZoom = Math.min(Math.max(this.zoom + delta, this.minZoom), this.maxZoom)
-      
-      if (newZoom !== this.zoom) {
-        // Calculate the point under the mouse before zoom
-        const beforeZoomPointX = (mouseX - this.panX) / this.zoom
-        const beforeZoomPointY = (mouseY - this.panY) / this.zoom
+      // Zoom when Shift, Ctrl, or Cmd (Meta) is pressed
+      if (event.shiftKey || event.ctrlKey || event.metaKey) {
+        const container = this.$refs.container
+        const rect = container.getBoundingClientRect()
         
-        // Update zoom
-        this.zoom = newZoom
+        // Get mouse position relative to container
+        const mouseX = event.clientX - rect.left
+        const mouseY = event.clientY - rect.top
         
-        // Calculate the point under the mouse after zoom
-        const afterZoomPointX = beforeZoomPointX * this.zoom
-        const afterZoomPointY = beforeZoomPointY * this.zoom
+        // Calculate zoom delta
+        const delta = -event.deltaY * this.zoomSensitivity
+        const newZoom = Math.min(Math.max(this.zoom + delta, this.minZoom), this.maxZoom)
         
-        // Adjust pan to keep the point under the mouse
-        this.panX = mouseX - afterZoomPointX
-        this.panY = mouseY - afterZoomPointY
+        if (newZoom !== this.zoom) {
+          // Calculate the point under the mouse before zoom
+          const beforeZoomPointX = (mouseX - this.panX) / this.zoom
+          const beforeZoomPointY = (mouseY - this.panY) / this.zoom
+          
+          // Update zoom
+          this.zoom = newZoom
+          
+          // Calculate the point under the mouse after zoom
+          const afterZoomPointX = beforeZoomPointX * this.zoom
+          const afterZoomPointY = beforeZoomPointY * this.zoom
+          
+          // Adjust pan to keep the point under the mouse
+          this.panX = mouseX - afterZoomPointX
+          this.panY = mouseY - afterZoomPointY
+          
+          this.$emit('zoom-change', {
+            zoom: this.zoom,
+            panX: this.panX,
+            panY: this.panY
+          })
+        }
+      } else {
+        // Pan when no modifier keys are pressed
+        this.panX -= event.deltaX
+        this.panY -= event.deltaY
         
-        this.$emit('zoom-change', {
+        this.$emit('pan-change', {
           zoom: this.zoom,
           panX: this.panX,
           panY: this.panY

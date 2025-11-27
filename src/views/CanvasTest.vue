@@ -39,8 +39,6 @@
 import ZoomableCanvas from '../components/ZoomableCanvas.vue'
 
 import Chat from '../components/Chat.vue';
-import DeepSeekLocal from '@/agent/DeepSeekLocal';
-import { uiPrompt } from './demo.js';
 
 // https://dev.to/emojiiii/running-deepseek-r1-in-the-browser-a-comprehensive-guide-3j63
 

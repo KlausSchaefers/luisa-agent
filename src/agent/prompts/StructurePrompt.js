@@ -1,4 +1,4 @@
-export default class AppPrompt {
+export default class StructurePrompt {
 
   
 

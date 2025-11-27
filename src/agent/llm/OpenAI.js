@@ -1,4 +1,4 @@
-import { LLM } from "./Interfaces";
+import { LLM } from "../Interfaces";
 export default class OpenAI extends LLM {
   
   constructor(token, model = "gpt-4.1", embeddingModel = 'text-embedding-3-small') {

@@ -1,0 +1,45 @@
+import {Tool} from "../Interfaces"
+import StructurePrompt from "../prompts/StructurePrompt";
+
+export default class StructureTool extends Tool {
+
+  constructor(llm, config = {}) {
+    super(llm);
+    this.prompt = config.structurePrompt ? config.structurePrompt : new StructurePrompt();
+  }
+
+  async run(messages, currentModel) {
+
+    const message = this.getUserMessages(messages);
+    const prompt = `
+
+          ${this.prompt.jsonFormatStructure()}
+    
+          Please generate an app:
+
+          ${message}
+
+          Return the result as JSON in the defined language. Do not include any additional text.
+    `;
+
+    const aiMessages = [
+      {
+        role: "system",
+        content: this.prompt.systemStructure(),
+      },
+      { role: "user", content: prompt },
+    ];
+    const res = await this.llm.runJSONPrompt(aiMessages);
+    if (res.error) {
+      return {
+        error: res.error,
+      };
+    }
+    return {
+      app: res.json,
+      prompt: prompt,
+      usage: res.usage,
+    };
+  }
+
+}

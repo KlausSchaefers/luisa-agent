@@ -1,0 +1,1604 @@
+{
+  "screens": [
+    {
+      "type": "Screen",
+      "layout": {
+        "direction": "column"
+      },
+      "children": [
+        {
+          "type": "Nav",
+          "layout": {
+            "direction": "row"
+          },
+          "children": [
+            {
+              "type": "NavLink",
+              "variant": "Active",
+              "props": {
+                "label": "Home"
+              }
+            },
+            {
+              "type": "NavLink",
+              "variant": "Default",
+              "props": {
+                "label": "About Bananas"
+              }
+            },
+            {
+              "type": "NavLink",
+              "variant": "Default",
+              "props": {
+                "label": "Recipes"
+              }
+            }
+          ]
+        },
+        {
+          "type": "Hero",
+          "variant": "Default",
+          "props": {
+            "headline": "Welcome to Banana Encyclopedia",
+            "call_to_action": "Discover everything about bananas - from science to delicious recipes"
+          }
+        },
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "Headline",
+              "variant": "H2",
+              "props": {
+                "label": "Explore Our Sections"
+              }
+            },
+            {
+              "type": "Container",
+              "layout": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Large",
+                      "props": {
+                        "value": "/images/banana-science.jpg"
+                      }
+                    },
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Scientific Facts"
+                      }
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Learn about banana nutrition, varieties, health benefits, and botanical classification. Dive deep into the science behind this amazing fruit."
+                      }
+                    },
+                    {
+                      "type": "Button",
+                      "variant": "Primary",
+                      "props": {
+                        "label": "Explore Facts"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Large",
+                      "props": {
+                        "value": "/images/banana-recipes.jpg"
+                      }
+                    },
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Delicious Recipes"
+                      }
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Discover a variety of banana recipes from smoothies to baked goods. Find your next favorite banana dish with step-by-step instructions."
+                      }
+                    },
+                    {
+                      "type": "Button",
+                      "variant": "Primary",
+                      "props": {
+                        "label": "View Recipes"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "Headline",
+              "variant": "H2",
+              "props": {
+                "label": "Why Bananas?"
+              }
+            },
+            {
+              "type": "Container",
+              "layout": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Container",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Nutritious"
+                      }
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Packed with potassium, vitamins, and fiber for your health"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "Container",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Versatile"
+                      }
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Perfect for desserts, smoothies, snacks, and more"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "Container",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Delicious"
+                      }
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Naturally sweet and satisfying taste everyone loves"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "Welcome Screen"
+    },
+    {
+      "type": "Screen",
+      "layout": {
+        "direction": "column"
+      },
+      "children": [
+        {
+          "type": "Nav",
+          "layout": {
+            "direction": "row"
+          },
+          "children": [
+            {
+              "type": "NavLink",
+              "variant": "Default",
+              "props": {
+                "label": "Home"
+              },
+              "layout": {}
+            },
+            {
+              "type": "NavLink",
+              "variant": "Active",
+              "props": {
+                "label": "About Bananas"
+              },
+              "layout": {}
+            },
+            {
+              "type": "NavLink",
+              "variant": "Default",
+              "props": {
+                "label": "Recipes"
+              },
+              "layout": {}
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "Headline",
+              "variant": "H1",
+              "props": {
+                "label": "Scientific Facts About Bananas"
+              },
+              "layout": {}
+            },
+            {
+              "type": "Label",
+              "variant": "Hint",
+              "props": {
+                "label": "Explore the fascinating world of bananas through comprehensive scientific information"
+              },
+              "layout": {}
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "row"
+          },
+          "children": [
+            {
+              "type": "Card",
+              "layout": {
+                "direction": "column"
+              },
+              "children": [
+                {
+                  "type": "Image",
+                  "variant": "Normal",
+                  "props": {
+                    "value": "/images/botanical-banana.jpg"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "SubHeadline",
+                  "props": {
+                    "label": "Botanical Classification"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Scientific name: Musa acuminata"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Family: Musaceae"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Kingdom: Plantae"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Order: Zingiberales"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "variant": "Hint",
+                  "props": {
+                    "label": "Bananas are actually berries, while strawberries are not!"
+                  },
+                  "layout": {}
+                }
+              ]
+            },
+            {
+              "type": "Card",
+              "layout": {
+                "direction": "column"
+              },
+              "children": [
+                {
+                  "type": "Image",
+                  "variant": "Normal",
+                  "props": {
+                    "value": "/images/nutrition-banana.jpg"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "SubHeadline",
+                  "props": {
+                    "label": "Nutritional Content"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "variant": "Emphasis",
+                  "props": {
+                    "label": "Per medium banana (118g):"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Calories: 105"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Carbohydrates: 27g"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Fiber: 3.1g"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Potassium: 422mg (12% DV)"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Vitamin B6: 0.4mg (20% DV)"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Vitamin C: 10mg (11% DV)"
+                  },
+                  "layout": {}
+                }
+              ]
+            },
+            {
+              "type": "Card",
+              "layout": {
+                "direction": "column"
+              },
+              "children": [
+                {
+                  "type": "Image",
+                  "variant": "Normal",
+                  "props": {
+                    "value": "/images/health-benefits.jpg"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "SubHeadline",
+                  "props": {
+                    "label": "Health Benefits"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "✓ Supports heart health"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "✓ Aids digestive health"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "✓ Natural energy booster"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "✓ Regulates blood sugar"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "✓ Supports weight management"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "✓ Improves kidney health"
+                  },
+                  "layout": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "row"
+          },
+          "children": [
+            {
+              "type": "Card",
+              "layout": {
+                "direction": "column"
+              },
+              "children": [
+                {
+                  "type": "Image",
+                  "variant": "Normal",
+                  "props": {
+                    "value": "/images/origin-banana.jpg"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "SubHeadline",
+                  "props": {
+                    "label": "Origin & History"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Origin: Southeast Asia and Papua New Guinea"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "First domesticated: 8000-5000 BCE"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Spread to Africa: 1st millennium BCE"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Introduced to Americas: 15th-16th century"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "variant": "Hint",
+                  "props": {
+                    "label": "Today, bananas are grown in over 135 countries worldwide"
+                  },
+                  "layout": {}
+                }
+              ]
+            },
+            {
+              "type": "Card",
+              "layout": {
+                "direction": "column"
+              },
+              "children": [
+                {
+                  "type": "Image",
+                  "variant": "Normal",
+                  "props": {
+                    "value": "/images/cultivation-banana.jpg"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "SubHeadline",
+                  "props": {
+                    "label": "Cultivation Facts"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Growing time: 9-12 months"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Ideal temperature: 26-30°C (78-86°F)"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Water requirement: High (1900mm annually)"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Plants are herbaceous, not trees"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "props": {
+                    "label": "Each plant produces one bunch per cycle"
+                  },
+                  "layout": {}
+                },
+                {
+                  "type": "Label",
+                  "variant": "Hint",
+                  "props": {
+                    "label": "Over 100 billion bananas are consumed globally each year"
+                  },
+                  "layout": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "Headline",
+              "variant": "H2",
+              "props": {
+                "label": "Banana Varieties"
+              },
+              "layout": {}
+            },
+            {
+              "type": "Container",
+              "layout": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Small",
+                      "props": {
+                        "value": "/images/cavendish.jpg"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Cavendish"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Most common variety worldwide (47% of global production)"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Small",
+                      "props": {
+                        "value": "/images/plantain.jpg"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Plantain"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Starchy cooking banana, popular in tropical regions"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Small",
+                      "props": {
+                        "value": "/images/lady-finger.jpg"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Lady Finger"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Smaller, sweeter variety with thinner skin"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Small",
+                      "props": {
+                        "value": "/images/red-banana.jpg"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Red Banana"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Reddish-purple skin with creamy, sweet flesh"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Small",
+                      "props": {
+                        "value": "/images/blue-java.jpg"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Blue Java"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Ice cream banana with silvery-blue peel"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Small",
+                      "props": {
+                        "value": "/images/burro.jpg"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Burro"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Squared shape with lemony, tangy flavor"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "Headline",
+              "variant": "H2",
+              "props": {
+                "label": "Interesting Scientific Facts"
+              },
+              "layout": {}
+            },
+            {
+              "type": "Container",
+              "layout": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Genetic Similarity"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Humans share approximately 60% of their DNA with bananas"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Radioactive Fruit"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Bananas are naturally radioactive due to potassium-40 content (completely safe)"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Seedless Reproduction"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Commercial bananas are sterile and reproduce through cloning from shoots"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Container",
+              "layout": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "UV Light Glow"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Bananas glow blue under black (UV) light due to chlorophyll breakdown"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Floating Fruit"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Bananas float in water because they are less dense than water"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "SubHeadline",
+                      "props": {
+                        "label": "Ethylene Gas Producer"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Bananas produce ethylene gas that ripens nearby fruits faster"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "About Bananas Screen"
+    },
+    {
+      "type": "Screen",
+      "layout": {
+        "direction": "column"
+      },
+      "children": [
+        {
+          "type": "Nav",
+          "layout": {
+            "direction": "row"
+          },
+          "children": [
+            {
+              "type": "NavLink",
+              "variant": "Default",
+              "props": {
+                "label": "Home"
+              },
+              "layout": {}
+            },
+            {
+              "type": "NavLink",
+              "variant": "Default",
+              "props": {
+                "label": "About Bananas"
+              },
+              "layout": {}
+            },
+            {
+              "type": "NavLink",
+              "variant": "Active",
+              "props": {
+                "label": "Recipes"
+              },
+              "layout": {}
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "Headline",
+              "variant": "H1",
+              "props": {
+                "label": "Banana Recipes"
+              },
+              "layout": {}
+            },
+            {
+              "type": "Label",
+              "props": {
+                "label": "Discover delicious ways to enjoy bananas with our collection of recipes"
+              },
+              "layout": {}
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "SubHeadline",
+              "props": {
+                "label": "Desserts"
+              },
+              "layout": {}
+            },
+            {
+              "type": "Container",
+              "layout": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Normal",
+                      "props": {
+                        "value": "https://example.com/banana-bread.jpg"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Headline",
+                      "variant": "H3",
+                      "props": {
+                        "label": "Classic Banana Bread"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Prep time: 15 minutes"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Difficulty: Easy"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Button",
+                      "variant": "Primary",
+                      "props": {
+                        "label": "View Recipe"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Normal",
+                      "props": {
+                        "value": "https://example.com/banana-pancakes.jpg"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Headline",
+                      "variant": "H3",
+                      "props": {
+                        "label": "Fluffy Banana Pancakes"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Prep time: 10 minutes"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Difficulty: Easy"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Button",
+                      "variant": "Primary",
+                      "props": {
+                        "label": "View Recipe"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Normal",
+                      "props": {
+                        "value": "https://example.com/banana-muffins.jpg"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Headline",
+                      "variant": "H3",
+                      "props": {
+                        "label": "Chocolate Chip Banana Muffins"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Prep time: 20 minutes"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Difficulty: Easy"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Button",
+                      "variant": "Primary",
+                      "props": {
+                        "label": "View Recipe"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "SubHeadline",
+              "props": {
+                "label": "Smoothies & Drinks"
+              },
+              "layout": {}
+            },
+            {
+              "type": "Container",
+              "layout": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Normal",
+                      "props": {
+                        "value": "https://example.com/banana-smoothie.jpg"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Headline",
+                      "variant": "H3",
+                      "props": {
+                        "label": "Tropical Banana Smoothie"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Prep time: 5 minutes"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Difficulty: Very Easy"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Button",
+                      "variant": "Primary",
+                      "props": {
+                        "label": "View Recipe"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Normal",
+                      "props": {
+                        "value": "https://example.com/banana-shake.jpg"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Headline",
+                      "variant": "H3",
+                      "props": {
+                        "label": "Peanut Butter Banana Shake"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Prep time: 5 minutes"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Difficulty: Very Easy"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Button",
+                      "variant": "Primary",
+                      "props": {
+                        "label": "View Recipe"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Normal",
+                      "props": {
+                        "value": "https://example.com/green-smoothie.jpg"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Headline",
+                      "variant": "H3",
+                      "props": {
+                        "label": "Green Banana Smoothie"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Prep time: 7 minutes"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Difficulty: Very Easy"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Button",
+                      "variant": "Primary",
+                      "props": {
+                        "label": "View Recipe"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Section",
+          "layout": {
+            "direction": "column"
+          },
+          "children": [
+            {
+              "type": "SubHeadline",
+              "props": {
+                "label": "Healthy Snacks"
+              },
+              "layout": {}
+            },
+            {
+              "type": "Container",
+              "layout": {
+                "direction": "row"
+              },
+              "children": [
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Normal",
+                      "props": {
+                        "value": "https://example.com/banana-chips.jpg"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Headline",
+                      "variant": "H3",
+                      "props": {
+                        "label": "Baked Banana Chips"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Prep time: 10 minutes"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Difficulty: Easy"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Button",
+                      "variant": "Primary",
+                      "props": {
+                        "label": "View Recipe"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Normal",
+                      "props": {
+                        "value": "https://example.com/banana-oatmeal.jpg"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Headline",
+                      "variant": "H3",
+                      "props": {
+                        "label": "Banana Oatmeal Energy Bites"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Prep time: 15 minutes"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Difficulty: Easy"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Button",
+                      "variant": "Primary",
+                      "props": {
+                        "label": "View Recipe"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                },
+                {
+                  "type": "Card",
+                  "layout": {
+                    "direction": "column"
+                  },
+                  "children": [
+                    {
+                      "type": "Image",
+                      "variant": "Normal",
+                      "props": {
+                        "value": "https://example.com/banana-icecream.jpg"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Headline",
+                      "variant": "H3",
+                      "props": {
+                        "label": "Frozen Banana Nice Cream"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Prep time: 5 minutes"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Label",
+                      "props": {
+                        "label": "Difficulty: Very Easy"
+                      },
+                      "layout": {}
+                    },
+                    {
+                      "type": "Button",
+                      "variant": "Primary",
+                      "props": {
+                        "label": "View Recipe"
+                      },
+                      "layout": {}
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "name": "Recipes Screen"
+    }
+  ],
+  "dsl": {
+    "screen-background": "#FFF9E6",
+    "text-color": "#2C1810",
+    "primary-button-background": "#FFD93D",
+    "secondary-button-background": "#6BCB77",
+    "card-background": "#FFFFFF",
+    "font-family": "Helvetica Neue,Helvetica,Arial,sans-serif",
+    "font-base": 16,
+    "accent-color": "#FFE66D",
+    "border-radius": 12,
+    "shadow": "0 2px 8px rgba(0,0,0,0.1)",
+    "heading-color": "#1A0F08",
+    "link-color": "#4D96A9",
+    "success-color": "#6BCB77",
+    "spacing-small": 8,
+    "spacing-medium": 16,
+    "spacing-large": 24
+  },
+  "screenSize": {
+    "w": 960,
+    "h": 720
+  },
+  "structure": {
+    "type": "App",
+    "name": "Banana Encyclopedia",
+    "description": "An informative app about bananas, featuring scientific facts and delicious recipes",
+    "sections": [
+      {
+        "name": "Main",
+        "description": "This section contains all the main content about bananas including welcome, facts, and recipes.",
+        "hasNavigation": true,
+        "navigation": [
+          {
+            "name": "Home",
+            "description": "Navigate to the welcome page"
+          },
+          {
+            "name": "About Bananas",
+            "description": "Navigate to the scientific facts page"
+          },
+          {
+            "name": "Recipes",
+            "description": "Navigate to the banana recipes page"
+          }
+        ],
+        "screens": [
+          {
+            "name": "Welcome Screen",
+            "description": "The landing page displays the app name 'Banana Encyclopedia' with an attractive hero image of bananas. Users will see a brief introduction about what the app offers, including access to scientific facts and recipes. There are visual navigation cards or buttons leading to the 'About Bananas' and 'Recipes' sections. The screen has a welcoming and colorful design to engage users immediately."
+          },
+          {
+            "name": "About Bananas Screen",
+            "description": "This page presents comprehensive scientific facts about bananas. Users will see information organized in sections including: botanical classification, nutritional content (vitamins, minerals, calories), health benefits, origin and cultivation history, different banana varieties, and interesting scientific facts. The information is displayed in an easy-to-read format with headings, bullet points, and possibly icons or images to illustrate key facts. Users can scroll through the content to learn all about bananas from a scientific perspective."
+          },
+          {
+            "name": "Recipes Screen",
+            "description": "This page showcases a collection of banana recipes. Users will see a list or grid of recipe cards, each displaying a recipe name, a thumbnail image of the finished dish, preparation time, and difficulty level. Each recipe card can be tapped to view full details including ingredients list, step-by-step instructions, and cooking tips. The page includes various recipe categories such as desserts (banana bread, smoothies, pancakes), snacks, and healthy options. Users can browse through all available banana recipes to find inspiration for cooking."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -113,9 +113,9 @@ import Dialog from '../components/Dialog.vue'
 import Preview from '../components/Preview.vue'
 import LuisaAgent from '../agent/LuisaAgent'
 import Pipeline from '../agent/Pipeline'
-import OpenAI from '../agent/OpenAI'
-import Claude from '../agent/Claude'
-import Gemini from '../agent/Gemini'
+import OpenAI from '../agent/llm/OpenAI'
+import Claude from '../agent/llm/Claude'
+import Gemini from '../agent/llm/Gemini'
 import DLS from '../agent/DLS'
 
 import QuxConverter from '../agent/converter/QuxConverter'
@@ -142,6 +142,7 @@ import fruits2 from '../examples/fruits2'
 import yoga from '../examples/yoga'
 import form from '../examples/form'
 import banana from '../examples/banana'
+import banana2 from '../examples/banana2'
 
 const examples = {
   'fitness': fitness,
@@ -155,7 +156,8 @@ const examples = {
   "fruits2": fruits2,
   "yoga": yoga,
   "form": form,
-  'banana': banana
+  'banana': banana,
+  'banana2': banana2
 }
 
 export default {
@@ -170,7 +172,7 @@ export default {
       app: null,
       messages: [],
       useHTML : false,
-      useCustomDSL: true,
+      useCustomDLS: true,
       selectedScreen: '',
       progressMessage: 'Thinking...',
       isDebug: false,

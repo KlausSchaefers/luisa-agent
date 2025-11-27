@@ -1,4 +1,4 @@
-import { LLM } from "./Interfaces";
+import { LLM } from "../Interfaces";
 
 import Anthropic from "@anthropic-ai/sdk";
 
