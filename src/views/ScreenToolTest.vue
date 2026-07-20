@@ -5,7 +5,7 @@
       <div class="luisa-main-content">
         <div class="luisa-main-content-header">
             <div>
-              Luisa - Agent
+              Luisa - Screen Tool Test
             </div>
             <div>
               
@@ -37,7 +37,8 @@
               <IconCode :size="16" stroke="2" :class="['luisa-icon']" @click="showCode" v-if="app"></IconCode>
               <IconAdjustmentsAlt :size="16" stroke="2" :class="['luisa-icon']" @click="showSettings"/>
               <IconTrash :size="16" stroke="2" @click="clear" class="luisa-icon"></IconTrash>
-              
+            <IconEye :size="16" stroke="2" @click="isIframeOpen = !isIframeOpen" class="luisa-icon"></IconEye>
+
             </div>
         </div>
         <div :class="'luisa-main-content-body'  ">
@@ -103,6 +104,7 @@
       </Dialog>
 
       <HistoryDialog ref="historyDialog"/>
+      <div ref="iframeCNTR" :class="['luisa-iframe', {'luisa-iframe-open': isIframeOpen}] " ></div>
 
     </div>
 </template>
@@ -114,16 +116,17 @@ import Chat from '../components/Chat.vue'
 import Dialog from '../components/Dialog.vue'
 import Preview from '../components/Preview.vue'
 import HistoryDialog from '../components/HistoryDialog.vue'
-import LuisaAgent from '../agent/LuisaAgent'
+import ScreenTool from '../agent/tools/ScreenTool'
 import Pipeline from '../agent/Pipeline'
 import OpenAI from '../agent/llm/OpenAI'
 import Claude from '../agent/llm/Claude'
 import Gemini from '../agent/llm/Gemini'
 import DLS from '../agent/DLS'
 import HistoryService from '../services/HistoryService.js';
+import HTMLImporter from '../agent/converter/HTMLImporter.js'
 
 import QuxConverter from '../agent/converter/QuxConverter'
-import { IconTrash, IconAdjustmentsAlt, IconCode, IconHistory } from '@tabler/icons-vue';
+import { IconTrash, IconAdjustmentsAlt, IconCode, IconHistory, IconEye } from '@tabler/icons-vue';
 
 import hljs from 'highlight.js';
 import javascript from 'highlight.js/lib/languages/javascript';
@@ -134,35 +137,7 @@ hljs.registerLanguage('xml', xml);
 
 import ZoomableCanvas from '../components/ZoomableCanvas.vue'
 
-import fitness from '../examples/fitness'
-import card from '../examples/card'
-import grid from '../examples/grid'
-import hero from '../examples/hero'
-import flex from '../examples/flex'
-import simple from '../examples/simple'
-import landing from '../examples/landing'
-import fruits from '../examples/fruits'
-import fruits2 from '../examples/fruits2'
-import yoga from '../examples/yoga'
-import form from '../examples/form'
-import banana from '../examples/banana'
-import banana2 from '../examples/banana2'
 
-const examples = {
-  'fitness': fitness,
-  'card': card,
-  'grid': grid,
-  'hero': hero,
-  "flex": flex,
-  "simple": simple,
-  "landing": landing,
-  "fruits": fruits,
-  "fruits2": fruits2,
-  "yoga": yoga,
-  "form": form,
-  'banana': banana,
-  'banana2': banana2
-}
 
 export default {
   emits: ['update:modelValue', 'click', 'change'],
@@ -187,6 +162,7 @@ export default {
         busy:false,
         messages: []
       },
+      isIframeOpen: false,
       selectedModel: 'gpt-4.1',
       models: [
         {label: "OpenAI - GPT-4.1", value: "gpt-4.1"},
@@ -210,6 +186,7 @@ export default {
     'Preview': Preview,
     'IconTrash': IconTrash,
     'IconCode': IconCode,
+    'IconEye': IconEye,
     'IconAdjustmentsAlt': IconAdjustmentsAlt,
     'Dialog': Dialog,
     'ZoomableCanvas': ZoomableCanvas,
@@ -260,7 +237,7 @@ export default {
         console.debug('HistoryDialog loaded app:', app)
         const raw = JSON.parse(JSON.stringify(app.content))
         this.saveModel(raw, false)
-        this.buildRaw(raw)
+        this.buildHTML(raw)
       })
     },
     showCode (e) {
@@ -330,26 +307,39 @@ export default {
         return
       } 
 
-      const agent = new LuisaAgent(llm, this.getConfig())
-      agent.setProgressCallback((m) => {
-        chat.onChangeLastAgentMessage(m + '\n\n')
-      })
-      
-      const result = await agent.run(filteredMessages, this.raw)
+      try {
+        const tool = new ScreenTool(llm, [], this.getConfig());
+        console.debug(tool)
+        const scrn = await tool.run(filteredMessages);
 
-      if (result.error) {
-        chat.onAgentMessage("Something went wrong: \n\n" + result.error)
-        this.finish()
-        return
+
+        this.saveHTML(scrn.raw)
+
+      } catch (err) {
+        console.error(err)
       }
-     
-      this.saveModel(result.raw)
 
-      const s = this.getScreenSize()
-      const qux = new QuxConverter(s.w, s.h, this.flexEngine)
-      this.app = qux.convert(result)
-      this.raw = result.raw
-      this.finish()
+
+    //   const agent = new LuisaAgent(llm, this.getConfig())
+    //   agent.setProgressCallback((m) => {
+    //     chat.onChangeLastAgentMessage(m + '\n\n')
+    //   })
+      
+    //   const result = await agent.run(filteredMessages, this.raw)
+
+    //   if (result.error) {
+    //     chat.onAgentMessage("Something went wrong: \n\n" + result.error)
+    //     this.finish()
+    //     return
+    //   }
+     
+    //   this.saveModel(result.raw)
+
+    //   const s = this.getScreenSize()
+    //   const qux = new QuxConverter(s.w, s.h, this.flexEngine)
+    //   this.app = qux.convert(result)
+    //   this.raw = result.raw
+        this.finish()
     },
     getLLM () {
 
@@ -382,23 +372,17 @@ export default {
 
       console.error('Unknown LLM model: ', this.selectedModel)
     },
-    async computeEmbedding(txt) {
-      const token = localStorage.getItem('luisaOpenAIKey')
-      const llm = new OpenAI(token)
-      const embedding = await llm.runEmbedding(txt)
+    
+    saveHTML(html, saveToHistory = true) {
+        console.debug('saveHTML', html)
+        localStorage.setItem('luisaHTML', html)       
     },
-    saveModel(app, saveToHistory = true) {
-        const s = JSON.stringify(app)
-        localStorage.setItem('luisaApp', s)
-        if (saveToHistory) {
-          this.historyService.create(app.name || 'Unnamed App', app)
-        }
-    },
-    async loadLastModel() {
-      const s = localStorage.getItem('luisaApp')
+    async loadLastHTML() {
+      const s = localStorage.getItem('luisaHTML')
       if (s) {
-        const raw = JSON.parse(s)
-        this.buildRaw(raw)
+        this.buildHTML(s)
+      } else {
+        console.debug('loadLastHTML() > no html')
       }
     },
     finish() {
@@ -407,26 +391,13 @@ export default {
       this.status.messages = []
       //this.$refs.chat.onChangeLastAgentMessage("Done!")
     },
-    printRaw(node, result = [], indent='') {
-        result.push(`${indent} ${node.type}  ${node.variant} [${node.name}] `)
-        if (node.children) {
-          node.children.forEach(c => {
-            this.printRaw(c, result, indent+'   ')
-          })
-        }
-        if (node.screens) {
-          node.screens.forEach(c => {
-            this.printRaw(c, result, indent+'   ')
-          })
-        }
-        return result.join('\n')
-    },
+   
     reRender () {
 
       localStorage.setItem('luisaAppDebug', this.isDebug)
       this.app = null
       this.$nextTick(() => {
-        this.buildRaw(this.raw)
+        this.buildHTML(this.raw)
       })
     },
     setMode () {
@@ -440,23 +411,28 @@ export default {
       localStorage.setItem('luisaSize', this.size)
       this.reRender()
     },
-    buildRaw(raw) {
-      console.debug('buildRaw() ', this.isDebug, raw)
-      const dsl = new DLS()
-      // if (this.isDebug) {
-      //   dsl.set("@container-border-width", 3)
-      //     .set("@container-border-color", "#123ef099")
-      //     .set("@container-border-style", "dashed")
-      //     .set("@@section-background", "red")
-      //     .set("@container-padding", 16)
-      // }
-      const model = Pipeline.defaultPipeline(dsl, this.useCustomDLS).convert(structuredClone(raw))
+    async buildHTML(html) {
+      console.debug('buildHTML() ')
       const s = this.getScreenSize()
-      const qux = new QuxConverter(s.w, s.h, this.flexEngine)
-      this.app = qux.convert(model)
-      this.raw = raw
-      //console.debug(this.printRaw(raw))
-      this.selectedScreen = Object.values(this.app.screens)[0].name
+      const importer = new HTMLImporter()
+      const qux = await importer.html2QuantUX(html, this.$refs.iframeCNTR, s.w, s.h)
+      this.app = qux
+      console.debug(qux)
+    //   const dsl = new DLS()
+    //   // if (this.isDebug) {
+    //   //   dsl.set("@container-border-width", 3)
+    //   //     .set("@container-border-color", "#123ef099")
+    //   //     .set("@container-border-style", "dashed")
+    //   //     .set("@@section-background", "red")
+    //   //     .set("@container-padding", 16)
+    //   // }
+    //   const model = Pipeline.defaultPipeline(dsl, this.useCustomDLS).convert(structuredClone(raw))
+    //   const s = this.getScreenSize()
+    //   const qux = new QuxConverter(s.w, s.h, this.flexEngine)
+    //   this.app = qux.convert(model)
+    //   this.raw = raw
+    //   //console.debug(this.printRaw(raw))
+    //   this.selectedScreen = Object.values(this.app.screens)[0].name
       //console.debug(JSON.stringify(this.raw, null , 2))
     }
   },
@@ -475,15 +451,8 @@ export default {
     this.claudeKey = localStorage.getItem('luisaClaudeKey')
     this.selectedModel = localStorage.getItem('luisaLLMModel') || 'gpt-4.1'
     this.useCustomDLS = localStorage.getItem('luisaUseCustomDSL') === 'true'
-    if (this.$route.query.app) {
-      if (examples[this.$route.query.app]) {
-        //console.debug('mounted() > load example', this.$route.query.app)
-        const raw = examples[this.$route.query.app]
-        this.buildRaw(raw)
-        return
-      }
-    }
-    this.loadLastModel()
+    
+    this.loadLastHTML()
   }
 }
 </script>

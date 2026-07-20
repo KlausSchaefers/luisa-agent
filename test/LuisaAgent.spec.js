@@ -16,7 +16,7 @@ test('Test LuisaAgent >  ', async () => {
         "role": "user",
         "content": "Please create a cool login page"
     }])
-    //console.log(JSON.stringify(result.screens, null, 2))
+    console.log(JSON.stringify(result.screens, null, 2))
 
     expect(result.screens.length).toBe(1)
     const flat = new QuxConverter().convert(result)

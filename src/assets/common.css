@@ -160,3 +160,23 @@ textarea.luisa-input:disabled:hover {
         font-weight: 600;
     }
 }
+
+.luisa-iframe{
+    position: absolute;
+    top: 32px;
+    right:32px;
+    overflow: hidden;
+    width: 0px;
+    height: 0px;
+
+    iframe {
+        border: none;
+    }
+
+    &.luisa-iframe-open {
+        width: auto;
+        height: auto;
+        border:0px;
+        box-shadow: 0 0 32px rgba(0, 0, 0, 0.2);
+    }
+}

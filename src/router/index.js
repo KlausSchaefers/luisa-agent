@@ -3,6 +3,7 @@ import Workspace from "../views/Workspace.vue";
 import Bench from "../views/Bench.vue";
 import Local from "../views/Local.vue";
 import CanvasTest from "../views/CanvasTest.vue";
+import ScreenToolTest from "../views/ScreenToolTest.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: "/canvas",
       name: "canvas",
       component: CanvasTest,
+    },
+    {
+      path: "/screentool",
+      name: "screentool",
+      component: ScreenToolTest,
     },
   ],
 });
